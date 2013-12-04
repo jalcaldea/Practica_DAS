@@ -1,3 +1,15 @@
 # Aqui van los archivos que no han de actualizarse.
+###########################################
+#               TUTORIAL                  #
+#                                         #
+# p.e: *desktop.ini* ; /data/archivo.ign  #
+#                                         #
+###########################################
 
-# p.e: *desktop.ini* ; /data/archivo.ign
+# Archivos de salida de LaTex
+
+/memoria/*.aux
+/memora/*.log
+/memora/*.out
+/memora/*.synctex.gz
+/memora/*.toc
