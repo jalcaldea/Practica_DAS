@@ -83,6 +83,7 @@ Es tan simple como:
 1. Acedemos a la carpeta donde se encuentra en repo con en mandato `cd`.
 2. Ejecutamos en comando de Git para ello `git pull`.
 
+Quedando asi:
 
     $ cd <path de la carpeta>
     $ git pull
@@ -101,10 +102,11 @@ Existen varias formas de actualizar el repositorio:
     Y posteriormente con el comando `git commit` añadimos un comentario para lo que se haya actualizado.
 2. Se puede usar el argumento `-a` para el mandato `git commit` de forma que hace un todo en uno y actualiza los archivos.
 
+Ejemplos:
 
-    $ git add ./source/main.cpp  # Se añade el archivo ./source/main.cpp
-    $ git add source             # Se añade todo lo modificado en la carpeta /source
-    $ git add .                  # Se actualiza todo lo que haya variado.
+    $ git add ./source/main.cpp     # Se añade el archivo ./source/main.cpp
+    $ git add source                # Se añade todo lo modificado en la carpeta /source
+    $ git add .                     # Se actualiza todo lo que haya variado.
     $
     $ git commit -m "Añadido main"  # Se actualiza con el mensaje "Añadido main"
     $ git commit                    # Se ejecuta el editor de texto predefinido para insertar el comentario
@@ -114,16 +116,17 @@ Existen varias formas de actualizar el repositorio:
 Por último solo falta subir los cambios al sevidor de [GitHub](https://github.com/), el mécanismo es muy simple:
 
 * Si es la primera vez que lo haces, deberás añadir un punto remoto.
-* Despues, usando el comando `git push` actualizamos, se usa de esta manera:
+* Despues, usando el comando `git push` actualizamos.
 
+Quedando asi:
 
     $ git remote add origin https://github.com/usuario/repositorio.git
     
-    En nuestro caso `https://github.com/KekoAlk/Practica_DAS.git`
+En nuestro caso `https://github.com/KekoAlk/Practica_DAS.git`
 
     $ git push <dir> <brach>
 
-    Siendo `<dir>` el directorio, por ejemplo `origin`, y `<branch>` la rama del repositorio, generalmente 'master'. En nuestro caso:
+Siendo `<dir>` el directorio, por ejemplo `origin`, y `<branch>` la rama del repositorio, generalmente 'master'. En nuestro caso:
 
     $ git push origin master
 
