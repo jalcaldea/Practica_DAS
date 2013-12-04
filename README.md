@@ -80,14 +80,11 @@ Antes de saber cómo actualizar el contenido del Git, es recomendable saber como
 #### Linux
 Es tan simple como:
 
-1. Acedemos a la carpeta donde se encuentra en repo con en mandato `cd`
+1. Acedemos a la carpeta donde se encuentra en repo con en mandato `cd`.
+2. Ejecutamos en comando de Git para ello `git pull`.
 
 
     $ cd <path de la carpeta>
-    
-2. Ejecutamos en comando de Git para ello `git pull`
-
-
     $ git pull
 
 ### ¿Cómo puedo modificar un archivo?
@@ -100,33 +97,29 @@ Una vez tenemos el repositorio actualizado podemos crear cualquier archivo o mod
 #### Linux
 Existen varias formas de actualizar el repositorio:
 
-1. Mediante el comando `git add` añadimos manualmente los archivos que hemos modificado, por ejemplo:
+1. Mediante el comando `git add` añadimos manualmente los archivos que hemos modificado.
+    Y posteriormente con el comando `git commit` añadimos un comentario para lo que se haya actualizado.
+2. Se puede usar el argumento `-a` para el mandato `git commit` de forma que hace un todo en uno y actualiza los archivos.
 
 
     $ git add ./source/main.cpp  # Se añade el archivo ./source/main.cpp
     $ git add source             # Se añade todo lo modificado en la carpeta /source
     $ git add .                  # Se actualiza todo lo que haya variado.
-    
-    Y posteriormente con el comando `git commit` añadimos un comentario para lo que se haya actualizado, por ejemplo:
-
+    $
     $ git commit -m "Añadido main"  # Se actualiza con el mensaje "Añadido main"
     $ git commit                    # Se ejecuta el editor de texto predefinido para insertar el comentario
     
-2. Se puede usar el argumento `-a` para el mandato `git commit` de forma que hace un todo en uno y actualiza los archivos.
-
 **Nota:** No es recomendable hacer uso del método 2, a no ser que uno sea muy consciente de qué ha modificado.
 
 Por último solo falta subir los cambios al sevidor de [GitHub](https://github.com/), el mécanismo es muy simple:
 
-* Si es la primera vez que lo haces, deberás añadir un punto remoto, así:
+* Si es la primera vez que lo haces, deberás añadir un punto remoto.
+* Despues, usando el comando `git push` actualizamos, se usa de esta manera:
 
 
     $ git remote add origin https://github.com/usuario/repositorio.git
     
     En nuestro caso `https://github.com/KekoAlk/Practica_DAS.git`
-
-* Despues, usando el comando `git push` actualizamos, se usa de esta manera:
-
 
     $ git push <dir> <brach>
 
