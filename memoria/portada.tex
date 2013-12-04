@@ -1,0 +1,45 @@
+%*******************************************************
+%                 NO MODIFICAR
+\newcommand*{\FSfont}[1]{%
+  \fontencoding{T1}\fontfamily{#1}\selectfont}
+
+\newlength{\tpheight}\setlength{\tpheight}{0.9\textheight}
+\newlength{\txtheight}\setlength{\txtheight}{0.9\tpheight}
+\newlength{\tpwidth}\setlength{\tpwidth}{0.9\textwidth}
+\newlength{\txtwidth}\setlength{\txtwidth}{0.9\tpwidth}
+\newlength{\drop}
+%*******************************************************
+
+% Crea una portada con los siguientes parámetros
+%
+% #1 : Título 
+% #2 : Subtítulo
+% #3 : Subsubtítulo
+% #4 : Autor(es)
+% #5 : Lugar
+%
+
+\newcommand*{\portada}[5]{
+\begin{titlepage}
+\begingroup
+\vspace*{1cm}
+\drop = 0.2\txtheight
+\centering
+\vfill
+{\Huge \scshape #1}\\[\baselineskip]
+{\Large \textbf{#2}}\\[\baselineskip]
+{\Large \scshape #3}\\[\baselineskip]
+\vspace*{0.3cm}
+{\large \textit{#4}}\\[0.5\drop]
+\includegraphics[scale=0.35]{./images/logoURJC.jpg}
+\vspace*{1.5cm}
+
+{\large \scshape #5, \today} \par
+\begin{center}
+\end{center}
+\vfill\null
+\endgroup
+\end{titlepage}
+}
+ %*****************************************************
+ 

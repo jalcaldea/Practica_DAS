@@ -1,0 +1,39 @@
+\documentclass[12pt,a4paper,titlepage]{report}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black]{hyperref}
+\usepackage{graphicx}
+\usepackage{lettrine}
+\usepackage{float}
+\usepackage{color}
+\usepackage[left=3.00cm, right=3.00cm, top=3.00cm]{geometry}
+
+
+\newcommand*{\autores}{
+\begin{tabular}{r l}
+GII+GIS: &  Jesús Alcalde Alcázar \\
+ & Adrián Gutiérrez Jiménez \\
+ & Germán Alonso Azcutia \\
+GIS+MAT: & José Ignacio Escribano Pablos \\
+GIS: & Carlos Vázquez Sánchez
+\end{tabular}
+}
+
+% Incluye archivo para utilizar el comando \portada
+\include{portada}
+
+\begin{document}
+
+% Portada
+\portada{Práctica Obligatoria}{Diseño y Arquitectura Software}{\ }{\autores}{Móstoles}
+% Fin Portada
+
+\tableofcontents
+\thispagestyle{empty}
+\part{A}
+\part{B}
+\lettrine[lines=1,slope=4pt,findent=0pt]{P}{}rimera revisión de la memoria.
+\end{document}
