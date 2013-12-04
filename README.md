@@ -79,11 +79,14 @@ Antes de saber cómo actualizar el contenido del Git, es recomendable saber como
 
 #### Linux
 Es tan simple como:
+
 1. Acedemos a la carpeta donde se encuentra en repo con en mandato `cd`
+
 
     $ cd <path de la carpeta>
     
 2. Ejecutamos en comando de Git para ello `git pull`
+
 
     $ git pull
 
@@ -99,11 +102,12 @@ Existen varias formas de actualizar el repositorio:
 
 1. Mediante el comando `git add` añadimos manualmente los archivos que hemos modificado, por ejemplo:
 
+
     $ git add ./source/main.cpp  # Se añade el archivo ./source/main.cpp
     $ git add source             # Se añade todo lo modificado en la carpeta /source
     $ git add .                  # Se actualiza todo lo que haya variado.
     
-Y posteriormente con el comando `git commit` añadimos un comentario para lo que se haya actualizado, por ejemplo:
+    Y posteriormente con el comando `git commit` añadimos un comentario para lo que se haya actualizado, por ejemplo:
 
     $ git commit -m "Añadido main"  # Se actualiza con el mensaje "Añadido main"
     $ git commit                    # Se ejecuta el editor de texto predefinido para insertar el comentario
@@ -116,14 +120,18 @@ Por último solo falta subir los cambios al sevidor de [GitHub](https://github.c
 
 * Si es la primera vez que lo haces, deberás añadir un punto remoto, así:
 
+
     $ git remote add origin https://github.com/usuario/repositorio.git
     
-En nuestro caso `https://github.com/KekoAlk/Practica_DAS.git`
+    En nuestro caso `https://github.com/KekoAlk/Practica_DAS.git`
+
 * Despues, usando el comando `git push` actualizamos, se usa de esta manera:
+
 
     $ git push <dir> <brach>
 
-Siendo `<dir>` el directorio, por ejemplo `origin`, y `<branch>` la rama del repositorio, generalmente 'master'. En nuestro caso:
+    Siendo `<dir>` el directorio, por ejemplo `origin`, y `<branch>` la rama del repositorio, generalmente 'master'. En nuestro caso:
+
     $ git push origin master
 
 **NOTA:** Este archivo esta actualmente en construcción.
