@@ -1,7 +1,7 @@
 Práctica DAS
 ============
 
-Este repositorio vamos a desarrollar la [práctica obligatoria](enunciado.pdf) de la asignatura de Diseño y Arquitectura de Software.
+Este repositorio vamos a desarrollar la [práctica obligatoria](https://github.com/KekoAlk/Practica_DAS/blob/master/enunciado.pdf?raw=true) de la asignatura de Diseño y Arquitectura de Software.
 
 
 Estado de la práctica
