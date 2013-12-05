@@ -13,6 +13,7 @@
 /memoria/*.out
 /memoria/*.synctex.gz
 /memoria/*.toc
+/memoria/*.pdf
 
 # -- Sistemas Operativos ------------------------------
 
