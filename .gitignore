@@ -9,10 +9,10 @@
 # Archivos de salida de LaTex
 
 /memoria/*.aux
-/memora/*.log
-/memora/*.out
-/memora/*.synctex.gz
-/memora/*.toc
+/memoria/*.log
+/memoria/*.out
+/memoria/*.synctex.gz
+/memoria/*.toc
 
 # -- Sistemas Operativos ------------------------------
 
