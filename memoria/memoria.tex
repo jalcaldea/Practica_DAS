@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,titlepage]{report}
+\documentclass[12pt,a4paper,titlepage]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
 \usepackage{amsmath}
@@ -10,15 +10,16 @@
 \usepackage{float}
 \usepackage{color}
 \usepackage[left=3.00cm, right=3.00cm, top=3.00cm]{geometry}
+\usepackage[nottoc]{tocbibind}	%Para mostrar la bibliografia en el índice
 
 
 \newcommand*{\autores}{
 \begin{tabular}{r l}
 GII+GIS: &  Jesús Alcalde Alcázar \\
- & Adrián Gutiérrez Jiménez \\
- & Germán Alonso Azcutia \\
+		 & Germán Alonso Azcutia \\
+		 & Adrián Gutiérrez Jiménez \\
 GIS+MAT: & José Ignacio Escribano Pablos \\
-GIS: & Carlos Vázquez Sánchez
+GIS:  	 & Carlos Vázquez Sánchez
 \end{tabular}
 }
 
@@ -26,13 +27,19 @@ GIS: & Carlos Vázquez Sánchez
 \include{portada}
 
 \begin{document}
-
+ 
 % Portada
 \portada{Práctica Obligatoria}{Diseño y Arquitectura Software}{\ }{\autores}{Móstoles}
 % Fin Portada
 
 \tableofcontents
+\addcontentsline{toc}{chapter}{Índice}
 \thispagestyle{empty}
+
+
+\chapter*{Prefacio}
+\addcontentsline{toc}{chapter}{Prefacio}
+\input{./partes/prefacio.tex}
 
 \part{Observación}
 \input{./partes/a/parteA.tex}
@@ -40,7 +47,7 @@ GIS: & Carlos Vázquez Sánchez
 \part{Diseño}
 \input{./partes/b/parteB.tex}
 
-
 \bibliographystyle{plain}
 \bibliography{./bibliografia/bibliografia.bib}
+
 \end{document}
