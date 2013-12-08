@@ -1,27 +1,27 @@
 \chapter{Introducción}
 \lettrine[lines=1,slope=4pt,findent=0pt]{E}{}n esta primera parte de la memoria nos vamos a encargar de hacer una descripción a nivel arquitectónico de los sistemas de virtualización de las aulas de la Universidad Rey Juan Carlos.\\
 
-\noindent Para llevar a cabo esta tarea hemos decidido que la mejor opción pasa por describir o analizar qué es un sistema de virtualización, para después poder centrarnos en el caso concreto de las aulas de la URJC, que se encuentran virtualizados con VMware\cite{vmware} lo que significa que en el caso concreto nos centraremos en VMware, eso sí, haciendo continuas analogías a lo que se ve en las aulas.\\
+\noindent Para llevar a cabo esta tarea hemos decidido que la mejor opción pasa por describir o analizar qué es un sistema de virtualización, para después poder centrarnos en el caso concreto de las aulas de la URJC, que se encuentran virtualizadas con VMware\cite{vmware} lo que significa que en el caso concreto nos centraremos en VMware, eso sí, haciendo continuas analogías a lo que se ve en las aulas.\\
 
-\noindent Pero para entrar un poco en materia vamos a intentar explicar brevemente que es esto de la \emph{virtualización}.
+\noindent Pero para entrar un poco en materia vamos a intentar explicar brevemente qué es esto de la \emph{virtualización}.
 
 \section{¿Qué es la virtualización?}
 \noindent Con la intención de hacernos una idea precisa de \emph{virtualización} hemos buscado diversas definiciones, de las cuales nos quedamos con:
-\begin{center}
+\begin{quote}
 \emph{\textquotedblleft Virtualización es la creación -a través de software- de una versión virtual de algún recurso tecnológico, como puede ser una plataforma de hardware, un sistema operativo, un dispositivo de almacenamiento u otros recursos de red.\textquotedblright}-Wikipedia\cite{defvirwiki}\\
-\end{center}
+\end{quote}
 
-\noindent Es otras palabras, la creación mediante software de elementos hardware virtuales. Un buen ejemplo de esto es cuando particionamos un disco duro; físicamente tenemos un HDD pero a nivel de software existen dos, pues el disco duro esta \emph{virtualizado} en dos particiones.\\
+\noindent Es otras palabras, la creación mediante software de elementos hardware virtuales. Un buen ejemplo de ésto es cuando particionamos un disco duro; físicamente tenemos un HDD pero a nivel de software existen dos, pues el disco duro esta \emph{virtualizado} en dos particiones.\\
 
-\noindent Dándole una vuelta de tuerca más, podemos definir \emph{virtualización} como el proceso por el cual una capa de software(VMM o \emph{Virtual Machine Monitor}) abstrae los recursos de la computadora física al Sistema Operativo o \emph{Máquina Virtual}.
+\noindent Dando una vuelta de tuerca más, podemos definir \emph{virtualización} como el proceso por el cual una capa de software(VMM o \emph{Virtual Machine Monitor}) abstrae los recursos de la computadora física al Sistema Operativo o \emph{Máquina Virtual}.
 
 \section{¿Qué es una máquina virtual?}
 
 \noindent Al igual que antes, encontramos diversas acepciones de \emph{máquina virtual}, pero vamos a partir de la definición de \emph{Wikipedia} pues es la más completa.
 
-\begin{center}
+\begin{quote}
 \emph{\textquotedblleft Una máquina virtual es un software que simula a una computadora y puede ejecutar programas como si fuese una computadora real. Este software en un principio fue definido como \textquotedblleft un duplicado eficiente y aislado de una máquina física\textquotedblright.\textquotedblright}-Wkipedia\cite{defmaqvirwiki}
-\end{center}
+\end{quote}
 
 \noindent Podemos encontrar dos tipos de éstas:
 
