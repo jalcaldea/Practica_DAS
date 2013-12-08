@@ -1,8 +1,16 @@
-\chapter{Definición arquitectura virtualización}
+\chapter{Descripción de la arquitectura de virtualización}
 
-\lettrine[lines=1,slope=4pt,findent=0pt]{L}{}a de máquina virtual o intérprete se puede descomponer, a grandes rasgos, en cuatro componentes:
-\section{motor de simulación o interpretación}
-\section{memoria que contiene el código a interpretar}
-\section{representación del estado de la interpretación}
-\section{representación del estado del programa que se esta
-simulando}
+\lettrine[lines=1,slope=4pt,findent=0pt]{U}{}na vez introducido el vocabulario básico y tras haber indagado un poco más en la materia vamos a centrarnos en la arquitectura como tal.
+
+\section{Componentes}
+
+\noindent El esquema básico es el siguiente:
+
+\begin{center}
+\begin{tikzpicture}
+\path (0,0) coordinate (A) {}
+	(1,1) coordinate (B) {}
+  (3,0) coordinate (C) {};
+\draw[dashed] (A) -- (B) -- (C);
+\end{tikzpicture}
+\end{center}
