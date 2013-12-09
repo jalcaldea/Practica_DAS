@@ -6,7 +6,7 @@
 \noindent Pero para entrar un poco en materia vamos a intentar explicar brevemente qué es esto de la \emph{virtualización}.
 
 \section{¿Qué es la virtualización?}
-\noindent Con la intención de hacernos una idea precisa de \emph{virtualización} hemos buscado diversas definiciones, de las cuales nos quedamos con:
+\noindent Con la intención de hacernos una idea precisa del término \emph{virtualización} hemos buscado diversas definiciones, de las cuales nos vamos a quedar con:
 \begin{quote}
 \emph{<<Virtualización es la creación -a través de software- de una versión virtual de algún recurso tecnológico, como puede ser una plataforma de hardware, un sistema operativo, un dispositivo de almacenamiento u otros recursos de red.>>}
 \begin{flushright}
@@ -14,13 +14,15 @@
 \end{flushright}
 \end{quote}
 
-\noindent Es otras palabras, la creación mediante software de elementos hardware virtuales. Un buen ejemplo de ésto es cuando particionamos un disco duro; físicamente tenemos un HDD pero a nivel de software existen dos, pues el disco duro esta \emph{virtualizado} en dos particiones.\\
+\noindent Es otras palabras, se trata de la creación mediante software de elementos hardware virtuales. Un buen ejemplo de esto es cuando particionamos un disco duro; físicamente tenemos un único HDD pero a nivel de software existen dos, pues el disco duro esta \emph{virtualizado} en dos particiones, el sistema operativo se encarga de abstraer las propiedades físicas del disco.\\
 
-\noindent Dando una vuelta de tuerca más, podemos definir \emph{virtualización} como el proceso por el cual una capa de software(VMM o \emph{Virtual Machine Monitor}) abstrae los recursos de la computadora física al Sistema Operativo o \emph{Máquina Virtual}.
+\noindent Dando una vuelta de tuerca más, podemos definir \emph{virtualización} como el proceso por el cual una capa de software(VMM o \emph{Virtual Machine Monitor}) abstrae los recursos de la computadora física al Sistema Operativo o \emph{Máquina Virtual}.\\
+
+\noindent Cabe destacar el uso de  \emph{Máquina Virtual} y \emph{VMM}, pues son el eje central de los sistemas de virtualización y conviene introducirlos. Y es por esto que nuestro siguiente apartado esta dedicado a ellas.
 
 \section{¿Qué es una máquina virtual?}
 
-\noindent Al igual que antes, encontramos diversas acepciones de \emph{máquina virtual}, pero vamos a partir de la definición de \emph{Wikipedia} pues es la más completa.
+\noindent Al igual que antes, encontramos diversas acepciones de \emph{máquina virtual}, pero vamos a partir de la definición de \emph{Wikipedia} pues es la que consideramos más completa.
 
 \begin{quote}
 \emph{<<Una máquina virtual es un software que simula a una computadora y puede ejecutar programas como si fuese una computadora real. Este software en un principio fue definido como \textquotedblleft un duplicado eficiente y aislado de una máquina física\textquotedblright.>>}
@@ -29,29 +31,46 @@
 \end{flushright}
 \end{quote}
 
-\noindent Podemos encontrar dos tipos de éstas:
+\noindent O lo que es lo mismo, un programa o aplicación software que simula de manera total o parcial una computadora de manera que el usuario final no note la diferencia.\\
+
+\noindent Podemos encontrar dos tipos de éstas dependiendo de cómo se ejecuten en el sistema:
 
 \begin{itemize}
-\item \textbf{Máquinas virtuales de proceso} o máquina virtual de aplicación, se ejecuta como un proceso normal dentro de un sistema operativo y soporta un solo proceso. Su objetivo es el de proporcionar un entorno de ejecución independiente del sistema operativo y del hardware. Una máquina virtual de proceso muy popular es la de Java(\emph{Java Virtual Machine}).
-\item \textbf{Máquinas virtuales de sistema} o máquinas virtuales de hardware, que permiten a la máquina física multiplicarse entre varias máquinas virtuales, cada una con su propio sistema operativo. A la capa de software que se permite la virtualización se la llama \emph{monitor de máquina virtual} o \emph{Virtual Machine Monitor}, anteriormente mencionado.
+\item \textbf{Máquinas virtuales de proceso} o máquina virtual de aplicación, se ejecuta como un proceso normal dentro de un sistema operativo y soporta un solo proceso. Su objetivo es el de proporcionar un entorno de ejecución independiente del sistema operativo y del hardware. Una máquina virtual de proceso muy popular es la de Java o JVM (\emph{Java Virtual Machine}).
+\item \textbf{Máquinas virtuales de sistema} o máquinas virtuales de hardware, que permiten a la máquina física multiplicarse entre varias máquinas virtuales, cada una con su propio sistema operativo. A la capa de software que se permite la virtualización se la llama \emph{monitor de máquina virtual} o \emph{Virtual Machine Monitor}(VMM), anteriormente mencionado.
 \end{itemize}
 
-\noindent Como es obvio nosotros nos vamos a centrar en la última.
+\noindent Como es obvio nosotros nos vamos a centrar en el último tipo, puesto que vamos a analizar la virtualización en las computadoras de la universidad, y éstas se ejecutan como un sistema operativo propio y no como una aplicación de éste.
 
 \section{Condiciones para la virtualización}
 
-\noindent Para llevar a cabo una virtualización del sistema, Popek y Goldberg escribieron en un artículo\cite{reqvir} qué condiciones se han de dar para una virtualización eficiente, para ello dividieron el repertorio de instrucciones en:
+\noindent A la hora de crear un sistema virtualizado existen propiedades que hacen que se pueda evaluar, es decir \emph{¿Cuán bueno es el sistema?}, estas propiedades se refieren al el monitor de la máquina virtual o \emph{VMM}. Listémoslas pues:
 \begin{itemize}
-\item \textbf{Instrucciones privilegiadas:} Las que sólo funcionan en modo kernel y no en modo usuario.
-\item \textbf{Instrucciones sensibles de control:} Las que cambian la configuración del sistema.
-\item \textbf{Instrucciones sensibles de comportamiento:} Aquellas que dependen de la configuración de los recursos. 
+\item \textbf{Equivalencia o fidelidad:} Un programa corriendo bajo el VMM debe exhibir un comportamiento  esencialmente idéntico a aquel demostrado cuando se ejecuta directamente en una máquina equivalente.
+\item \textbf{Control de recursos y seguridad:} El VMM debe estar en completo control de los recursos virtualizados.
+\item \textbf{Eficiencia:} La mayor parte de las instrucciones de máquina debe ser ejecutada sin la intervención del VMM.
 \end{itemize}
 
-\noindent Y como resultado de su análisis formularon estos teoremas.
+\noindent Para llevar a cabo una virtualización del sistema que cumpla estas propiedades, Popek y Goldberg escribieron en un artículo en 1974 en la revista \emph{Communications of the ACM}\cite{reqvir}, qué condiciones se han de dar para una virtualización eficiente, en dicho artículo realizan un análisis del repertorio de instrucciones del computador o ISA (\emph{Instruction Set Architecture}).\\
+
+\noindent Dividiendo las instrucciones en:
+\begin{itemize}
+\item \textbf{Instrucciones privilegiadas:} Las instrucciones que sólo funcionan en modo kernel del procesador y no lo hacen en modo usuario.
+\item \textbf{Instrucciones sensibles de control:} Las instrucciones que al ejecutarse cambian la configuración del sistema de alguna manera.
+\item \textbf{Instrucciones sensibles de comportamiento:} Aquellas que dependen del estado de los recursos del sistema en e momento que se ejecutan. 
+\end{itemize}
+
+\noindent Y como resultado de este análisis formularon los siguientes teoremas.
 \begin{teorema}
 Para cualquier computadora convencional de tercera generación, se puede construir un VMM efectivo si el conjunto de instrucciones sensibles es un subconjunto de las instrucciones privilegiadas.
 \end{teorema}
+
+\noindent Este teorema implica que para construir un VMM basta con que todas las instrucciones que pueden afectar a su correcto funcionamiento, las instrucciones sensibles, pasen siempre el control al VMM. Esto garantiza la propiedad de control de recursos y seguridad. En cambio, las instrucciones no privilegiadas se deberán ejecutarse de manera nativa, para lograr eficiencia.
+
 \begin{teorema}
 Una máquina convencional de tercera generación es recursivamente virtualizable si es virtualizable y se puede construir para ella un VMM sin ninguna dependencia de sincronización.
 \end{teorema}
-\noindent Con esto volveremos más adelante, ahora centrémonos en su arquitectura.
+
+\noindent Este teorema es fundamental, en lo que a nosotros se refiere, pues este último teorema no se cumple para arquitecturas de computadores x86, que casualmente son las que utilizan los computadores de la universidad.\\
+
+\noindent Con este impedimento volveremos más adelante, ahora centrémonos en la arquitectura de los sistemas de virtualización
