@@ -13,9 +13,12 @@
 \usepackage[left=3.00cm, right=3.00cm, top=3.00cm]{geometry}
 \usepackage[nottoc]{tocbibind}	%Para mostrar la bibliografia en el índice
 \usepackage{tikz}
-\usepackage{glossaries} % Para el glosario
+\usepackage[refpages]{gloss} % Para el glosario
+\renewcommand{\glossname}{Glosario} 
 
 \newtheorem{teorema}{Teorema}
+
+\makegloss
 
 \newcommand*{\autores}{
 \begin{tabular}{r l}
@@ -27,12 +30,9 @@ GIS:  	 & Carlos Vázquez Sánchez
 \end{tabular}
 }
 
-\include{glosario}
-
 % Incluye archivo para utilizar el comando \portada
 \include{portada}
 
-\makeglossary
 
 \begin{document}
  
@@ -43,8 +43,6 @@ GIS:  	 & Carlos Vázquez Sánchez
 \tableofcontents
 \thispagestyle{empty}
 
-\printglossary[type=main,title={Glosario},toctitle={Glosario}]
-\printglossary
 
 \chapter*{Prefacio}
 \addcontentsline{toc}{chapter}{Prefacio}
@@ -58,5 +56,7 @@ GIS:  	 & Carlos Vázquez Sánchez
 
 \bibliographystyle{plain}
 \bibliography{./bibliografia/bibliografia}
+
+\printgloss{./glosario}
 
 \end{document}
