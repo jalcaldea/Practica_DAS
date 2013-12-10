@@ -16,7 +16,11 @@
 /memoria/*.pdf
 /memoria/*.bbl
 /memoria/*.blg
+/memoria/bibliografia/*.log
+/memoria/*.glo
+/memoria/*.ist
 
+!/memoria/memoria.pdf
 
 # -- Sistemas Operativos ------------------------------
 
