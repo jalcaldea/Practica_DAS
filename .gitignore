@@ -17,6 +17,8 @@
 /memoria/*.bbl
 /memoria/*.blg
 /memoria/bibliografia/*.log
+/memoria/*.glo
+/memoria/*.ist
 
 # -- Sistemas Operativos ------------------------------
 
