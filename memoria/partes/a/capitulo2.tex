@@ -88,7 +88,25 @@ Como bien se ha introducido antes, en la arquitectura de hipervisor
 El esquema básico es el siguiente:
 
 \begin{center}
-\fbox{\parbox{70mm}{AQUI VA LA FIGURA QUE SE PUEDE ENCONTRAR EN:\\ \\
-\url{http://upload.wikimedia.org/wikipedia/commons/3/3d/VM\_Monitor\_IBM\_VM\_370.jpg}\\ \\
-\textcolor{red}{HAY QUE HACERLA}}}
+\begin{tikzpicture}[ scale=2, ]
+\node[black,shape=rectangle] at (0.6,0.25) {VM 1};
+\node[black,shape=rectangle] at (1.8,0.25) {VM 2};
+\node[black,shape=rectangle] at (3,0.25) {...};
+\node[black,shape=rectangle] at (4.2,0.25) {VM n-1};
+\node[black,shape=rectangle] at (5.4,0.25) {VM n};
+
+\node[black,shape=rectangle] at (2.8,-.25) {Virtual Machine Monitor (CP)};
+\node[black,shape=rectangle] at (2.8,-.75) {Hardware};
+
+\draw (0,0) rectangle (1.2,0.5);
+\draw (1.2,0) rectangle (2.4,0.5);
+\draw (3.6,0) rectangle (4.8,0.5);
+\draw (4.8,0) rectangle (6,0.5);
+
+\draw (0,0) rectangle (6,-.5);
+
+\draw (0,-.5) rectangle (6,-1);
+
+
+\end{tikzpicture}
 \end{center}
