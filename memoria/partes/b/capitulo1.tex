@@ -1,0 +1,23 @@
+\chapter{Introducción}
+\lettrine[lines=1,slope=4pt,findent=0pt]{E}{}n la segunda parte de la memoria describiremos a nivel de arquitectura y diseño una plataforma que implemente la arquitectura de pizarra. \\
+
+En primer lugar debemos describir qué es exactamente una arquitectura de pizarra, para seguidamente poder analizar en detalle la plataforma a crear.\\
+
+Una arquitectura de pizarra es un modelo arquitectónico para el software utilizada en los siguientes casos:
+
+\begin{itemize}
+	\item Problemas en los que no existe una solución analítica.
+	\item Problemas en los que, aunque exista solución analítica, es inviable por la dimensión del espacio de búsqueda.
+	\item Problemas extremadamente complejos en términos cognitivos.
+\end{itemize}
+
+La arquitectura de pizarra consta principalmente de dos componentes:
+
+\begin{itemize}
+	\item \textbf{Pizarra: }Instrumento de control o estructura de datos que representa el estado actual de la plataforma.
+	\item \textbf{Agente: }Elementos funcionales independientes entre sí que operan sobre la pizarra.
+\end{itemize}
+
+La función de los agentes es, basándose en el contenido de la pizarra, realizar la tarea que se les asigna y escribir sobre ella sus resultados.\\
+
+La función principal de la pizarra es coordinar la interacción de los agentes con la pizarra y la comunicación entre ellos.
