@@ -6,7 +6,7 @@
 En el apartado anterior ya se pudo vislumbrar que existen diferentes formas de virtualización, y por ello, ahora vamos a nombrar todos los tipos y haremos, para cada uno, una pequeña descripción:
 
 \subsection{Arquitectura del hipervisor}
-El hipervisor permite la virtualización en el nivel de hardware en dispositivos sin sistema operativo, como CPU, memoria e interfaces de red. El software del hipervisor se ubica directamente entre el hardware físico y el sistema operativo. Este nivel de virtualización se denomina VMM or hipervisor.\\
+El hipervisor permite la virtualización en el nivel de hardware en dispositivos sin sistema operativo, como CPU, memoria e interfaces de red. El software del hipervisor se ubica directamente entre el hardware físico y el sistema operativo. Este nivel de virtualización se denomina \gloss[short]{VMM}.\\
 
 El hipervisor proporciona hiperllamadas para los sistemas operativos y las aplicaciones invitadas. Los hipervisores pueden adoptar una arquitectura de micronúcleo, como en el ejemplo de Microsoft Hyper-V. También pueden tener una arquitectura monolítica, como por ejemplo VMware ESX para la virtualización de servidores.\\
 
@@ -15,7 +15,7 @@ Un hipervisor de micronúcleo solo incluye las funciones básicas e inmutables (
 Por lo tanto, el tamaño del código del hipervisor es menor con un micronúcleo que en el caso monolítico. En esencia, el hipervisor debe ser capaz de convertir los dispositivos físicos en recursos virtuales disponibles para el uso de las máquinas virtuales.
 
 \subsection{La arquitectura de Xen}
-Xen es un hipervisor de código abierto desarrollado por la Universidad de Cambridge. Los componentes centrales de un sistema Xen son el hipervisor, el núcleo y las aplicaciones. La organización de estos tres componentes es muy importante.\\
+Xen es un hipervisor de código abierto desarrollado por la Universidad de Cambridge\cite{proyectoxen}\cite{proyectoxen2}. Los componentes centrales de un sistema Xen son el hipervisor, el núcleo y las aplicaciones. La organización de estos tres componentes es muy importante.\\
 
 Xen es un hipervisor de micronúcleo que separa las directivas de los mecanismos. El hipervisor de Xen implementa todos los mecanismos y deja que el Dominio 0 controle las directivas. No incluye ningún controlador en forma nativa. Solamente proporciona un mecanismo que permite que los sistemas operativos invitados tengan acceso directo a los dispositivos físicos.\\
 
