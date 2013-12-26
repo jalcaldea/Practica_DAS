@@ -3,7 +3,14 @@
 
 En primer lugar debemos describir qué es exactamente una arquitectura de pizarra, para seguidamente poder analizar en detalle la plataforma a crear.\\
 
-Una arquitectura de pizarra es un modelo arquitectónico para el software utilizada en los siguientes casos:
+La arquitectura de pizarra puede ser presentada con la siguiente metáfora:~\cite{blackboardsystem}
+
+\begin{quote}
+Imagine a group of human specialists seated next to a large blackboard. The specialists are working cooperatively to solve a problem, using the blackboard as the workspace for developing the solution.\\
+Problem solving begins when the problem and initial data are written onto the blackboard. The specialists watch the blackboard, looking for an opportunity to apply their exercise to the developing solution. When a especialist find sufficient information to make a contribution, she records the contribution on the blackboard, hopefully enabling other specialists to apply their exercise. This process of adding contributions to the blackboard continues until the problem has been solved.
+\end{quote}
+
+Es decir, que una arquitectura de pizarra es un modelo arquitectónico para el diseño de software utilizada en los siguientes casos:
 
 \begin{itemize}
 	\item Problemas en los que no existe una solución analítica.
@@ -29,3 +36,9 @@ Las arquitecturas en pizarra presentan una serie de inconvenientes importantes. 
 	\item No garantiza obtener una solución.
 	\item No se puede saber a priori el tiempo necesario para realizar el problema.
 \end{itemize}
+
+\begin{figure}[!h]
+\centering
+\pizarra
+\caption{Interacción entre los agentes y la pizarra}
+\end{figure}
