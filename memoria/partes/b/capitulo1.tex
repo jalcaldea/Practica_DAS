@@ -20,4 +20,12 @@ La arquitectura de pizarra consta principalmente de dos componentes:
 
 La función de los agentes es, basándose en el contenido de la pizarra, realizar la tarea que se les asigna y escribir sobre ella sus resultados.\\
 
-La función principal de la pizarra es coordinar la interacción de los agentes con la pizarra y la comunicación entre ellos.
+La función principal de la pizarra es coordinar la interacción de los agentes con la pizarra y la comunicación entre ellos. La pizarra irá cambiando de estado según van escribiendo en ella los distintos agentes. Éstos podrán leer lo que fue escrito por otros agentes anteriores a él. De esta forma el contenido de la pizarra será cada vez más completo, hasta alcanzar una solución final.\\
+
+Las arquitecturas en pizarra presentan una serie de inconvenientes importantes. Estos radican principalmente en la complejidad de los problemas que se resuelven con este tipo de arquitecturas. Son los siguientes:
+
+\begin{itemize}
+	\item Una vez obtenida una solución es difícil ver de forma ordenada los pasos que llevaron a esa solución.
+	\item No garantiza obtener una solución.
+	\item No se puede saber a priori el tiempo necesario para realizar el problema.
+\end{itemize}
