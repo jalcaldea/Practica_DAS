@@ -19,6 +19,7 @@
 /memoria/bibliografia/*.log
 /memoria/*.glo
 /memoria/*.ist
+/memoria/*.synctex.gz(busy)
 
 # -- Sistemas Operativos ------------------------------
 
