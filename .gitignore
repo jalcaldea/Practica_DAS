@@ -10,6 +10,7 @@
 
 /memoria/*.aux
 /memoria/*.log
+/memoria/*.lof
 /memoria/*.out
 /memoria/*.synctex.gz
 /memoria/*.toc
