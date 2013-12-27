@@ -5,7 +5,6 @@
 \usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black]{hyperref}
 \usepackage{graphicx}
 \usepackage{lettrine}
 \usepackage{float}
@@ -18,11 +17,15 @@
 \usepackage{chngcntr}
 \usepackage{etoolbox}
 
-\counterwithout{figure}{part}
+\usepackage{etoolbox}  % or xpatch
 
-\makeatletter
-\@addtoreset{chapter}{part} % Reinicia el contador a 1 en cada parte
-\makeatother
+\input{comandos}
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black]{hyperref}
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+\counterwithout{figure}{part}
 
 \setlength\parindent{0pt} % Quita la indentación
 
