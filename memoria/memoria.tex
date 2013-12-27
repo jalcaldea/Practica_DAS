@@ -9,7 +9,7 @@
 \usepackage{lettrine}
 \usepackage{float}
 \usepackage{color}
-\usepackage[left=3.00cm, right=3.00cm, top=3.00cm]{geometry}
+\usepackage[top=2cm,bottom=4cm,left=3cm,right=1.5cm,asymmetric]{geometry}
 \usepackage[nottoc]{tocbibind}	%Para mostrar la bibliografia en el índice
 \usepackage{tikz}
 \usepackage[refpages]{gloss} % Para el glosario
@@ -74,12 +74,15 @@ GIS:  	 & Carlos Vázquez Sánchez
 \input{./partes/b/parteB.tex}
 
 \backmatter % Bibliografia, lista de figuras, glosario, ...
-
-\bibliographystyle{plain}
-\bibliography{./bibliografia/bibliografia}
+\newpage{\ } %Añadida página para que no acabe y comience el glosario
 
 \printgloss{./glosario}
 
 \listoffigures
+
+\bibliographystyle{plain}
+\bibliography{./bibliografia/bibliografia}
+
+
 
 \end{document}
