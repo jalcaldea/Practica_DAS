@@ -1,6 +1,6 @@
-\documentclass[12pt,a4paper,titlepage]{book}
+\documentclass[12pt,a4paper,titlepage,twoside]{book}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish]{babel}
+\usepackage[spanish, es-lcroman]{babel}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amsfonts}
@@ -15,6 +15,14 @@
 \usepackage{tikz}
 \usepackage[refpages]{gloss} % Para el glosario
 \usepackage{emptypage} % Para eliminar encabezado de las páginas en blanco
+\usepackage{chngcntr}
+\usepackage{etoolbox}
+
+\counterwithout{figure}{part}
+
+\makeatletter
+\@addtoreset{chapter}{part} % Reinicia el contador a 1 en cada parte
+\makeatother
 
 \setlength\parindent{0pt} % Quita la indentación
 
@@ -38,20 +46,23 @@ GIS:  	 & Carlos Vázquez Sánchez
 \include{portada}
 \include{figuras}
 
-
 \begin{document}
+
+\frontmatter % Incluye índice, portada, prefacio, ...
  
 % Portada
-\portada{Práctica Obligatoria}{Diseño y Arquitectura Software}{\ }{\autores}{Móstoles}
+\portada{Práctica Obligatoria}{Diseño y Arquitectura del Software}{\ }{\autores}{Móstoles}
 % Fin Portada
 
 \tableofcontents
-\thispagestyle{empty}
+%\thispagestyle{empty}
 
 
 \chapter*{Prefacio}
 \addcontentsline{toc}{chapter}{Prefacio}
 \input{./partes/prefacio.tex}
+
+\mainmatter % Parte principal
 
 \part{Observación}
 \input{./partes/a/parteA.tex}
@@ -59,9 +70,13 @@ GIS:  	 & Carlos Vázquez Sánchez
 \part{Diseño}
 \input{./partes/b/parteB.tex}
 
+\backmatter % Bibliografia, lista de figuras, glosario, ...
+
 \bibliographystyle{plain}
 \bibliography{./bibliografia/bibliografia}
 
 \printgloss{./glosario}
+
+\listoffigures
 
 \end{document}
