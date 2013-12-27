@@ -1,0 +1,38 @@
+
+% Aquí van algunos comandos para no hacer demasiado largo el preámbulo.
+
+
+% Separa la lista de figuras por partes
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%
+% NOTA IMPORTANTE: Este comando SIEMPRE debe ir antes de la inclusión del paquete hyperref.
+%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+% Adaptado de:
+%http://tex.stackexchange.com/questions/52746/include-chapters-in-list-of-figures-with-titletoc
+\makeatletter
+\def\thisparttitle{}\def\thispartnumber{}
+\newtoggle{noFigs}
+
+\apptocmd{\@part}%
+  {\gdef\thisparttitle{#1}\gdef\thispartnumber{\thepart}%
+    \global\toggletrue{noFigs}}{}{}
+
+% the figure environment does the job: the first time it is used after a \chapter command, 
+% it writes the information of the chapter to the LoF
+\AtBeginDocument{%
+  \AtBeginEnvironment{figure}{%
+    \iftoggle{noFigs}{
+      \addtocontents{lof}{\protect\contentsline {chapter}%
+        {\protect\numberline {\thispartnumber} {\thisparttitle}}{}{} }
+      \global\togglefalse{noFigs}
+    }{}
+  }%
+}
+
+\makeatother
+
+% Reinicia el contador a 1 en cada parte
+\makeatletter
+\@addtoreset{chapter}{part} 
+\makeatother
