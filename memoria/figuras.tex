@@ -8,6 +8,7 @@
 		{1}{\figurahipA}
 		{2}{\figurahipB}
 		{3}{\pizarra}
+		{4}{\figurahipBfin}
 	}[\PackageError{figura}{Figura no declarada: #1}{}]
 }
 
@@ -48,6 +49,29 @@
 	\node at (7,3.5) {${VM}_{n-1}$};
 	\node at (9,3.5) {${VM}_n$};
 	\node at (5,2.5) {\textsc{Software de virtualización}};
+	\node at (5,1.5) {\textsc{Sistema operativo} {\tiny (Anfitrion)}};
+	\node at (5,0.5) {\textsc{Hardware}};
+\end{tikzpicture}
+}
+
+\newcommand{\figurahipBfin}{
+\begin{tikzpicture}
+	\draw[fill=green!30, thick] (0,2) rectangle (1.9,4);
+	\draw[fill=gray!30, thick] (2,3) rectangle (3.9,4);
+	\draw[fill=gray!30, thick] (6,3) rectangle (7.9,4);
+	\draw[fill=gray!30, thick] (8,3) rectangle (10,4);
+	\draw[fill={blue!40}, thick] (2,2) rectangle (10,3);
+	\draw[fill={red!40}, thick] (0,1) rectangle (10,2); 
+	\draw[fill=yellow!40, thick] (0,0) rectangle (10,1); 
+
+	\node at (1,3.5) {Apps};
+	\node at (1,3) {del};
+	\node at (1,2.5) {S.O};
+	\node at (3,3.5) {${VM}_1$};
+	\node at (5,3.5) {\textbf{...}};
+	\node at (7,3.5) {${VM}_{n-1}$};
+	\node at (9,3.5) {${VM}_n$};
+	\node at (6,2.5) {\textsc{Software de virtualización}};
 	\node at (5,1.5) {\textsc{Sistema operativo} {\tiny (Anfitrion)}};
 	\node at (5,0.5) {\textsc{Hardware}};
 \end{tikzpicture}
