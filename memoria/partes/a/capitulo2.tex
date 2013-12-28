@@ -35,6 +35,15 @@ Es una arquitectura alternativa para la máquina virtual insertando una capa de 
 
 Este tipo de hipervisor tiene una ventaja muy destacada, el usuario puede instalar esta arquitectura de máquina virtual sin modificar el sistema operativo host pudiendo descansar en el sistema operativo host para entregar los controladores de dispositivos y otros servicios de bajo nivel (se simplifica el diseño de la máquina virtual y facilita la implementación).\\
 
+Otra característica suya es que al ejecutarse sobre un sistema operativo huésped, éste puede ejecutar sus propias aplicaciones, por lo que en realidad el esquema completo sería:
+
+\begin{figure}[H]
+\begin{center}
+\figura{4}
+\end{center}
+\caption[Hipervisor Tipo 2 final]{Esquema de un hipervisor de segundo nivel real}
+\end{figure}
+
 Algunos de los hipervisores tipo 2 más utilizados son: Oracle: VirtualBox, VirtualBox OSE, VMware: Workstation; siendo éste último en el que más nos vamos a centrar.
 
 \section{Componentes}
