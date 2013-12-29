@@ -2,7 +2,7 @@
 
 \lettrine[lines=1,slope=4pt,findent=0pt]{U}{}na vez introducido el vocabulario básico y tras haber indagado un poco más en la materia vamos a centrarnos en la arquitectura como tal.\\
 
-\section{Tipos de Virtualización}
+\section{Tipos de Virtualización}\label{tiposvir}
 En el apartado anterior ya se pudo vislumbrar que existen diferentes formas de virtualización, y por ello, vamos a hacer un pequeño análisis de cada uno, pero antes nos interesa conocer el término \emph{\gloss{HYP}}, ya que es el elemento central de un sistema de máquinas virtuales.
 
 \subsection{¿Qué es un hipervisor?}
@@ -10,7 +10,7 @@ El \emph{\gloss{HYP}} o \emph{\gloss[long]{VMM}} se trata de una plataforma que 
 
 Se trata de un elemento software que dependiendo de cómo se sitúe en relación con el Hardware da lugar a dos maneras diferentes de virtualizar, dos tipos de \emph{\gloss{HYP}}\cite{tipoship}:
 
-\subsection{Hipervisor de Tipo 1 o \emph{Nativo}}
+\subsection{Hipervisor de Tipo 1 o \emph{Nativo}}\label{tiposvir1}
  El software del hipervisor se ubica directamente entre el hardware y las distintas máquinas virtuales, para ofrecer la funcionalidad descrita, siguiendo la siguiente estructuración:
 
 \begin{figure}[H]
@@ -23,7 +23,7 @@ Se trata de un elemento software que dependiendo de cómo se sitúe en relación
 Este tipo de \emph{hipervisor} también es conocido como \emph{unhosted} o \emph{bare metal}, que en inglés hacen referencia a que no es huésped o que se ejecuta a bajo nivel, respectivamente.\\
 
 Dentro de este tipo se encuentran VMware ESXi, VMware ESX y Microsoft Hyper-V Server, pero nos gustaría presta una atención especial a \gloss{XEN} por ser un hipervisor de código abierto desarrollado por la Universidad de Cambridge\cite{proyectoxen}\cite{proyectoxen2}.
-\subsection{Hipervisor de Tipo 2 o \emph{Huésped}}
+\subsection{Hipervisor de Tipo 2 o \emph{Huésped}}\label{tiposvir2}
 Es una arquitectura alternativa para la máquina virtual insertando una capa de virtualización encima del sistema operativo \emph{host} o huésped, siendo éste responsable de administrar el hardware. Los sistemas operativos invitados se instalarán encima del nivel de virtualización, en máquinas virtuales. Tiene la siguiente estructura:
 
 \begin{figure}[H]
