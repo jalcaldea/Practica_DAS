@@ -1,16 +1,37 @@
 \chapter{Introducción}
-\lettrine[lines=1,slope=4pt,findent=0pt]{E}{}n la segunda parte de la memoria describiremos a nivel de arquitectura y diseño una plataforma que implemente la arquitectura de pizarra. \\
+\lettrine[lines=1,slope=4pt,findent=0pt]{E}{}n la segunda parte de la práctica se nos pide el diseño de una plataforma que implemente una arquitectura de pizarra, para ello vamos a seguir un modelo de desarrollo en cascada\footnote{\textcolor{red}{EXPLICACIÓN DEL MODELO EN CASCADA}}.\\
 
-En primer lugar debemos describir qué es exactamente una arquitectura de pizarra, para seguidamente poder analizar en detalle la plataforma a crear.\\
+Por tanto, hemos dividido esta parte de la memoria en cada una de las fases de éste modelo de desarrollo, pero antes es necesario centrarnos en cómo debe diseñarse esta plataforma y que implica que se diseñe de esta manera.
 
-La arquitectura de pizarra puede ser presentada con la siguiente metáfora~\cite{blackboardsystem}
+\section{Arquitectura de pizarra}
+Cómo bien se nos explica en el enunciado de la práctica, tenemos que crear una plataforma que siga, en su diseño, una arquitectura de pizarra; pero, ¿Qué es una arquitectura de pizarra?\\
 
-\begin{quote}
-Imagine a group of human specialists seated next to a large blackboard. The specialists are working cooperatively to solve a problem, using the blackboard as the workspace for developing the solution.\\
-Problem solving begins when the problem and initial data are written onto the blackboard. The specialists watch the blackboard, looking for an opportunity to apply their exercise to the developing solution. When a especialist find sufficient information to make a contribution, she records the contribution on the blackboard, hopefully enabling other specialists to apply their exercise. This process of adding contributions to the blackboard continues until the problem has been solved.
-\end{quote}
+Para definir una arquitectura de pizarra o de tuplas debemos entender que se trata de una arquitectura software, es decir un modelo básico en el que basarse para la creación de software similar y , por lo tanto, debemos describir qué es exactamente una arquitectura de pizarra, para seguidamente poder analizar en detalle la plataforma a crear.\\
 
-Es decir, que una arquitectura de pizarra es un modelo arquitectónico para el diseño de software utilizada en los siguientes casos:
+Para entender en concepto básico de esta arquitectura basta con fijarse en su nombre: \emph{\textquotedblleft pizarra\textquotedblright} y es que, en realidad se trata de eso, de una gran pizarra en la que cualquiera que tenga los conocimientos necesarios puede aportar sus: cálculos, procesos, metodologías, ... para la resolución de problemas de cualquier tipo.\\
+
+Siguiendo con este ejemplo, en una resolución de problemas cualquiera encontraríamos a varias personas trabajando sobre una misma pizarra, a estos elementos en la arquitectura de pizarra se les conoce cómo \emph{agentes} y \emph{pizarra}, respectivamente.\\
+
+Siendo un poco más técnicos podemos definir estos dos componentes cómo:
+
+\begin{itemize}
+	\item \textbf{Pizarra: }Instrumento de control o estructura de datos que representa el estado actual de la plataforma.
+	\item \textbf{Agente: }Elementos funcionales independientes entre sí que operan sobre la pizarra.
+\end{itemize}
+
+La siguiente figura muestra como interactúan estos \emph{agentes} con la \emph{pizarra}:
+
+\begin{figure}[!h]
+\centering
+\figura{3}
+\caption{Interacción entre los agentes y la pizarra}
+\end{figure}
+ 
+La función de los agentes es, basándose en el contenido de la pizarra, realizar la tarea que se les asigna y escribir sobre ella sus resultados.\\
+
+La función principal de la pizarra es coordinar la interacción de los agentes con la pizarra y la comunicación entre ellos. La pizarra irá cambiando de estado según van escribiendo en ella los distintos agentes. Éstos podrán leer lo que fue escrito por otros agentes anteriores a él. De esta forma el contenido de la pizarra será cada vez más completo, hasta alcanzar una solución final.\\
+ 
+Una arquitectura de pizarra suele ser utilizada en los siguientes casos:
 
 \begin{itemize}
 	\item Problemas en los que no existe una solución analítica.
@@ -18,58 +39,15 @@ Es decir, que una arquitectura de pizarra es un modelo arquitectónico para el d
 	\item Problemas extremadamente complejos en términos cognitivos.
 \end{itemize}
 
-La arquitectura de pizarra consta principalmente de dos componentes:
+Las arquitecturas en pizarra presentan una serie de inconvenientes importantes, estos radican principalmente en la complejidad de los problemas que se resuelven con este tipo de arquitecturas. Son los siguientes:
 
 \begin{itemize}
-	\item \textbf{Pizarra: }Instrumento de control o estructura de datos que representa el estado actual de la plataforma.
-	\item \textbf{Agente: }Elementos funcionales independientes entre sí que operan sobre la pizarra.
-\end{itemize}
-
-La función de los agentes es, basándose en el contenido de la pizarra, realizar la tarea que se les asigna y escribir sobre ella sus resultados.\\
-
-La función principal de la pizarra es coordinar la interacción de los agentes con la pizarra y la comunicación entre ellos. La pizarra irá cambiando de estado según van escribiendo en ella los distintos agentes. Éstos podrán leer lo que fue escrito por otros agentes anteriores a él. De esta forma el contenido de la pizarra será cada vez más completo, hasta alcanzar una solución final.\\
-
-Las arquitecturas en pizarra presentan una serie de inconvenientes importantes. Estos radican principalmente en la complejidad de los problemas que se resuelven con este tipo de arquitecturas. Son los siguientes:
-
-\begin{itemize}
-	\item Una vez obtenida una solución es difícil ver de forma ordenada los pasos que llevaron a esa solución.
+	\item Una vez obtenida una solución, es difícil ver de forma ordenada los pasos que llevaron a esa solución.
 	\item No garantiza obtener una solución.
 	\item No se puede saber a priori el tiempo necesario para realizar el problema.
 \end{itemize}
 
-\begin{figure}[!h]
-\centering
-\pizarra
-\caption{Interacción entre los agentes y la pizarra}
-\end{figure}
+\section{¿Qué implica la arquitectura de pizarra?}
 
-Una vez analizada como deberá ser la infraestrucura de pizarra, se pide diseñar una biblioteca (un framework en nuestro caso). Para ello, y siguiendo nuestro esquema general, procedemos primero a dar algunas definiciones básicas:\\
+\section{¿Cómo va a ser la plataforma?}
 
-\section{¿Qué es un framework?}
-Un framework o infraestructura digital, es una estructura conceptual y tecnológica de soporte definido normalmente con artefactos o módulos de software concretos que puede servir de base para la organización y desarrollo de software.
-Desde el punto de vista de su arquitectura, se basa en el modelo MVC (Controlador, Modelo, Vista), ya que debemos fragmentar nuestra programación:
-
-
-\begin{itemize}
-\item \textbf{Modelo:} controla las operaciones lógicas y el manejo de información.
-\item \textbf{Vista:} interfaz gráfica que interactúa con el usuario final del programa (GUI). 
-\item \textbf{Controlador:} responsable de controlar el acceso a nuestra aplicación, incluyendo cualquier tipo de información que permita la interfaz.
-\end{itemize}
-
-\section{Ventajas de un framework}
-
-\begin{itemize}
-\item Minimiza tiempos de desarrollo. Los frameworks reducen la codificación y la puesta en marcha (proporcionan código que no se tendrá que mantener ni reescribir).
-\item Reduce los riesgos del desarrollo.
-\item Proporciona una arquitectura consistente entre aplicaciones, ya que todas las aplicaciones generadas comparten una arquitectura común. 
-\item El programador que trabaje con un framework no deberá invertir gran parte de su tiempo en buscar las clases necesarias, interconectarlas o descubrir los métodos que contienen.
-\end{itemize}
-En definitiva, menor coste en el diseño, desarrollo, pruebas y mantenimiento de las aplicaciones.
-
-\section{Desventajas de un framework}
-
-\begin{itemize}
-\item Limitación de la Flexibilidad: los componentes deben residir dentro de las restricciones impuestas por la arquitectura del Framework.
-\item Dificultad de Aprendizaje: el usuario debe estudiar qué proporciona el Framework y cómo debe hacer uso de él.
-\item Reducción de la Creatividad: puede que el usuario no pueda cambiar el comportamiento de una clase del Framework si ésta no permite que sus servicios puedan reescribirse o redefinirse.
-\end{itemize}
