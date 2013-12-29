@@ -1,0 +1,52 @@
+\chapter{VMware: Workstation}
+En este capítulo nos vamos a centrar en la plataforma de VMware, VMware: Workstation\cite{vmwarework}, los pasos a seguir serán: analizar y ver que tipo de virtualización utiliza, describir sus principales características y dar ejemplos sobre su uso e instalación.\\
+
+Pero, antes de nada, es necesario explicar por qué escogemos esta plataforma.
+
+\section{¿Por qué VMware: Workstation?}
+Aunque la respuesta es obvia era necesario dejar una constancia explícita de ello, escogemos esta plataforma pues es la que se encuentran normalmente instalada en los ordenadores de las aulas y laboratorios de la Universidad Rey Juan Carlos.\\
+
+Para llegar a esta conclusión basta con tener acceso de uno de estos ordenadores de sobremesa y los encendamos para su uso, al arrancar descubriremos que sale una ventana con el logo de VMware y con título \emph{VMware: Workstation vX.Y build ZZZZ} siendo X, Y y Z los valores de la versión y compilación utilizada en ese ordenador.
+
+\section{Arquitectura VMware: Workstation}
+Vamos pues, a analizar detalladamente la arquitectura de esta plataforma en concreto, para ello vamos a fijarnos en sus especificaciones, en el tipo de virtualización y consultaremos la pagina oficial\cite{vmwarework}\cite{vmwareworkhelp}.
+
+\subsection{Tipo de virtualización}
+Para esta parte, al igual que para la mayoría, podemos saberlo simplemente mediante la observación y con ayuda de los conocimientos previos arriba mencionados (\textit{Véase apartados \ref{tiposvir}, \ref{tiposvir1} y \ref{tiposvir2}}).\\
+
+Fijándonos en el proceso de arranque de los ordenadores de la URJC es fácil deducir que nos encontramos ante un tipo 2 de hipervisor, ya que para que arranque la máquina virtual y VMware, primero es necesario que arranque el ordenador con \emph{$Windows^{\textregistered}$ XP}.\\
+
+Si buscamos información en la web\cite{refvmware1}, y especialmente en la página oficial\cite{vmwareworkguiaso}\cite{refvmware2}, son muchas las referencias que se hacen a un \emph{SO host}, elemento que sólo se incluye en el tipo 2 de virtualización, siendo este su elemento característico.\\
+
+Por lo tanto concluimos que VMware: Workstation, y por lo tanto los ordenadores de la URJC también, necesitan de un Sistema Operativo base que cumpla los requisitos mínimos, se trata de una virtualización de segundo nivel.
+
+\subsection{Especificaciones técnicas}
+Ahora vamos a comprobar las distintas especificaciones que tiene esta plataforma en particular, qué la difiere de un sistema genérico de virtualización de segundo nivel.\\
+
+Entre las que hemos encontrado nos gustaría destacar:
+
+\begin{itemize}
+\item LISTA
+\item CON
+\item LAS
+\item FEATURES
+\end{itemize}
+
+Pero sin duda, si queremos describir por qué la universidad escogió este sistema, es debido a su potencia para gran cantidad de ordenadores, puesto que en la universidad se da soporte a muchos ordenadores virtualizados, prácticamente todos los de la universidad.
+
+\subsection{Esquema de arquitectura}
+Por tanto, siguiendo la linea del capítulo anterior, este sería el esquema de la arquitectura instalada en los ordenadores de las aulas de la universidad:
+
+\begin{figure}[H]
+\begin{center}
+\figura{vmware}
+\end{center}
+\caption[Arquitectura VMware: Workstation]{Esquema de la arquitectura de los sistemas virtualizados implementada en la universidad. VMware: Workstation}
+\end{figure}
+
+\section{Instalación y uso}
+bla bla bla
+
+\subsection{Instalación \emph{fresh} de Windows$^{\textregistered}$}
+
+\subsection{Funcionamiento básico}
