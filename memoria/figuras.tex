@@ -5,10 +5,19 @@
 
 \newcommand{\figura}[1]{
 	\IfEqCase{#1}{
-		{1}{\figurahipA}
-		{2}{\figurahipB}
+	% PARTE I %
+		{hipervisor1}{\figurahipA}
+		{hipervisor2}{\figurahipB}
+		{hipervisor2real}{\figurahipBfin}
+		{hardware}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
+		{sohost1}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
+		{sohost2}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
+		{hipervisor}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
+		{maqinavirtual}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
+		{virtualizacionnat}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
+		{virtualizacionhost}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
+	% PARTE II %
 		{3}{\pizarra}
-		{4}{\figurahipBfin}
 	}[\PackageError{figura}{Figura no declarada: #1}{}]
 }
 
@@ -49,7 +58,7 @@
 	\node at (7,4) {${VM}_{n-1}$};
 	\node at (9,4) {${VM}_n$};
 	\node at (5,2.5) {\textsc{Software de virtualización}};
-	\node at (5,1.5) {\textsc{Sistema operativo} {\tiny (Anfitrion)}};
+	\node at (5,1.5) {\textsc{Sistema operativo} {\tiny (Anfitrión)}};
 	\node at (5,0.5) {\textsc{Hardware}};
 \end{tikzpicture}
 }
