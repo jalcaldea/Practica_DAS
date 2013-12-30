@@ -139,34 +139,35 @@
 
 \newcommand{\pizarra}{
 \begin{tikzpicture}
-	\draw (0,0) rectangle (3,3);
-	\draw (0.2, 0.2) rectangle (2.8,2.8);
-	\draw (4.5,2.25) ellipse (1cm and 0.5cm);
-	\draw (4.5,0.75) ellipse (1cm and 0.5cm);
-	\draw (0.75,-1.5) ellipse (0.5cm and 1cm);
-	\draw (2.25,-1.5) ellipse (0.5cm and 1cm);
-	\draw (-1.5,0.75) ellipse (1cm and 0.5cm);
-	\draw (-1.5,2.25) ellipse (1cm and 0.5cm);
-	\draw (0.75,4.5) ellipse (0.5cm and 1cm);
-	\draw (2.25,4.5) ellipse (0.5cm and 1cm);
+	\draw[fill=brown!90] (0,0) rectangle (6,3);
+	\draw[fill=green!40] (0.2, 0.2) rectangle (5.8,2.8);
 	
-	\draw[<->] (3,0.75) -- (3.5,0.75);
-	\draw[<->] (3,2.25) -- (3.5,2.25);
-	\draw[<->] (0.75,3) -- (0.75,3.5);
-	\draw[<->] (2.25,3) -- (2.25,3.5);
+	\draw[fill=red!40] (7.5,2.25) ellipse (1cm and 0.5cm);
+	\draw[fill=blue!40] (7.5,0.75) ellipse (1cm and 0.5cm);
+	\draw[fill=yellow!40] (1.5,-1.5) ellipse (0.5cm and 1cm);
+	\draw[fill=purple!50] (4.5,-1.5) ellipse (0.5cm and 1cm);
+	\draw[fill=gray!30] (-1.5,0.75) ellipse (1cm and 0.5cm);
+	\draw[fill=white!40] (-1.5,2.25) ellipse (1cm and 0.5cm);
+	\draw[fill=orange!40] (1.5,4.5) ellipse (0.5cm and 1cm);
+	\draw[fill=pink!40] (4.5,4.5) ellipse (0.5cm and 1cm);
+	
+	\draw[<->] (6,0.75) -- (6.5,0.75);
+	\draw[<->] (6,2.25) -- (6.5,2.25);
+	\draw[<->] (1.5,3) -- (1.5,3.5);
+	\draw[<->] (4.5,3) -- (4.5,3.5);
 	\draw[<->] (0,0.75) -- (-0.5,0.75);
 	\draw[<->] (0,2.25) -- (-0.5,2.25);
-	\draw[<->] (0.75,-0.5) -- (0.75,0);
-	\draw[<->] (2.25,-0.5) -- (2.25,0);
+	\draw[<->] (1.5,-0.5) -- (1.5,0);
+	\draw[<->] (4.5,-0.5) -- (4.5,0);
 	
-	\node at (1.5,1.5) {\textsc{Pizarra}};
-	\node at (4.5,2.25) {\textsc{Agente}};
-	\node at (4.5,0.75) {\textsc{Agente}};
-	\node[rotate=90] at (0.75,-1.5) {\textsc{Agente}};
-	\node[rotate=90] at (2.25,-1.5) {\textsc{Agente}};
+	\node at (3,1.5) {\textsc{Pizarra}};
+	\node at (7.5,2.25) {\textsc{Agente}};
+	\node at (7.5,0.75) {\textsc{Agente}};
+	\node[rotate=90] at (1.5,-1.5) {\textsc{Agente}};
+	\node[rotate=90] at (4.5,-1.5) {\textsc{Agente}};
 	\node at (-1.5,0.75) {\textsc{Agente}};
 	\node at (-1.5,2.25) {\textsc{Agente}};
-	\node[rotate=90] at (0.75,4.5) {\textsc{Agente}};
-	\node[rotate=90] at (2.25,4.5) {\textsc{Agente}};
+	\node[rotate=90] at (1.5,4.5) {\textsc{Agente}};
+	\node[rotate=90] at (4.5,4.5) {\textsc{Agente}};
 \end{tikzpicture}
 }
