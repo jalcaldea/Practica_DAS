@@ -11,21 +11,33 @@
 %http://tex.stackexchange.com/questions/52746/include-chapters-in-list-of-figures-with-titletoc
 \makeatletter
 \def\thisparttitle{}\def\thispartnumber{}
+\def\thischaprertitle{}\def\thischapternumber{}
 \newtoggle{noFigs}
+\newtoggle{noFig}
 
 \apptocmd{\@part}%
   {\gdef\thisparttitle{#1}\gdef\thispartnumber{\thepart}%
-    \global\toggletrue{noFigs}}{}{}
+    \global\toggletrue{noFig}}{}{}
+    
+\apptocmd{\@chapter}%
+  {\gdef\thischaprertitle{#1}\gdef\thischapternumber{\thechapter}
+  	\global\toggletrue{noFigs}}{}{}
 
 % the figure environment does the job: the first time it is used after a \chapter command, 
 % it writes the information of the chapter to the LoF
 \AtBeginDocument{%
   \AtBeginEnvironment{figure}{%
     \iftoggle{noFigs}{
-      \addtocontents{lof}{\protect\contentsline {chapter}%
-        {\protect\numberline {\thispartnumber} {\thisparttitle}}{}{} }
-      \global\togglefalse{noFigs}
-    }{}
+    	\iftoggle{noFig}{
+		    \addtocontents{lof}{\protect\contentsline {chapter}%
+	              {\protect\numberline {\thispartnumber} 
+	              {\thisparttitle}}{}{} }
+		    \global\togglefalse{noFig}
+		}{}
+		    \addtocontents{lof}{\protect\contentsline {chapter}%
+		            {\protect\numberline {\thischapternumber} {\thischaprertitle}}{}{} }
+		    \global\togglefalse{noFigs}
+	}{}
   }%
 }
 
