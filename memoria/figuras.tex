@@ -9,9 +9,9 @@
 		{hipervisor1}{\figurahipA}
 		{hipervisor2}{\figurahipB}
 		{hipervisor2real}{\figurahipBfin}
-		{hardware}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
-		{sohost1}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
-		{sohost2}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
+		{hardware}{\figuraHard}
+		{sohost1}{\figuraSO}
+		{sohost2}{\figuraSOsimpl}
 		{hipervisor}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
 		{maqinavirtual}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
 		{virtualizacionnat}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
@@ -86,6 +86,56 @@
 	\node at (5,0.5) {\textsc{Hardware}};
 \end{tikzpicture}
 }
+
+\newcommand{\figuraHard}{
+\begin{tikzpicture}
+	\draw[rounded corners=3mm, fill=yellow!40, thick] (-0.05,-0.05) rectangle (10.05,3.05);
+
+	\node at (2,2.5) {\textsc{Hardware Real}};
+	
+	\node at (1.25,1.4) {\includegraphics{./images/memoria.png}};
+	\node at (1.25,0.5) {\textsc{Memoria}};
+	
+	\node at (3.75,1.4) {\includegraphics{./images/hdd.png}};
+	\node at (3.75,0.5) {\textsc{Disco}};
+	
+	\node at (6.25,1.4) {\includegraphics{./images/cpu.png}};
+	\node at (6.25,0.5) {\textsc{CPU}};
+	
+	\node at (8.75,1.4) {\includegraphics{./images/red.png}};
+	\node at (8.75,0.5) {\textsc{Red}};
+\end{tikzpicture}
+}
+
+\newcommand{\figuraSO}{
+\begin{tikzpicture}
+\definecolor{morado}{RGB}{177,100,177}
+	\draw[rounded corners=3mm, fill=green!30, thick] (-.50,3) rectangle (6.5,4);
+	\draw[rounded corners=3mm, fill=red!40, thick] (0,0) rectangle (6,3);
+	\draw[rounded corners=3mm, fill=morado!40, thick] (0.5,0) rectangle (5.5,2);
+	\draw[rounded corners=3mm, fill=blue!30, thick] (1,0) rectangle (5,1);
+	\draw[rounded corners=3mm, fill=yellow!40, thick] (1.5,-1) rectangle (4.5,0);
+	
+	\node at (3,3.5) {\textsc{Aplicaciones}};
+	\node at (2.2,2.5) {\textsc{Sistema Operativo}};
+	\node at (2.5,1.5) {\textsc{Apps del SO}};
+	\node at (3,0.6) {\textsc{Kernel}};
+	\node at (3,-0.5) {\textsc{Hardware}};
+\end{tikzpicture}
+}
+
+\newcommand{\figuraSOsimpl}{
+\begin{tikzpicture}
+	\draw[rounded corners=3mm, fill=green!30, thick] (-0.5,1) rectangle (6.5,2);
+	\draw[rounded corners=3mm, fill=red!40, thick] (0,0) rectangle (6,1);
+	\draw[rounded corners=3mm, fill=yellow!40, thick] (1.5,-1) rectangle (4.5,0);
+	
+	\node at (3,1.5) {\textsc{Aplicaciones}};
+	\node at (3,0.5) {\textsc{Sistema Operativo}};
+	\node at (3,-0.5) {\textsc{Hardware}};
+\end{tikzpicture}
+}
+
 
 \newcommand{\pizarra}{
 \begin{tikzpicture}
