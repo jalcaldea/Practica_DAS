@@ -1,0 +1,35 @@
+% Buscar
+\newcommand{\buscar}{
+\begin{tikzpicture}
+
+\umlstateinitial[name=initial]
+\begin{umlstate}[x=0, y=-3,name=datos]{Iniciar sesión}
+\end{umlstate}
+
+\umlstatedecision[y=-5, name=permiso] 
+
+\begin{umlstate}[x=0, y=-8,name=comprobar]{Introducior datos de búsqueda}
+\end{umlstate}
+
+\begin{umlstate}[y=-11,name=sesion]{Mostrar datos}
+\end{umlstate}
+
+\begin{umlstate}[y=-14,name=actualizar]{Actualizar pizarra}
+\end{umlstate}
+
+\begin{umlstate}[y=-17,name=notificar]{Notificar}
+\end{umlstate}
+
+\umlstatefinal[y=-19, name=final]
+
+\umltrans{initial}{datos}
+\umltrans{datos}{permiso}
+\umltrans[arg1=SI]{permiso}{comprobar}
+\umltrans{comprobar}{sesion}
+\umltrans{sesion}{actualizar}
+\umltrans{actualizar}{notificar}
+\umltrans{notificar}{final}
+\umlHVHtrans[arg1=NO, arm2=-4]{permiso}{notificar}
+
+\end{tikzpicture}
+}
