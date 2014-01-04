@@ -89,7 +89,23 @@ En primer lugar diseñaremos un diagrama de clases que permita una visión gener
 \subsection{Diagrama de clases}
 un diagrama de clases es un diagrama estático destinado a la programación orientada a objetos que permite describir las clases de un sistema, así como sus propiedades, operaciones, relaciones entre ellas y herencia.\\
 
+A continuación detallamos cada una de las clases que aparecen en el diagrama centrándose en la funcionalidad y las relaciones entre ellas. Para una descripción más en profundidad de las operaciones que implementa ver Manual de uso.\\
 
+\textbf{Pizarra:} El diagrama de clases se centra en esta clase. Contiene las operaciones necesarias para que los agentes puedan interactuar con ella. Almacena los datos relacionados con el estado de la pizarra, así como la lista de usuarios, las estadísticas, los permisos y la configuración.\\
+
+\textbf{Agente:} Permite interactuar con la pizarra, dando opciones para leer o escribir en la misma, así como modificar su configuración o permisos. Hace las veces de interfaz al usuario para usar la pizarra. Contiene el nombre de usuario y la contraseña con la que se interactúa con la pizarra.\\
+
+\textbf{Estado:} Contiene la lista de elementos.\\
+
+\textbf{Elemento:} Puede ser de dos tipos, representado como herencia. Un archivo o una carpeta. Una carpeta contendrá a su vez un listado de elementos.\\
+
+\textbf{Nivel: }Proporciona las operaciones necesarias para comprobar y editar los permisos de la pizarra.\\
+
+\textbf{Configuración: }Permite la visualización y modificación de las configuraciones de la pizarra.\\
+
+\textbf{Estadísticas: }Permite visualizar las estadísticas.\\
+
+\textbf{Usuario:} Permite la modificación y visualización de los datos del usuario, como el nombre, el id, la contraseña y los permisos.
 
 
 {\color{red}{\huge PROVISIONAL}}
@@ -101,6 +117,8 @@ un diagrama de clases es un diagrama estático destinado a la programación orie
 \caption{Diagrama de clases}
 \end{figure}
 \end{landscape}
+
+\subsection{Diagrama de casos de uso}
 
 \begin{figure}[!h]
 \centering
