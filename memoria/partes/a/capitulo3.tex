@@ -1,5 +1,5 @@
 \chapter{VMware: Workstation}
-En este capítulo nos vamos a centrar en la plataforma de VMware, VMware: Workstation\cite{vmwarework}, los pasos a seguir serán: analizar y ver qué tipo de virtualización utiliza, describir sus principales características y dar ejemplos sobre su uso e instalación.\\
+\lettrine[lines=1,slope=4pt,findent=0pt]{E}{}n este capítulo nos vamos a centrar en la plataforma de VMware, VMware: Workstation\cite{vmwarework}, los pasos a seguir serán: analizar y ver qué tipo de virtualización utiliza, describir sus principales características y dar ejemplos sobre su uso e instalación.\\
 
 Pero, antes de nada, es necesario explicar por qué escogemos esta plataforma.
 
@@ -26,10 +26,10 @@ Ahora vamos a comprobar las distintas especificaciones que tiene esta plataforma
 Entre las que hemos encontrado nos gustaría destacar:
 
 \begin{itemize}
-\item LISTA
-\item CON
-\item LAS
-\item FEATURES
+\item Es la herramienta con mayor soporte en cuanto a empresas se refiere del mercado.
+\item Especialmente diseñada para dar funcionalidad a múltiples computadoras.
+\item Soporta redes virtuales, lo que permite un mayor control sobre las conexiones que se realizan.
+\item Soporta la virtualización de sistemas x64 en ordenadores x86.
 \end{itemize}
 
 Pero sin duda, si queremos describir por qué la universidad escogió este sistema, es debido a su potencia para gran cantidad de ordenadores, puesto que en la universidad se da soporte a muchos ordenadores virtualizados, prácticamente todos los de la universidad.
@@ -45,8 +45,31 @@ Por tanto, siguiendo la línea del capítulo anterior, este sería el esquema de
 \end{figure}
 
 \section{Instalación y uso}
-bla bla bla
+En esta sección nos gustaría explicar brevemente cómo creemos que se instaló dicho software en los ordenadores de la universidad.\\
+
+Por comenzar por algún lado, empecemos analizando el sistema operativo huésped\cite{vmwareinst}\cite{vmwareinst2}.\\
 
 \subsection{Instalación \emph{fresh} de Windows$^{\textregistered}$}
+Indagando por la web, hemos encontrado diversos \emph{post}, \emph{guías}, \emph{tutoriales} y \emph{blogs} una continúa mención a una \emph{instalación fresh $Windows^{\textregistered}$ XP}, bastante relacionado con lo que a nosotros nos incumbe, los ordenadores de la URJC.
+
+Esta \emph{instalación} no es otra cosa que un sistema optimizado para ser el huésped de un sistema de virtualización de segundo nivel.\\
+
+Esto es exactamente lo que encontramos en los ordenadores de la universidad, cuando arrancamos los ordenadores, en el arranque, nos da a escoger entre varias opciones y generalmente, la que escogemos para darles su uso normal es \emph{\textquotedblleft windows xp vmware worstation\textquotedblright}, donde, al escoger dicha opción, nos arranca un entorno windows minimalista (no posee ninguna aplicación externa) a excepción de la aplicación de VMWare.
 
 \subsection{Funcionamiento básico}
+
+El funcionamiento de VMware es simple, vamos a detallar el proceso que sigue un computador de la universidad desde que se pulsa el botón de arranque hasta que se inicia la máquina virtual:
+
+\begin{enumerate}
+\item Se arranca el ordenador.
+\item En la selección de arranque, escogemos iniciar con VMware.
+\item Se inicializa el sistema operativo huésped.
+\item Se inicia automáticamente la aplicación de VMware.
+\item En la aplicación se introducen los datos de la máquina virtual (para saber cuál escoger entre todas las disponibles en el servidor).
+\item El servidor le devuelve la información a la aplicación.
+\item Se inicia la mauina virtual.
+\item Se pide el usuario y contraseña, cómo un ordenador normal, pero en este caso serán los valores que se usan para todas las cuentas de la URJC.
+\item El ordenador esta listo para su uso.
+\end{enumerate}
+
+Aunque parece un proceso complicado, en realidad es de lo más simple y conciso. Esto permite distribuir los permisos en los ordenadores y evitar que se instalen programas innecesarios, al tratarse de una máquina virtual, si se requiere la instalación de una aplicación, con instalarse una vez bastaría y ésta se encontraría en todos los ordenadores de la universidad.
