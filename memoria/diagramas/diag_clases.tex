@@ -2,14 +2,14 @@
 \newcommand{\clases}{
 
 \begin{tikzpicture}
-
+\tikzumlset{font=\tiny}
 % Clase Pizarra
-\umlclass{Pizarra}{
-  - estado : Estado \\ 
-  - usuarios : ArrayList$<$Usuario$>$\\
-  - estadisticas : ArrayList$<$Estadisticas$>$\\
-  - niveles : ArrayList$<$Nivel$>$\\
-  - conf : Configuracion\\
+\umlclass[x=-6, y=5]{Pizarra}{
+  -- estado : Estado \\ 
+  -- usuarios : ArrayList$<$Usuario$>$\\
+  -- estadisticas : ArrayList$<$Estadisticas$>$\\
+  -- niveles : ArrayList$<$Nivel$>$\\
+  -- conf : Configuracion\\
 }{ 
   + mostrarEstadisticas(String userid, Usuario user):String\\
   + mostrarEstadisticasGenerales(Usuario user):String\\
@@ -24,18 +24,18 @@
   + gestionarPermisos(Nivel nivel, Bool[] permisos, Usuario user): Bool\\
   + configurarPizarra(Configuracion config, Usuario user): Bool\\
   + getUsuario(String userid):Usuario\\
-  - setEstado(Estado)\\
-  - setUsuarios(ArrayList$<$Usuario$>$)\\
-  - setEstadisticas(ArrayList$<$Estadisticas$>$)\\
-  - comprobarPermisos(Usuario user, int permiso):Bool
+  -- setEstado(Estado)\\
+  -- setUsuarios(ArrayList$<$Usuario$>$)\\
+  -- setEstadisticas(ArrayList$<$Estadisticas$>$)\\
+  -- comprobarPermisos(Usuario user, int permiso):Bool
 }
 
 % Clase Agente
-\umlclass[x=0, y=-14]{Agente}{
-  - userid : String\\
-  - pass : String\\
-  - pizarra : Pizarra\\
-  - usuario : Usuario\\
+\umlclass[x=-6, y=-2.5]{Agente}{
+  -- userid : String\\
+  -- pass : String\\
+  -- pizarra : Pizarra\\
+  -- usuario : Usuario\\
 }{
   + Agente(String userid)\\
   + Agente(Pizarra pizarra)\\
@@ -54,17 +54,17 @@
   + configurarPizarra(Configuracion config)\\
   + setUserid(String userid)\\
   + setPass(String pass)\\
-  - comprobarPermisos(Usuario user, int permiso):Bool\\
-  - establecerConexion(Pizarra pizarra)\\
-  - cerrarSesion(Pizarra pizarra) 
+  -- comprobarPermisos(Usuario user, int permiso):Bool\\
+  -- establecerConexion(Pizarra pizarra)\\
+  -- cerrarSesion(Pizarra pizarra) 
 }
 
 % Clase Usuario
-\umlclass[x=13, y=0]{Usuario}{
-  - nombre : String\\
-  - userid : String\\
-  - pass : String\\
-  - nivel : Nivel
+\umlclass[x=2, y=-1]{Usuario}{
+  -- nombre : String\\
+  -- userid : String\\
+  -- pass : String\\
+  -- nivel : Nivel
 }{
   + comprobarUser(String pass): Bool\\
   + getNombre() : String\\
@@ -75,9 +75,9 @@
 }
 
 % Clase Estadisticas
-\umlclass[x=13, y=8]{Estadisticas}{
-  - userid : String\\
-  - datos[] : Integer\\
+\umlclass[x=2, y=3]{Estadisticas}{
+  -- userid : String\\
+  -- datos[] : Integer\\
 }{
   + actualizarEstadisticas(datos[] int)\\
   + getUsuario() : String\\
@@ -85,48 +85,48 @@
 }
 
 % Clase Configuracion
-\umlclass[x=4, y=9.5]{Configuracion}{
-  - visibilidad : Bool\\
-  - IP : String\\
-  - puerto : int\\
-  - maxConexion : int\\
-  - espacio : int\\
-  - maxUser : int\\
-  - depuracion : Bool\\
+\umlclass[x=2, y=9.5]{Configuracion}{
+  -- visibilidad : Bool\\
+  -- IP : String\\
+  -- puerto : int\\
+  -- maxConexion : int\\
+  -- espacio : int\\
+  -- maxUser : int\\
+  -- depuracion : Bool\\
 }{
 }
 
 % Clase Estado
-\umlclass[x=-6, y=10]{Estado}{
-  - ArrayList$<$Elemento$>$
+\umlclass[x=-9, y=10]{Estado}{
+  -- ArrayList$<$Elemento$>$
 }{
 
 }
 
 % Clase Elemento
-\umlclass[x=-15, y=10]{Elemento}{
+\umlclass[x=-16, y=10]{Elemento}{
    \# nombre : String
 }{
 
 }
 
 % Clase Carpeta
-\umlclass[x=-17, y=6]{Carpeta}{
-   - ArrayList$<$Elemento$>$
+\umlclass[x=-18, y=6]{Carpeta}{
+   -- ArrayList$<$Elemento$>$
 }{
 
 }
 
 % Clase Archivo
-\umlclass[x=-11, y=6]{Archivo}{
+\umlclass[x=-13, y=7]{Archivo}{
 
 }{
 
 }
 
 % Clase Nivel
-\umlclass[x=-13, y=0]{Nivel}{
-   - permisos[\$NPermisos\$] : Bool
+\umlclass[x=-16, y=3]{Nivel}{
+   -- permisos[\$NPermisos\$] : Bool
 }{
    + cambiarPermiso(int permiso, estado Bool)\\
    + resetPermisos()\\
@@ -135,7 +135,7 @@
 }
 
 % Nota de la clase Nivel
-\umlnote[x=-13, y=-5, width=5cm]{Nivel}{\textbf{\$NPERMISOS\$} es la cantidad de opciones que puede tener la plataforma, siendo cada posición una de estas opaciones}
+\umlnote[x=-16, y=-2, width=5cm]{Nivel}{\textbf{\$NPERMISOS\$} es la cantidad de opciones que puede tener la plataforma, siendo cada posición una de estas opaciones}
 
 % Relaciones
 
@@ -151,7 +151,7 @@
 
 \umlimpl[geometry=-|]{Pizarra}{Estado}
 
-\umlimpl[geometry=-|]{Pizarra}{Configuracion}
+\umlimpl{Pizarra}{Configuracion}
 
 \umlimpl{Pizarra}{Estadisticas}
 
