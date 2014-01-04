@@ -9,6 +9,8 @@ Una vez especificados los requisitos de nuestra pizarra, además de los UML nece
 En primer lugar un usuario tendrá que conectarse mediante su "USERID" y "PASS". Para ello es necesario el método IniciarSesión(userid String, pass String:Bool;) el cual devolverá 1 si amboas cadenas de texto son correctas y se corresponden con un usuario almacenado en las bases de datos. Por el contrario se devolverá 0 si no coinciden alguna de las dos.
 A continuación se especifican de manera más específica el uso de las instrucciones in y out
 \subsection{Actualizar pizarra}
+\subsection{Buscar}
+Tras iniciar sesión, si los datos introducidos en IniciarSesión(userid String, pass String) son corretos, se introducirán los datos deseados a encontrar en Buscar(nombre String, Usuario user) siendo "nombre" lo que se quiere encontrar y "user" el usuario que busca dichos datos. A continuación se mostrarán los datos solicitados con setDatos()String; y finalmente se notificarán dichos cambios con mostrarEstado(Usuario user); donde se indican los cambios realizados por el usuario
 \subsection{Comparar}
 \subsection{Configurar}
 \subsection{Crear carpeta}
