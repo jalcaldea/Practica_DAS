@@ -1,0 +1,40 @@
+% Iniciar sesión
+\newcommand{\iniciarSesion}{
+\begin{tikzpicture}
+
+\umlstateinitial[name=initial]
+\begin{umlstate}[x=0, y=-3,name=datos]{Introducir datos}
+\end{umlstate}
+
+\begin{umlstate}[x=0, y=-6,name=bd]{Conectar con la BD}
+\end{umlstate}
+
+
+\begin{umlstate}[x=0, y=-9,name=comprobar]{Comprobar datos}
+\end{umlstate}
+
+\umlstatedecision[y=-11, name=check] 
+
+\begin{umlstate}[y=-13.5,name=sesion]{Establecer sesión}
+\end{umlstate}
+
+\begin{umlstate}[y=-16.5,name=permisos]{Comprobar permisos}
+\end{umlstate}
+
+\begin{umlstate}[y=-19.5,name=notificar]{Notificar}
+\end{umlstate}
+
+\umlstatefinal[y=-21.5, name=final]
+
+\umltrans{initial}{datos}
+\umltrans{datos}{bd}
+\umltrans{bd}{comprobar}
+\umltrans{comprobar}{check}
+\umltrans[arg1=Datos válidos]{check}{sesion}
+\umltrans{sesion}{permisos}
+\umltrans{permisos}{notificar}
+\umltrans{notificar}{final}
+\umlHVHtrans[arg1=Datos incorrectos, arm2=-4,pos1=0.4]{check}{notificar}
+
+\end{tikzpicture}
+}

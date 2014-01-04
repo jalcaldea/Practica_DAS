@@ -1,0 +1,53 @@
+\chapter{Introducción}
+\lettrine[lines=1,slope=4pt,findent=0pt]{E}{}n la segunda parte de la práctica se nos pide el diseño de una plataforma que implemente una arquitectura de pizarra, para ello vamos a seguir un modelo de desarrollo en cascada\footnote{Modelo de que divide el desarrollo de software en etapas rigurosamente definidas, de forma que para el inicio de una etapa debe esperarse previamente que finalice la anterior. Las etapas son: análisis de requerimientos, diseño, implementación, pruebas y mantenimiento.}.\\
+
+Por tanto, hemos dividido esta parte de la memoria en cada una de las fases de éste modelo de desarrollo, pero antes es necesario centrarnos en cómo debe diseñarse esta plataforma y que implica que se diseñe de esta manera.
+
+\section{Arquitectura de pizarra}
+Cómo bien se nos explica en el enunciado de la práctica, tenemos que crear una plataforma que siga, en su diseño, una arquitectura de pizarra; pero, ¿Qué es una arquitectura de pizarra?\\
+
+Para definir una arquitectura de pizarra o de tuplas debemos entender que se trata de una arquitectura software, es decir un modelo básico en el que basarse para la creación de software similar y , por lo tanto, debemos describir qué es exactamente una arquitectura de pizarra, para seguidamente poder analizar en detalle la plataforma a crear.\\
+
+Para entender en concepto básico de esta arquitectura basta con fijarse en su nombre: \emph{\textquotedblleft pizarra\textquotedblright} y es que, en realidad se trata de eso, de una gran pizarra en la que cualquiera que tenga los conocimientos necesarios puede aportar sus: cálculos, procesos, metodologías, ... para la resolución de problemas de cualquier tipo.\\
+
+Siguiendo con este ejemplo, en una resolución de problemas cualquiera encontraríamos a varias personas trabajando sobre una misma pizarra, a estos elementos en la arquitectura de pizarra se les conoce cómo \emph{agentes} y \emph{pizarra}, respectivamente.\\
+
+Siendo un poco más técnicos podemos definir estos dos componentes como:
+
+\begin{itemize}
+	\item \textbf{Pizarra: }Instrumento de control o estructura de datos que representa el estado actual de la plataforma.
+	\item \textbf{Agente: }Elementos funcionales independientes entre sí que operan sobre la pizarra.
+\end{itemize}
+
+La siguiente figura muestra como interactúan estos \emph{agentes} con la \emph{pizarra}:
+
+\begin{figure}[!h]
+\centering
+\figura{3}
+\caption{Interacción entre los agentes y la pizarra}
+\end{figure}
+ 
+La función de los agentes es, basándose en el contenido de la pizarra, realizar la tarea que se les asigna y escribir sobre ella sus resultados.\\
+
+La función principal de la pizarra es coordinar la interacción de los agentes con la pizarra y la comunicación entre ellos. La pizarra irá cambiando de estado según van escribiendo en ella los distintos agentes. Éstos podrán leer lo que fue escrito por otros agentes anteriores a él. De esta forma el contenido de la pizarra será cada vez más completo, hasta alcanzar una solución final.\\
+ 
+Una arquitectura de pizarra suele ser utilizada en los siguientes casos:
+
+\begin{itemize}
+	\item Problemas en los que no existe una solución analítica.
+	\item Problemas en los que, aunque exista solución analítica, es inviable por la dimensión del espacio de búsqueda.
+	\item Problemas extremadamente complejos en términos cognitivos.
+\end{itemize}
+
+Las arquitecturas en pizarra presentan una serie de inconvenientes importantes, estos radican principalmente en la complejidad de los problemas que se resuelven con este tipo de arquitecturas. Son los siguientes:
+
+\begin{itemize}
+	\item Una vez obtenida una solución, es difícil ver de forma ordenada los pasos que llevaron a esa solución.
+	\item No garantiza obtener una solución.
+	\item No se puede saber a priori el tiempo necesario para realizar el problema.
+\end{itemize}
+
+\section{¿Qué implica la arquitectura de pizarra?}
+
+\section{¿Cómo va a ser la plataforma?}
+

@@ -1,0 +1,140 @@
+\chapter[Descripción de la arquitectura]{Descripción de la arquitectura de virtualización}
+
+\lettrine[lines=1,slope=4pt,findent=0pt]{U}{}na vez introducido el vocabulario básico y tras haber indagado un poco más en la materia vamos a centrarnos en la arquitectura como tal.\\
+
+\section{Tipos de Virtualización}\label{tiposvir}
+En el apartado anterior ya se pudo vislumbrar que existen diferentes formas de virtualización, y por ello, vamos a hacer un pequeño análisis de cada uno, pero antes nos interesa conocer el término \emph{\gloss{HYP}}, ya que es el elemento central de un sistema de máquinas virtuales.
+
+\subsection{¿Qué es un hipervisor?}
+El \emph{\gloss{HYP}} o \emph{\gloss[long]{VMM}} se trata de una plataforma que permite aplicar diversas técnicas de control para utilizar, al mismo tiempo, diferentes sistemas operativos en una misma computadora.\\
+
+Se trata de un elemento software que dependiendo de cómo se sitúe en relación con el Hardware da lugar a dos maneras diferentes de virtualizar, dos tipos de \emph{\gloss{HYP}}\cite{tipoship}:
+
+\subsection{Hipervisor de Tipo 1 o \emph{Nativo}}\label{tiposvir1}
+ El software del hipervisor se ubica directamente entre el hardware y las distintas máquinas virtuales, para ofrecer la funcionalidad descrita, siguiendo la siguiente estructuración:
+
+\begin{figure}[H]
+\begin{center}
+\figura{hipervisor1}
+\end{center}
+\caption[Hipervisor Tipo 1]{Esquema de un hipervisor de primer nivel}
+\end{figure}
+
+Este tipo de \emph{hipervisor} también es conocido como \emph{unhosted} o \emph{bare metal}, que en inglés hacen referencia a que no es huésped o que se ejecuta a bajo nivel, respectivamente.\\
+
+Dentro de este tipo se encuentran VMware ESXi, VMware ESX y Microsoft Hyper-V Server, pero nos gustaría presta una atención especial a \gloss{XEN} por ser un hipervisor de código abierto desarrollado por la Universidad de Cambridge\cite{proyectoxen}\cite{proyectoxen2}.
+\subsection{Hipervisor de Tipo 2 o \emph{Huésped}}\label{tiposvir2}
+Es una arquitectura alternativa para la máquina virtual insertando una capa de virtualización encima del sistema operativo \emph{host} o huésped, siendo éste responsable de administrar el hardware. Los sistemas operativos invitados se instalarán encima del nivel de virtualización, en máquinas virtuales. Tiene la siguiente estructura:
+
+\begin{figure}[H]
+\begin{center}
+\figura{hipervisor2}
+\end{center}
+\caption[Hipervisor Tipo 2]{Esquema de un hipervisor de segundo nivel}
+\end{figure}
+
+Este tipo de hipervisor tiene una ventaja muy destacada, el usuario puede instalar esta arquitectura de máquina virtual sin modificar el sistema operativo host pudiendo descansar en el sistema operativo host para entregar los controladores de dispositivos y otros servicios de bajo nivel (se simplifica el diseño de la máquina virtual y facilita la implementación).\\
+
+Otra característica suya es que al ejecutarse sobre un sistema operativo huésped, éste puede ejecutar sus propias aplicaciones, por lo que en realidad el esquema completo sería:
+
+\begin{figure}[H]
+\begin{center}
+\figura{hipervisor2real}
+\end{center}
+\caption[Hipervisor Tipo 2 final]{Esquema de un hipervisor de segundo nivel real}
+\end{figure}
+
+Algunos de los hipervisores tipo 2 más utilizados son: Oracle: VirtualBox, VirtualBox OSE, VMware: Workstation; siendo éste último en el que más nos vamos a centrar.
+
+\section{Componentes}
+En las figuras mostradas anteriormente, se han hecho referencias a \emph{hardware}, \emph{\gloss{{HYP}}} o \emph{\gloss[long]{MAQVIR}} en las que no explicamos exactamente que significa y por ello, ahora, vamos a analizar cada uno de estas partes descomponiendo sus componentes; es decir, qué elementos lo forman, para después poder juntarlos todos y obtener una idea real de la arquitectura.\\
+
+Vamos a seguir un órden, de menor a mayor nivel, comenzaremos con el \emph{hardware} para terminar con las distintas \emph{VMs}.
+
+\subsection{Hardware o Hardware real}
+Quizás lo primero que tengamos que hacer es explicar el encabezado del apartado, ¿Por qué \emph{\textquotedblleft harware real\textquotedblright}.\\
+Para contestar a esto es necesario conocer los componentes de una máquina virtual (\textit{Véase apartado \ref{apartadomaqvir}}), pues esta tiene también elementos hardware y el calificativo \emph{\textquotedblleft real\textquotedblright} es lo que los diferencia.\\
+
+Este elemento hardware se refiere, como es obvio, al computador físicamente hablando, es decir, al aparato electrónico generalmente conectado a una toma de luz y sus componentes físicos: la memoria RAM, el \gloss[short]{HDD}  y su \gloss[short]{CPU}. Por tanto, a partir de ahora vamos a representar el hardware como:
+
+\begin{figure}[H]
+\begin{center}
+\figura{hardware}
+\end{center}
+\caption[Hardware Real]{Esquema del hardware real}
+\end{figure}
+
+\subsection{Sistema Operativo huésped}\label{sohost}
+En este caso no se trata nada más que de un simple sistema operativo y lo que esto conlleva, su funcionalidad y sus restricciones.\\
+
+Cualquier sistema operativo se puede descomponer en los archivos del sistema o \emph{\gloss{KERNEL}} y de las aplicaciones que se ejecutan sobre este sistema, es decir que el esquema es el siguiente:
+
+\begin{figure}[H]
+\begin{center}
+\figura{sohost1}
+\end{center}
+\caption[Sistema Operativo huésped]{Esquema de componentes de un Sistema Operativo \emph{host} o huésped}
+\end{figure}
+
+Cabe destacar que el hardware se comunica con el sistema operativo a traves de su \emph{kernel} y que cómo estaba representado antes el sistema operativo nos bastaba y esta representación profundiza en término que a nosotros no nos interesan, vamos a quedar con esta representación a partir de ahora:
+
+\begin{figure}[H]
+\begin{center}
+\figura{sohost2}
+\end{center}
+\caption[Sistema Operativo huésped simplificado]{Esquema de componentes de un Sistema Operativo \emph{host} o huésped de manera simplificada}
+\end{figure}
+
+\subsection{Hipervisor}
+Ahora nos centramos en el meollo de asunto, pero,en realidad, ¿Nos es relevante el contenido del \gloss{HYP} o \gloss[long]{VMM}?\\
+
+Para lo que nosotros vamos a profundizar y a lo que queremos llegar, nos es completamente irrelevante, pero como nunca está de más conocer cosas nuevas simplemente vamos a decir los componentes de un hipervisor varían según el \emph{\textquotedblleft fabricante\textquotedblright} y el tipo.\\
+
+Aun así, existen una serie de elementos comunes para todos ellos, son los referentes a la organización del sistema virtual, por lo que podemos concluir con la siguiente figura:
+
+\begin{figure}[H]
+\begin{center}
+\figura{hipervisor}
+\end{center}
+\caption[Componentes hipervisor]{Esquema de componentes del hipervisor}
+\end{figure}
+
+Aquí, al igual que en el caso del sistema operativo (\textit{Véase apartado \ref{sohost}}) utilizaremos el esquema que ya teníamos en lugar de éste a partir de ahora.
+
+\subsection{Máquina Virtual}\label{apartadomaqvir}
+Sin necesidad de pensar mucho, y con la comparativa de que una máquina virtual simula el comportamiento de un computador real, es fácil pensar que ésta se compone de manera similar a un computador y acertaríamos, este es su esquema:
+
+\begin{figure}[H]
+\begin{center}
+\figura{maqinavirtual}
+\end{center}
+\caption[Maquina Virtual]{Esquema de componentes de una máquina virtual}
+\end{figure}
+
+Si seguimos la lógica de capas y abstracción, el encapsulamiento que se produce entre el \emph{harware virtual} y el sistema operativo, hacen que éste último no diferencie sobre qué se esta ejecutando. Esto es un punto importante en los sistemas de virtualización, ya que gracias a esto no es necesario adaptar el software a poder ser ejecutado en máquinas virtuales, tan sólo necesitamos instalar un \gloss{HYP}.
+
+
+\section{Esquema general}
+Puestos a hacer un resumen, vamos a agrupar todos los elementos que participan en los sistemas de virtualización con sus correspondientes componentes en una única representación.\\
+
+Como esta representación varía dependiendo del tipo de virtualización que escojamos, vamos a realizar una representación para cada uno.
+
+\subsection{Virtualización \emph{nativa}}
+Para todos los sistemas de virtualización que utilizan un hipervisor de tipo 1 como elemento central, esta es su arquitectura:
+
+\begin{figure}[H]
+\begin{center}
+\figura{virtualizacionnat}
+\end{center}
+\caption[Virtualización \emph{nativa}]{Esquema general de un sistema de virtualización de primer nivel}
+\end{figure}
+
+\subsection{Virtualización \emph{host}}
+Para todos los sistemas de virtualización que utilizan un hipervisor de tipo 2 como elemento virtualizador, esta es su arquitectura:
+
+\begin{figure}[H]
+\begin{center}
+\figura{virtualizacionhost}
+\end{center}
+\caption[Virtualización \emph{host}]{Esquema general de un sistema de virtualización de segundo nivel}
+\end{figure}
