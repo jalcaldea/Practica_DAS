@@ -1,0 +1,40 @@
+% Lectura/escritura
+\newcommand{\lecturaEscritura}{
+\begin{tikzpicture}
+
+\umlstateinitial[name=initial]
+
+\begin{umlstate}[x=0, y=-3,name=sesion]{Iniciar sesión}
+\end{umlstate}
+
+\umlstatedecision[y=-6, name=check] 
+
+\begin{umlstate}[x=0, y=-9,name=datos]{Leer datos de la pizarra}
+\end{umlstate}
+
+\begin{umlstate}[y=-12,name=bd]{Obtener posición escritura}
+\end{umlstate}
+
+\begin{umlstate}[y=-15,name=comprobar]{Escribir datos}
+\end{umlstate}
+
+\begin{umlstate}[x=7, y=-15, name=actualizar]{Actualizar datos}
+\end{umlstate}
+
+\begin{umlstate}[x=7, y=-12, name=notificar]{Notificar}
+\end{umlstate}
+
+\umlstatefinal[x=7, y=-9, name=final]
+
+\umltrans{initial}{sesion}
+\umltrans{sesion}{check}
+\umltrans[arg1=SI]{check}{datos}
+\umltrans{datos}{bd}
+\umltrans{bd}{comprobar}
+\umltrans{comprobar}{actualizar}
+\umltrans{actualizar}{notificar}
+\umltrans{notificar}{final}
+\umlHVHtrans[arg1=NO, arm1=4cm,pos1=0.4]{check}{notificar}
+
+\end{tikzpicture}
+}

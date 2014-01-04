@@ -1,0 +1,48 @@
+% Crear usuario
+\newcommand{\crearUsuario}{
+\begin{tikzpicture}
+
+\umlstateinitial[name=initial]
+
+\begin{umlstate}[x=0, y=-3,name=sesion]{Iniciar sesión}
+\end{umlstate}
+
+\umlstatedecision[y=-6, name=check] 
+
+\begin{umlstate}[x=0, y=-9,name=datos]{Introducir datos usuarios}
+\end{umlstate}
+
+\begin{umlstate}[y=-12,name=bd]{Conectar con la BD}
+\end{umlstate}
+
+\begin{umlstate}[y=-15,name=comprobar]{Comprobar datos de usuario válidos}
+\end{umlstate}
+
+\umlstatedecision[x=7, y=-14.5, name=validos]
+
+\begin{umlstate}[x=7, y=-10, name=crear]{Crear usuario}
+\end{umlstate}
+
+\begin{umlstate}[x=7, y=-6.5, name=actualizar]{Actualizar BD}
+\end{umlstate}
+
+\begin{umlstate}[x=7, y=-3, name=notificar]{Notificar}
+\end{umlstate}
+
+\umlstatefinal[x=7, y=-1, name=final]
+
+\umltrans{initial}{sesion}
+\umltrans{sesion}{check}
+\umltrans{check}{datos}
+\umltrans{datos}{bd}
+\umltrans{bd}{comprobar}
+\umltrans{comprobar}{validos}
+\umltrans[arg1=Datos válidos]{validos}{crear}
+\umltrans{crear}{actualizar}
+\umltrans{actualizar}{notificar}
+\umltrans{notificar}{final}
+\umltrans{check}{actualizar}
+\umlHVHtrans[arg1=Datos inválidos, arm1=4cm,pos1=0.4]{validos}{notificar}
+
+\end{tikzpicture}
+}
