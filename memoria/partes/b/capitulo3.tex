@@ -2,25 +2,21 @@
 Una vez especificados los requisitos de nuestra pizarra, además de los UML necesarios que describen su funcionamiento, incorporamos un breve manual de usuario con el que un programador ajeno podría construir fácilmente un agente o grupo de agentes que utilicen la pizarra para comunicarse.
 
 \section{Consideraciones previas}
-\color{red}QUE ESTÉ TODO ACTUALIZADO, BIEN CONFIGURADO Y Y BLA BLA BLA
+Se considerará que nuestro PC cumple con todos los requisitos necesarios para que tanto nuestra librería como nuestra aplicación puedan funcionar sin problemas. Ello conlleva que las versiones de java, flash, y demás estén correctamente actualizadas; que nuestro PC disponga de conexión a Internet, o las actualizaciones de C++ necesarias. En definitiva, que se pueda instalar y usar nuestra aplicación sin problemas añadidos.
+\section{Puesta a punto de la aplicación}
+En primer lugar se detallarán los primeros pasos típicos que realizará nuestra aplicación. En primer lugar, será necesario conectarnos (se considerará que el registro, donde se especifican tanto el nombre de usuario como la contraseña se han realizado anterior y correctamente, por ejemplo en la supuesta página web de nuestra aplicación) \color{red} EXPLICAR COMO SE INICIA SESIÓN Y LA ORGANIZACIÓN Y OPCIONES QUE HAY UNA VEZ DENTRO
 \color{black}
-\section{Uso de la librería}
+\section{Funcionalidades y ejemplos}
 \subsection{Iniciar sesión}
-En primer lugar un usuario tendrá que conectarse mediante su ``USERID'' y ``PASS''. Para ello es necesario el método IniciarSesión(userid String, pass String:Bool;) el cual devolverá 1 si amboas cadenas de texto son correctas y se corresponden con un usuario almacenado en las bases de datos. Por el contrario se devolverá 0 si no coinciden alguna de las dos.
-A continuación se especifican de manera más específica el uso de las instrucciones in y out
-\subsection{Actualizar pizarra}
-\subsection{Buscar}
-Tras iniciar sesión, si los datos introducidos en IniciarSesión(userid String, pass String) son corretos, se introducirán los datos deseados a encontrar en Buscar(nombre String, Usuario user) siendo ``nombre'' lo que se quiere encontrar y ``user'' el usuario que busca dichos datos. A continuación se mostrarán los datos solicitados con setDatos()String; y finalmente se notificarán dichos cambios con mostrarEstado(Usuario user); donde se indican los cambios realizados por el usuario
-\subsection{Comparar}
-\subsection{Configurar}
-\subsection{Crear carpeta}
-\subsection{Comprobar nivel}Tras pedir los datos de usuario mediante get(nombre) y get(userid), se conecta a la base de datos para obtener la información requerida, en este caso el nivel del usuario, mediante getNivel():Nivel. Finalmente se muestran las distintas opciones de nivel con cambiarPermiso(int,bool);
-\subsection{Crear usuario}
+\subsection{Mostrar estadísticas}
+\subsection{Mostrar estadísticas generales}
 \subsection{Escribir}
-\subsection{Lectura/escritura}
-\subsection{Estadísticas}
-\subsection{Gestionar permisos}
 \subsection{Leer}
+\subsection{Lectura/Escritura}
 \subsection{Mostrar estado}
-
-
+\subsection{Buscar}
+\subsection{Comparar}
+\subsection{Crear Carpeta}
+\subsection{Crear Usuario}
+\subsection{Gestionar permisos}
+\subsection{Configurar pizarra}
