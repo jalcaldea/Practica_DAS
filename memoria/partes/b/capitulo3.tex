@@ -4,7 +4,28 @@ Una vez especificados los requisitos de nuestra pizarra, además de los UML nece
 \section{Consideraciones previas}
 Se considerará que nuestro PC cumple con todos los requisitos necesarios para que tanto nuestra librería como nuestra aplicación puedan funcionar sin problemas. Ello conlleva que las versiones de java, flash, y demás estén correctamente actualizadas; que nuestro PC disponga de conexión a Internet, o las actualizaciones de C++ necesarias. En definitiva, que se pueda instalar y usar nuestra aplicación sin problemas añadidos.
 \section{Puesta a punto de la aplicación}
-En primer lugar se detallarán los primeros pasos típicos que realizará nuestra aplicación. En primer lugar, será necesario conectarnos (se considerará que el registro, donde se especifican tanto el nombre de usuario como la contraseña se han realizado anterior y correctamente, por ejemplo en la supuesta página web de nuestra aplicación) \color{red} EXPLICAR COMO SE INICIA SESIÓN Y LA ORGANIZACIÓN Y OPCIONES QUE HAY UNA VEZ DENTRO
+En primer lugar se detallarán los primeros pasos típicos que realizará nuestra aplicación. En primer lugar, será necesario conectarnos (se considerará que el registro, donde se especifican tanto el nombre de usuario como la contraseña se han realizado anterior y correctamente, por ejemplo en la supuesta página web de nuestra aplicación) 
+
+Existen dos tipos de usuarios: administradores y normales. Los primeros cuentan con más opciones, y se explicarán más adelante. Lo primero de todo será Iniciar sesión, que se realizará de la siguiente manera:
+\begin{verbatim}
+
+
+#include<NuestraLibrería.h>
+
+Agente app = new app(loginuser, passuser, new Pizarra(IP, puerto, nombre));  //Creamos un agente con los parámetros que hemos introducido por teclado
+
+Usuario user = app.iniciarSesion(app.getUser(), pass); //Llama al método que nos permitirá iniciar sesión
+
+
+if(user != null){ // Si el usuario ha introducido sus datos correctamente y éstos se encuentran en la base de datos
+
+}else{            // No ha encontrado el usuario o la contraseña incorrecta, y se mostrará el pertinente mensaje 
+
+    Pizarra.existe(user)? imprimir(\color{red}"Contraseña incorrecta"\color{black}):imprimir(\color{red}"Nombre de usuario incorrecto"\color{black});
+}
+\end{verbatim}
+
+Una vez conectados podremos realizar acciones como buscar un archivo en concreto, leer, escribir, o crear carpetas. Una explicación más detallada precisan los permisos que pueden tener los distintos usuarios \COLOR{RED} SIN ACABAR
 \color{black}
 \section{Funcionalidades y ejemplos}
 \subsection{Iniciar sesión}
