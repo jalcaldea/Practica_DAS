@@ -126,7 +126,42 @@ Un diagrama de casos de uso permite la visualización de las actividades que se 
 	\item \textbf{Extensión:} Un caso de uso se extiende en otros casos que, son esencialmente similares pero varían ligeramente su comportamiento.
 \end{itemize}
 
-\color{red} Se explica el diagrama\color{black}
+En nuestro caso, nuestra aplicación consta de tres actores:
+\begin{itemize}
+\item \textbf{Usuario}
+\item \textbf{Administrador:} es un usuario normal, pero con funcionalidad añadida; sólo existe uno en el sistema.
+\item \textbf{Pizarra:} es el actor principal de nuestra aplicación; es el responsable de interrelacionar a los usuario y al administrador.   
+\end{itemize}
+
+Los casos de uso más importantes para los usuarios son:
+\begin{itemize}
+\item \textbf{Iniciar sesión} en la pizarra
+\item \textbf{Ver estadísticas} 
+\item \textbf{Escribir (in)} en la pizarra
+\item \textbf{Leer (out)} en la pizarra
+\item \textbf{Lectura/Escritura (rd)} en la pizarra
+\item \textbf{Mostrar estado}
+\item \textbf{Buscar} en la pizarra
+\item \textbf{Comparar} archivos en la pizarra
+\item \textbf{Crear carpeta} en la pizarra
+\end{itemize}
+
+Los casos de uso para el Administrador son los mismos que los del usuario y además puede:
+\begin{itemize}
+\item \textbf{Crear usuario} en la pizarra
+\item \textbf{Gestionar permisos} de los usuarios
+\item \textbf{Configurar la pizarra}
+\item \textbf{Actualizar estado} de la pizarra
+\end{itemize}
+
+Por último, los casos de uso de la pizarra son:
+\begin{itemize}
+\item \textbf{Mostrar estado}
+\item \textbf{Buscar}
+\item \textbf{Comparar} archivos
+\item \textbf{Crear carpeta}
+\item \textbf{Gestionar permisos} de los usuarios
+\end{itemize} 
 
 \begin{landscape}
 \begin{figure}[!h]
@@ -136,14 +171,58 @@ Un diagrama de casos de uso permite la visualización de las actividades que se 
 \end{figure}
 \end{landscape}
 
-\subsection{Diagramas de flujo}
-Un diagrama de flujo es una representación de un proceso de forma gráfica. Consta de una serie de símbolos que representan los distintos pasos a seguir y flechas que indican el flujo de ejecución que se sigue.\\
+\subsection{Diagramas de actividad}
+Un diagrama de actividad es una representación de un proceso de forma gráfica. Consta de una serie de símbolos que representan los distintos pasos a seguir y flechas que indican el flujo de ejecución que se sigue.\\
 
-Como es común hemos realizado un diagrama de flujo para cada uno de los casos de uso que aparecen en el diagrama anterior.
+Como es común hemos realizado un diagrama de actividad para cada uno de los casos de uso que aparecen en el diagrama anterior.
 
-\color{red} Se explica cada diagrama\color{black}
+\begin{itemize}
+\item \textbf{Actualizar Pizarra:} éste es uno de los estados básicos de la pizarra, ya que cada vez se escribe o se borra algún archivo hay que hacer uso de éste.\\
+Los pasos que sigue son obtener los nuevos datos de la pizarra, conectarse con la base de datos, guardar estos cambios y notificarlo.
 
+\item \textbf{Buscar:} este caso de uso busca entre los datos de la pizarra y devuelve los datos en caso de que se hayan encontrado de acuerdo a los datos de la búsqueda.\\
+Los pasos que se siguen son iniciar sesión, en caso de que los datos sean correctos, se introducen los datos de la búsqueda, se muestran estos datos si se han producido resultados, se actualiza la pizarra y finalmente se notifica.
 
+\item \textbf{Comparar:} este caso de uso compara dos o más archivos y devuelve si se ha modificado algo y qué es lo que se ha modificado.\\
+Los pasos que se siguen son iniciar sesión, se introducen los datos para comparar, se muestran los resultados si los hay, se actualiza la pizarra y se notifica.
+
+\item \textbf{Configurar pizarra:} este caso de uso sirve para configurar la pizarra, cambiando los distintos parámetros.\\
+Los pasos que siguen son iniciar sesión, se configura la pizarra, se actualiza la pizarra y se notifica al usuario.
+
+\item \textbf{Crear carpeta:} este caso de uso permite crear nuevas carpetas a los usuarios.\\
+Los pasos que sigue son se inicia sesión, se crea la carpeta, se actualiza la pizarra y se notifica al usuario.
+
+\item \textbf{Comprobar nivel:} este caso de uso permite comprobar el nivel en el que se encuentra el usuario.\\
+Los pasos a seguir son obtener los datos del usuario, conectar con la base de datos, buscar la información del usuario y mostrar las opciones del nivel.
+
+\item \textbf{Crear usuario:} este caso de uso está restringido sólo al administrador. Crea un nuevo usuario en la pizarra.\\
+Los pasos a seguir son iniciar sesión, introducir los datos del usuario, conectar con la base de datos para comprobar que los datos introducidos son correctos, se crea el nuevo usuario, se actualiza la base de datos y se notifica. En caso de que no se pueda iniciar sesión o los datos introducidos no sean válidos, también se notifica.
+
+\item \textbf{Escribir (in):} éste es uno de las operaciones básicas de la pizarra. Escribe un nuevo dato en la pizarra.\\
+Los pasos a seguir son iniciar sesión, escribir los datos que se quieren que se escriban, actualizar la pizarra y notificárselo al usuario.
+
+\item \textbf{Lectura/Escritura (rd):} este caso de uso permite tanto leer como escribir en la pizarra.\\
+Los pasos a seguir son iniciar sesión, leer datos de la pizarra, obtener la posición donde se va a escribir, escribir los datos, actualizar los datos y notificar los cambios producidos.
+
+\item \textbf{Estadísticas:} permite ver las estadísticas de un determinado usuario.\\
+Los pasos a seguir son iniciar sesión, introducir datos de las estadísticas buscadas, conectar con la base de datos, buscar las estadísticas y se muestran los resultados, si los hay.
+
+\item \textbf{Gestionar permisos:} permite cambiar los permisos tanto de lectura como de escritura de un determinado usuario.\\
+Los pasos a seguir son iniciar sesión, introducir datos del usuario a cambiar los permisos, conectar con la base de datos, se busca el usuario, si existe, se gestionan los permisos y se actualiza la base de datos, en caso contrario, se notifica que el usuario no existe.
+
+\item  \textbf{Iniciar sesión:} se introduce el id de usuario y la contraseña para poder tener acceso.\\
+Los pasos a seguir son introducir los datos (id de usuario y contraseña), conectar con la base de datos, se comprueban si los datos son válidos, si lo son se establece la conexión, se comprueban los permisos y se notifica, y si no son válidos también se notifica.
+
+\item  \textbf{Leer (out):} leer datos de la pizarra.\\
+Los pasos a seguir son iniciar sesión, leer datos que se van a leer, actualizar la pizarra y se notifica.
+
+\item \textbf{Mostrar estado:} muestra el estado actual de la pizarra.\\
+Los pasos a seguir son iniciar sesión, se muestra el estado de la pizarra, se actualiza la pizarra y se notifica al usuario.
+\end{itemize}
+
+Todos los diagramas se muestran a continuación: 
+
+\vspace*{3cm}
 \begin{figure}[!h]
 \centering
 \actualizarPizarra
@@ -176,13 +255,6 @@ Como es común hemos realizado un diagrama de flujo para cada uno de los casos d
 \centering
 \crearCarpeta
 \caption{Crear carpeta}
-\end{figure}
-\newpage
-
-\begin{figure}[!h]
-\centering
-\comprobarNivel
-\caption{Comprobar nivel}
 \end{figure}
 \newpage
 
