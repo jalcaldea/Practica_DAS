@@ -45,12 +45,34 @@ Esta funcionalidad permite saber las estadísticas a nivel de usuario, es decir,
 \subsection{Mostrar estadísticas generales}
 Funciona de un modo muy parecido a mostrar estadísticas (Véase apartado \ref{sec:est}), con la diferencia de que ahora podremos consultar las estadísticas a nivel global, de todos los usuarios como un solo grupo de trabajo. Esto permitirá consultar el número de archivos subidos al repositorio, archivos borrados,... pero todo desde un punto de vista grupal.
 \subsection{Escribir}
-Es una operación básica de la pizarra, junto a leer y lectura/escritura. Esta operación permite añadir tanto nuevos archivos como modificar archivos de la pizarra. Esta operación está limitada por los permisos del usuario que quiera escribir (salvo el Admin).\\
-Para poder escribir se comprueba mediante Pizarra.getPermiso() si se puede escribir. En caso afirmativo, se procede a subir y a modificar a la pizarra los nuevos archivos. Posteriormente, se hace una llamada a la base de datos para actualizar los nuevos archivos. Si no se tienen permisos, se notifica al usuario en la aplicación.
+Es una operación básica de la pizarra, junto a leer y lectura/escritura. Esta operación permite tanto añadir como modificar archivos de la pizarra. Esta operación está limitada por los permisos del usuario que quiera escribir (salvo el Admin).\\
+Para poder escribir será necesario que el agente especifique el archivo que se quiere editar, así como su dirección. A continuación, la pizarra comprobará mediante Pizarra.getPermiso() si el usuario dispone de los permisos necesarios. En caso afirmativo, se procede a subir y modificar la pizarra con los nuevos archivos. Finalmente, se hace una llamada a la base de datos para actualizar los nuevos archivos. Por el contrario si el usuario no contaba con los permisos pertinentes, se le notificará y no se producirá ningún cambio.\\
+Debido a la importancia de esta funcionalidad se adjunta un pequeño código de ejemplo (consideramos que ya ha iniciado sesión) :
+\begin{verbatim}
 
+
+#include <pizarra.h>
+#include <iostream.h>
+
+using namespace std;
+
+Agente app = new Agente(loginuser, passuser, new Pizarra(IP, puerto, nombre)); 
+//Creamos un agente con los parámetros que hemos introducido por teclado
+
+Usuario user = app.escribir("C:\Program files", Archivo ejemplo); 
+//Llama al método que nos permitirá iniciar sesión
+
+if(user.getPermiso() ==1){ 
+// El usuario dispone de los permisos necesarios
+
+}else{            
+// No tiene los permisos y salta un mensaje de advertencia
+
+    Pizarra.existe(user) ? cout << "No dispone de los permisos necesarios":
+}
+\end{verbatim}
 \subsection{Lectura/Escritura}
 Lectura/Escritura funciona de manera análoga a escribir, salvo que en esta operación se permite también leer.
-
 \subsection{Leer}
 Esta operación es análoga a escribir, salvo que en lugar de escribir se leen archivos.
 
@@ -58,8 +80,7 @@ Esta operación es análoga a escribir, salvo que en lugar de escribir se leen a
 Permite mostrar el estado actual de la pizarra, es decir, el número de usuarios totales, el número de archivos en la pizarra, el historial de todas las modificaciones, etc.
 
 \subsection{Buscar}
-Permite buscar archivos en la pizarra, buscando por nombre, tamaño, extensión, modificación, etc. El agente debe introducir un string con el nombre del archivo a buscar y se facilitará una lista con los archivos encontrados, si los hay.
-
+Permite buscar archivos en la pizarra. Se podrán especificar varios parámetros de búsqueda, como podrían ser el nombre, tamaño, extensión, modificación, etc. El agente debe introducir un String con el nombre del archivo deseado y se facilitará una lista con los archivos encontrados, en caso de que los hubiera.
 \subsection{Comparar}
 Permite comparar dos archivos, pudiendo por tanto apreciar las diferencias existentes en aspectos como tamaño, formato o líneas modificadas. Para ello será necesario que el agente introduzca el archivo en comparar(Archivo archivo), y al igual que en otras funcionalidades se guardará el usuario que ha realizado dicha comparación. Finalmente se devuelve un archivo donde se indican las diferencias.
 
@@ -67,8 +88,7 @@ Permite comparar dos archivos, pudiendo por tanto apreciar las diferencias exist
 Permite crear una carpeta dentro de la pizarra.Para ello será necesario introducir la ruta y nombre de la carpeta que deseamos crear (debe tener un nombre único), que en crearCarpeta(string direccion, string nombre), que se comunica con pizarra.crearCarpeta(), que además de precisar los dos anteriores datos guardará el usuario que ha creado la carpeta y los permisos que tiene.
 
 \subsection{Crear Usuario}
-Permite crear nuevos agentes en la pizarra. Sólo puede ser utilizado por el Administrador. Se introducen los datos del nuevo usuario como userid y pass, se hace una llamada a la base de datos para comprobar que el usuario no existe y se añade.
-
+Permite crear nuevos agentes en la pizarra. Esta función solo puede ser usada por el Administrador. Para ello se deberán introducir como viene siendo habitual el nombre de usuario y la contraseña. La pizarra comprobará que el efectivamente se trata del administrador consultando en la base de datos el nivel asociado al nombre de usuario. Si el resultado es satisfactorio, se invocará el método crearUsuario(), donde se deberán especificar el nuevo nombre de usuario, contraseña, y nivel que dispondrá el nuevo usuario. Finalmente se comprobará que el nombre de usuario deseado no esté ya en uso, en cuyo caso se deberá cambiar.
 \subsection{Gestionar permisos}
 Una explicación más detallada precisan los permisos, que pueden tener los distintos usuarios. En nuestra aplicación los usuarios podrán tener los 3 permisos básicos típicos, tal y como se explica en la siguiente tabla: \\
 
@@ -84,7 +104,7 @@ Número & Permiso  & Descripción \\
 \end{tabular}
 \end{center}
 
-Dichos permisos sólo pueden ser modificados por el usuario Administrador mediante agente.gestionarPermisos() que invocará a pizarra.gestionarPermisos() y  finalmente a \\ Nivel.cambiarPermiso() donde se podrán especificar los nuevos permisos del usuario.
+Dichos permisos sólo pueden ser modificados por el usuario Administrador mediante agente.gestionarPermisos() que invocará a pizarra.gestionarPermisos() y  finalmente a \\ Nivel.cambiarPermiso() donde se podrán especificar los nuevos permisos del usuario. El administrador dispondrá de todos los permisos.
 
 \subsection{Configurar pizarra}
 Mediante esta función podemos configurar algunos aspectos de nuestra pizarra, como podrían ser asuntos de conexión, máximo de conexiones simultáneas, número máximo de usuarios permitidos y algunas opciones de depuración. Para ello será necesario que el agente acceda a configurarPizarra(Configuración config), para que a continuación la pizarra reciba la configuración nueva, además del usuario que la ha definido.
