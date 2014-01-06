@@ -4,9 +4,9 @@ Una vez especificados los requisitos de nuestra pizarra, además de los UML nece
 Se considerará que nuestro PC cumple con todos los requisitos necesarios para que tanto nuestra librería como nuestra aplicación puedan funcionar sin problemas. Ello conlleva que nuestro PC disponga de conexión a Internet y tenga instalado algún compilador de C++. En definitiva, que se pueda instalar y usar nuestra aplicación sin problemas añadidos.
 
 \section{Puesta a punto de la aplicación} \label{sec:puesta}
-En primer lugar se detallarán los primeros pasos típicos que realizará nuestra aplicación. Primeramente será necesario conectarnos (se considerará que el registro, donde se especifican tanto el nombre de usuario como la contraseña se han realizado anterior y correctamente, por ejemplo, en nuestra aplicación).\\
+En primer lugar se detallarán los primeros pasos típicos que realizará nuestra aplicación. Primeramente será necesario conectarnos. Se considerará que el registro (donde se especifican tanto el nombre de usuario como la contraseña) se ha realizado anterior y correctamente, por ejemplo en nuestra aplicación).\\
 
-Existen dos tipos de usuarios: administradores y normales. Los primeros cuentan con más opciones, y se explicarán más adelante. Lo primero de todo será Iniciar sesión, que se realizará de la siguiente manera:
+Existen dos tipos de usuarios: administradores y normales. Los primeros cuentan con más opciones a la hora de organizar la pizarra, tal y como se explicará más adelante. Lo primero de todo, tanto para administradores como para usuarios corrientes será iniciar sesión, que se realizará de la siguiente manera:
 \begin{verbatim}
 
 
@@ -38,7 +38,7 @@ A continuación se hará una breve descripción de las funcionalidades de las qu
 \section{Funcionalidades y ejemplos}
 \subsection{Iniciar sesión}
 Como ya se ha explicado en el apartado de primeros pasos (Véase apartado \ref{sec:puesta}) , este método será invocado constantemente por parte de los usuarios de nuestra aplicación, y su funcionamiento es el siguiente:\\
-En primer lugar el usuario deberá introducir su nombre de usuario y contraseña formados por sendos string que se parametrizarán en iniciarSesión(string userid, string pass). A continuación la clase Pizarra recibe dicho parámetros en pizarra.buscar(string userid , string pass), que consultará en la base de datos si los parámetros introducidos son correctos. Si lo han sido, devolverá el usuario con sus correspondientes permisos, lo que permitirá al agente comprobar que puede y que no puede hacer.
+En primer lugar el usuario deberá introducir su nombre de usuario y contraseña formados por sendos string que se parametrizarán en iniciarSesión(string userid, string pass). A continuación la clase Pizarra recibe dichos parámetros en pizarra.buscar(string userid , string pass), que consultará en la base de datos si los parámetros introducidos son correctos. Si lo han sido, devolverá el usuario con sus correspondientes permisos, lo que permitirá al agente comprobar que puede y que no puede hacer.
 
 \subsection{Mostrar estadísticas}\label{sec:est}
 Esta funcionalidad permite saber las estadísticas a nivel de usuario, es decir, el número de archivos editados, permisos cambiados, datos borrados etc. Para ello será necesario que el agente introduzca su nombre de usuario, que mediante mostrarEstadísticas(string userid) se comunicará con la pizarra, y finalmente con la clase Estadísticas, mediante la cual se podrán consultar los cambios realizados por cada usuario, además de la opción de refrescar las estadísticas (por si durante la consulta de dichas estadísticas otro usuario realiza alguna opción que modifique las ahora obsoletas).
