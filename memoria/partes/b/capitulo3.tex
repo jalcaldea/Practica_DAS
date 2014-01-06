@@ -1,53 +1,79 @@
 \chapter{Manual de uso de la librería}
 Una vez especificados los requisitos de nuestra pizarra, además de los UML necesarios que describen su funcionamiento, incorporamos un breve manual de usuario con el que un programador ajeno podría construir fácilmente un agente o grupo de agentes que utilicen la pizarra para comunicarse.
 \section{Consideraciones previas}
-Se considerará que nuestro PC cumple con todos los requisitos necesarios para que tanto nuestra librería como nuestra aplicación puedan funcionar sin problemas. Ello conlleva que las versiones de java, flash, y demás estén correctamente actualizadas; que nuestro PC disponga de conexión a Internet, o las actualizaciones de C++ necesarias. En definitiva, que se pueda instalar y usar nuestra aplicación sin problemas añadidos.
-\section{Puesta a punto de la aplicación}
-En primer lugar se detallarán los primeros pasos típicos que realizará nuestra aplicación. Primeramente será necesario conectarnos (se considerará que el registro, donde se especifican tanto el nombre de usuario como la contraseña se han realizado anterior y correctamente, por ejemplo en la supuesta página web de nuestra aplicación) 
+Se considerará que nuestro PC cumple con todos los requisitos necesarios para que tanto nuestra librería como nuestra aplicación puedan funcionar sin problemas. Ello conlleva que nuestro PC disponga de conexión a Internet y tenga instalado algún compilador de C++. En definitiva, que se pueda instalar y usar nuestra aplicación sin problemas añadidos.
+
+\section{Puesta a punto de la aplicación} \label{sec:puesta}
+En primer lugar se detallarán los primeros pasos típicos que realizará nuestra aplicación. Primeramente será necesario conectarnos (se considerará que el registro, donde se especifican tanto el nombre de usuario como la contraseña se han realizado anterior y correctamente, por ejemplo, en nuestra aplicación).\\
 
 Existen dos tipos de usuarios: administradores y normales. Los primeros cuentan con más opciones, y se explicarán más adelante. Lo primero de todo será Iniciar sesión, que se realizará de la siguiente manera:
 \begin{verbatim}
 
 
-#include<NuestraLibrería.h>
+#include <pizarra.h>
+#include <iostream.h>
 
-Agente app = new app(loginuser, passuser, new Pizarra(IP, puerto, nombre));  //Creamos un agente con los parámetros que hemos introducido por teclado
+using namespace std;
 
-Usuario user = app.iniciarSesion(app.getUser(), pass); //Llama al método que nos permitirá iniciar sesión
+Agente app = new Agente(loginuser, passuser, new Pizarra(IP, puerto, nombre)); 
+//Creamos un agente con los parámetros que hemos introducido por teclado
 
+Usuario user = app.iniciarSesion(app.getUser(), pass); 
+//Llama al método que nos permitirá iniciar sesión
 
-if(user != null){ // Si el usuario ha introducido sus datos correctamente y éstos se encuentran en la base de datos
+if(user != null){ 
+// Si el usuario ha introducido sus datos correctamente 
+y éstos se encuentran en la base de datos
 
-}else{            // No ha encontrado el usuario o la contraseña incorrecta, y se mostrará el pertinente mensaje 
+}else{            
+// No ha encontrado el usuario o la contraseña incorrecta, y 
+se mostrará el pertinente mensaje 
 
-    Pizarra.existe(user)? imprimir(\color{red}"Contraseña incorrecta"\color{black}):imprimir(\color{red}"Nombre de usuario incorrecto"\color{black});
+    Pizarra.existe(user) ? cout << "Contraseña incorrecta":
+    cout << "Nombre de usuario incorrecto";
 }
 \end{verbatim}
 
 A continuación se hará una breve descripción de las funcionalidades de las que dispone un agente:
 \section{Funcionalidades y ejemplos}
 \subsection{Iniciar sesión}
-Como ya se ha explicado en el apartado de primeros pasos \color{red} AQUÍ UNA REFERENCIA A SU APARTADO \color{black} , este método será invocado constantemente por parte de los usuarios de nuestra aplicación, y su funcionamiento es el siguiente:\\
-En primer lugar el usuario deberá introducir su nombre de usuario y contraseña (ambos Strings) que se parametrizarán en iniciarSesión(userid String, pass String). A continuación la clase Pizarra recibe dicho parámetros en pizarra.buscar(userid String, pass String), que consultará en la base de datos si los parámetros introducidos son correctos. Si lo han sido, devolverá el usuario con sus correspondientes permisos, lo que permitirá al agente comprobar que puede y que no puede hacer. Además de en el lado cliente, será necesario que en el lado servidor se realice una comprobación para evitar posibles hackeos.
-\subsection{Mostrar estadísticas}
-Esta funcionalidad permite saber las estadísticas a nivel de usuario, es decir, el número de archivos editados, permisos cambiados, datos borrados etc. Para ello será necesario que el agente introduzca su nombre de usuario, que mediante mostrarEstadísticas(userid String) se comunicará con la pizarra, y finalmente con la clase Estadísticas, mediante la cual se podrán consultar los cambios realizados por cada usuario, además de la opción de refrescar las estadísticas (por si durante la consulta de dichas estadísticas otro usuario realiza alguna opción que modifique las ahora obsoletas)
+Como ya se ha explicado en el apartado de primeros pasos (Véase apartado \ref{sec:puesta}) , este método será invocado constantemente por parte de los usuarios de nuestra aplicación, y su funcionamiento es el siguiente:\\
+En primer lugar el usuario deberá introducir su nombre de usuario y contraseña formados por sendos string que se parametrizarán en iniciarSesión(string userid, string pass). A continuación la clase Pizarra recibe dicho parámetros en pizarra.buscar(string userid , string pass), que consultará en la base de datos si los parámetros introducidos son correctos. Si lo han sido, devolverá el usuario con sus correspondientes permisos, lo que permitirá al agente comprobar que puede y que no puede hacer.
+
+\subsection{Mostrar estadísticas}\label{sec:est}
+Esta funcionalidad permite saber las estadísticas a nivel de usuario, es decir, el número de archivos editados, permisos cambiados, datos borrados etc. Para ello será necesario que el agente introduzca su nombre de usuario, que mediante mostrarEstadísticas(string userid) se comunicará con la pizarra, y finalmente con la clase Estadísticas, mediante la cual se podrán consultar los cambios realizados por cada usuario, además de la opción de refrescar las estadísticas (por si durante la consulta de dichas estadísticas otro usuario realiza alguna opción que modifique las ahora obsoletas).
 \subsection{Mostrar estadísticas generales}
-Funciona de un modo muy parecido a mostrar estadísticas  \color{red} AQUÍ OTRA REFERENCIA \color{black}, con la diferencia de que ahora podremos consultar las estadísticas a nivel global, de todos los usuarios como un solo grupo de trabajo. Esto permitirá consultar el número de archivos subidos al repositorio, archivos borrados...pero todo desde un punto de vista grupal
+Funciona de un modo muy parecido a mostrar estadísticas (Véase apartado \ref{sec:est}), con la diferencia de que ahora podremos consultar las estadísticas a nivel global, de todos los usuarios como un solo grupo de trabajo. Esto permitirá consultar el número de archivos subidos al repositorio, archivos borrados,... pero todo desde un punto de vista grupal.
 \subsection{Escribir}
-\subsection{Leer}
+Es una operación básica de la pizarra, junto a leer y lectura/escritura. Esta operación permite añadir tanto nuevos archivos como modificar archivos de la pizarra. Esta operación está limitada por los permisos del usuario que quiera escribir (salvo el Admin).\\
+Para poder escribir se comprueba mediante Pizarra.getPermiso() si se puede escribir. En caso afirmativo, se procede a subir y a modificar a la pizarra los nuevos archivos. Posteriormente, se hace una llamada a la base de datos para actualizar los nuevos archivos. Si no se tienen permisos, se notifica al usuario en la aplicación.
+
 \subsection{Lectura/Escritura}
+Lectura/Escritura funciona de manera análoga a escribir, salvo que en esta operación se permite también leer.
+
+\subsection{Leer}
+Esta operación es análoga a escribir, salvo que en lugar de escribir se leen archivos.
+
 \subsection{Mostrar estado}
+Permite mostrar el estado actual de la pizarra, es decir, el número de usuarios totales, el número de archivos en la pizarra, el historial de todas las modificaciones, etc.
+
 \subsection{Buscar}
+Permite buscar archivos en la pizarra, buscando por nombre, tamaño, extensión, modificación, etc. El agente debe introducir un string con el nombre del archivo a buscar y se facilitará una lista con los archivos encontrados, si los hay.
 
 \subsection{Comparar}
-Permite comparar dos archivos, pudiendo por tanto apreciar las diferencias existentes en  aspectos como tamaño o formato. Para ello será necesario que el agente introduzca el archivo en comparar(Archivo archivo), y al igual que en otras funcionalidades se guardará el usuario que ha realizado dicha comparación. Finalmente se devuelve un archivo donde se indican las diferencias.
+Permite comparar dos archivos, pudiendo por tanto apreciar las diferencias existentes en aspectos como tamaño, formato o líneas modificadas. Para ello será necesario que el agente introduzca el archivo en comparar(Archivo archivo), y al igual que en otras funcionalidades se guardará el usuario que ha realizado dicha comparación. Finalmente se devuelve un archivo donde se indican las diferencias.
+
 \subsection{Crear Carpeta}
-Permite crear una carpeta dentro de la pizarra.Para ello será necesario introducir la ruta y nombre de la carpeta que deseamos crear, que en crearCarpeta(direccion String, nombre String), que se comuunica con pizarra.crearCarpeta(), que además de precisar los dos anteriores datos guardará el usuario que ha creado la carpeta
+Permite crear una carpeta dentro de la pizarra.Para ello será necesario introducir la ruta y nombre de la carpeta que deseamos crear (debe tener un nombre único), que en crearCarpeta(string direccion, string nombre), que se comunica con pizarra.crearCarpeta(), que además de precisar los dos anteriores datos guardará el usuario que ha creado la carpeta y los permisos que tiene.
+
 \subsection{Crear Usuario}
+Permite crear nuevos agentes en la pizarra. Sólo puede ser utilizado por el Administrador. Se introducen los datos del nuevo usuario como userid y pass, se hace una llamada a la base de datos para comprobar que el usuario no existe y se añade.
+
 \subsection{Gestionar permisos}
-Una explicación más detallada precisan los permisos que pueden tener los distintos usuarios. En nuestra aplicación los usuarios podrán tener los 3 permisos básicos típicos, tal y como se explica en la siguiente tabla: \\
-\begin{tabular}{||l | c | r||}
-\hline
+Una explicación más detallada precisan los permisos, que pueden tener los distintos usuarios. En nuestra aplicación los usuarios podrán tener los 3 permisos básicos típicos, tal y como se explica en la siguiente tabla: \\
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
 \hline
 Número & Permiso  & Descripción \\
 \hline
@@ -56,8 +82,10 @@ Número & Permiso  & Descripción \\
 2& Buscar & El usuario puede buscar archivos en la pizarra\\
 \hline
 \end{tabular}
+\end{center}
 
-Dichos permisos pueden ser modificados por un usuario Administrador mediante agente.gestionarPermisos() que invocará a pizarra.gestionarPermisos() y finalmente a Nivel.cambiarPermiso() donde se podrán especificar los nuevos permisos del usuario.
+Dichos permisos sólo pueden ser modificados por el usuario Administrador mediante agente.gestionarPermisos() que invocará a pizarra.gestionarPermisos() y  finalmente a \\ Nivel.cambiarPermiso() donde se podrán especificar los nuevos permisos del usuario.
+
 \subsection{Configurar pizarra}
-Mediante esta función podemos configurar algunos aspectos de nuestra pizarra, como podrían ser asuntos de conexión, máximo de conexiones simultaneas, número máximo de usuarios permitidos y algunas opciones de depuración. Para ello será necesario que el agente acceda a configurarPizarra(Configuración config), para que a continuación la pizarra reciba la configuración nueva, además del usuario que la ha definido.
+Mediante esta función podemos configurar algunos aspectos de nuestra pizarra, como podrían ser asuntos de conexión, máximo de conexiones simultáneas, número máximo de usuarios permitidos y algunas opciones de depuración. Para ello será necesario que el agente acceda a configurarPizarra(Configuración config), para que a continuación la pizarra reciba la configuración nueva, además del usuario que la ha definido.
 
