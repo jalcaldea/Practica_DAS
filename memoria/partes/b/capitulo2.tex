@@ -85,15 +85,6 @@ Tras la extracción de los requisitos es necesario documentar la estructura de c
 
 En primer lugar diseñaremos un diagrama de clases que permita una visión general de las clases que componen la plataforma y su relación, para después incluir un diagrama de casos de uso que permite ver de una forma más detallada los requisitos extraídos anteriormente así como su relación con los distintos actores. Para finalizar, analizaremos de forma detallada y mediante diagramas de actividad cada uno de los casos de uso resultantes.\\
 
-\subsection{Diagramas de secuencia}
-
-El diagrama de secuencia es un tipo de diagrama usado para modelar interacción entre objetos en un sistema según UML.
-
-\begin{figure}[!h]
-\centering
-\seqIniciarSesion
-\caption{Diagrama de secuencia de iniciar sesión}
-\end{figure}
 
 \subsection{Diagrama de clases}
 Un diagrama de clases es un diagrama estático destinado a la programación orientada a objetos que permite describir las clases de un sistema, así como sus propiedades, operaciones, relaciones entre ellas y herencia.\\
@@ -324,3 +315,18 @@ Todos los diagramas se muestran a continuación:
 \end{figure}
 \newpage
 
+\subsection{Diagramas de secuencia}
+
+El diagrama de secuencia es un diagrama UML utilizado para modelar la interacción entre objetos. Este diagrama se modela para cada caso de uso. Consta de dos tipos de mensajes:
+\begin{enumerate}
+	\item \textbf{Síncrono: }Corresponden con llamadas a métodos. Se representan con flechas rellenas en negro.
+	\item \textbf{Asíncrono: }Terminan inmediatamente y crean un nuevo hilo de ejecución dentro de la secuencia. Se representan con flechas sin rellenar.
+\end{enumerate}
+
+Los diagramas de secuencia correspondientes a los casos de uso de nuestra plataforma se ponen a continuación.
+
+\begin{figure}[!h]
+\centering
+\seqIniciarSesion
+\caption{Diagrama de secuencia de iniciar sesión}
+\end{figure}
