@@ -1,16 +1,16 @@
 \newcommand{\seqIniciarSesion}{
 	\begin{tikzpicture}
 	\begin{umlseqdiag}
-	\umlobject{I}
-	\umlobject{Agente}
-	\umlobject{Pizarra}
-	\umlobject{Usuario}
-	\begin{umlcall}[op=iniciarSesion(), type=synchron, return=iniciarSesion()]{I}{Agente}
-	\begin{umlcall}[op=comprobarUsuario(), type=synchron, return=comprobarUsuario()]{Agente}{Pizarra}
-	\begin{umlcall}[op=comprobarUser(), type=synchron, return=comprobarUser()]{Pizarra}{Usuario}
-	\end{umlcall}
-	\end{umlcall}
-	\end{umlcall}
+		\umlobject{I}
+		\umlobject{Agente}
+		\umlobject{Pizarra}
+		\umlobject{Usuario}
+		\begin{umlcall}[op=iniciarSesion(), type=synchron, return=iniciarSesion()]{I}{Agente}
+			\begin{umlcall}[op=comprobarUsuario(), type=synchron, return=comprobarUsuario()]{Agente}{Pizarra}
+				\begin{umlcall}[op=comprobarUser(), type=synchron, return=comprobarUser()]{Pizarra}{Usuario}
+				\end{umlcall}
+			\end{umlcall}
+		\end{umlcall}
 	\end{umlseqdiag}
 	\end{tikzpicture}
 }

@@ -12,10 +12,10 @@
 		{hardware}{\figuraHard}
 		{sohost1}{\figuraSO}
 		{sohost2}{\figuraSOsimpl}
-		{hipervisor}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
-		{maqinavirtual}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
-		{virtualizacionnat}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
-		{virtualizacionhost}{\fbox{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA}}}
+		{hipervisor}{\hipervisor}
+		{maqinavirtual}{\maquinavir{0.7}{1}}
+		{virtualizacionnat}{\maquinavir{0.3}{0.4} \maquinavir{0.3}{0.4} \maquinavir{0.3}{0.4} \virtualizacionNat}
+		{virtualizacionhost}{\maquinavir{0.3}{0.4} \maquinavir{0.3}{0.4} \maquinavir{0.3}{0.4} \virtualizacionHost}
 		{vmware}{\fbox{\parbox{70mm}{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA\\ ES COMO LA ÚLTIMA PERO LAS VM ESTAN EL EL SERVIDOR}}}}
 	% PARTE II %
 		{3}{\pizarra}
@@ -133,6 +133,111 @@
 	\node at (3,1.5) {\textsc{Aplicaciones}};
 	\node at (3,0.5) {\textsc{Sistema Operativo}};
 	\node at (3,-0.5) {\textsc{Hardware}};
+\end{tikzpicture}
+}
+
+\newcommand{\hipervisor}{
+\begin{tikzpicture}
+	\draw[rounded corners=3mm, fill=blue!40, thick] (-0.05,-0.05) rectangle (10.05,3.05);
+	\draw[rounded corners=3mm, fill=blue!20, thick] (0.2,0.2) rectangle (6.6,2.05);
+	\draw[rounded corners=3mm, fill=blue!20, thick] (6.7,0.2) rectangle (9.9,2.05);
+
+	\draw[thick] (0.2,0.82) -- (6.6,0.82);
+	\draw[thick] (0.2,1.43) -- (6.6,1.43);
+	
+	\draw[thick] (1.2,1.43) -- (1.2,0.82);
+	\draw[thick] (4.3,1.43) -- (4.3,0.82);
+	
+	
+	\node at (2,2.5) {\textsc{Hipervisor}};
+	
+	\node at (3.3,1.74) {\textsc{Interfaz de hiperllamada}};
+	\node at (0.7,1.125) {\textsc{E/S}};
+	\node at (2.75,1.125) {{\small \textsc{Interrupciones}}};
+	\node at (5.4,1.125) {{\footnotesize \textsc{Mapa pág.}}};
+	\node at (3.5,0.5) {\textsc{Organizador (\emph{Scheduler})}};
+	
+	\node at (8.2,1.4) {\textsc{Kernel}};
+	\node at (8.2,0.9) {\textsc{Básico}};
+\end{tikzpicture}
+}
+
+\newcommand{\maquinavir}[2]{
+\begin{tikzpicture}[scale=#1]
+	\draw[rounded corners=3mm, fill=gray!30, thick] (-0.30,-0.3) rectangle (10.3,10);
+	\draw[rounded corners=3mm, fill=green!30, thick] (-0.05,6.05) rectangle (10.05,9.05);
+	\draw[rounded corners=3mm, fill=red!40, thick] (-0.05,3.05) rectangle (10.05,6.05);		
+	\draw[rounded corners=3mm, fill=yellow!40, thick] (-0.05,-0.05) rectangle (10.05,3.05);
+	
+	\node at (5,9.4) {\scalebox{#2}{{\Large {\textsc{Máquina Virtual}} }}};
+	
+	\node at (5,7.5) {\scalebox{#2}{{\textsc{Aplicaciones}} }};
+	
+	\node at (5,4.5) {\scalebox{#2}{{\textsc{Sistema operativo}} }};
+	
+	\node at (2.7,2.5) {\scalebox{#2}{{{\small \textsc{Hardware Virtual}} }}};
+	
+	\node at (1.25,1.4) {\includegraphics[scale=#1]{./images/memoria.png}};
+	\node at (1.25,0.5) {\scalebox{#2}{{\scriptsize \textsc{Memoria}}}};
+	
+	\node at (3.75,1.4) {\includegraphics[scale=#1]{./images/hdd.png}};
+	\node at (3.75,0.5) {\scalebox{#2}{{\scriptsize \textsc{Disco}}}};
+	
+	\node at (6.25,1.4) {\includegraphics[scale=#1]{./images/cpu.png}};
+	\node at (6.25,0.5) {\scalebox{#2}{{\scriptsize \textsc{CPU}}}};
+	
+	\node at (8.75,1.4) {\includegraphics[scale=#1]{./images/red.png}};
+	\node at (8.75,0.5) {\scalebox{#2}{{\scriptsize \textsc{Red}}}};
+\end{tikzpicture}
+}
+
+
+\newcommand{\virtualizacionNat}{
+\begin{tikzpicture}
+	\draw[rounded corners=3mm, fill={blue!40}, thick] (0,3.05) rectangle (10.5,4); 
+	\draw[rounded corners=3mm, fill=yellow!40, thick] (-0.05,-0.05) rectangle (10.5,3.05);
+	
+	\node at (5,3.5) {\textsc{Hipervisor o VMM}};
+
+	
+	\node at (2,2.5) {\textsc{Hardware Real}};
+		
+	\node at (1.25,1.4) {\includegraphics{./images/memoria.png}};
+	\node at (1.25,0.5) {\textsc{Memoria}};
+		
+	\node at (3.75,1.4) {\includegraphics{./images/hdd.png}};
+	\node at (3.75,0.5) {\textsc{Disco}};
+		
+	\node at (6.25,1.4) {\includegraphics{./images/cpu.png}};
+	\node at (6.25,0.5) {\textsc{CPU}};
+		
+	\node at (8.75,1.4) {\includegraphics{./images/red.png}};
+	\node at (8.75,0.5) {\textsc{Red}};
+\end{tikzpicture}
+}
+
+\newcommand{\virtualizacionHost}{
+\begin{tikzpicture}
+	\draw[rounded corners=3mm, fill={blue!40}, thick] (0,4) rectangle (10.5,5);
+	\draw[rounded corners=3mm, fill={red!40}, thick] (-0.05,3.05) rectangle (10.5,4);  
+	\draw[rounded corners=3mm, fill=yellow!40, thick] (-0.05,-0.05) rectangle (10.5,3.05);
+	
+		
+	\node at (5,4.5) {\textsc{Hipervisor o VMM}};
+	\node at (5,3.5) {\textsc{Sistema Operativo}};
+	\node at (2,2.5) {\textsc{Hardware Real}};
+			
+		\node at (1.25,1.4) {\includegraphics{./images/memoria.png}};
+		\node at (1.25,0.5) {\textsc{Memoria}};
+			
+		\node at (3.75,1.4) {\includegraphics{./images/hdd.png}};
+		\node at (3.75,0.5) {\textsc{Disco}};
+			
+		\node at (6.25,1.4) {\includegraphics{./images/cpu.png}};
+		\node at (6.25,0.5) {\textsc{CPU}};
+			
+		\node at (8.75,1.4) {\includegraphics{./images/red.png}};
+		\node at (8.75,0.5) {\textsc{Red}};
 \end{tikzpicture}
 }
 
