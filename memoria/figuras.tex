@@ -16,7 +16,7 @@
 		{maqinavirtual}{\maquinavir{0.7}{1}}
 		{virtualizacionnat}{\maquinavir{0.3}{0.4} \maquinavir{0.3}{0.4} \maquinavir{0.3}{0.4} \virtualizacionNat}
 		{virtualizacionhost}{\virtualizacionHost}
-		{vmware}{\fbox{\parbox{70mm}{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA\\ ES COMO LA ÚLTIMA PERO LAS VM ESTAN EL EL SERVIDOR}}}}
+		{vmware}{\vmware}
 	% PARTE II %
 		{pizarra}{\pizarra}
 		{defarquitectura}{\arqdef}
@@ -354,5 +354,71 @@
 	\draw (5,-3) -- (7,-3);
 
 
+\end{tikzpicture}
+}
+
+\newcommand{\vmware}{
+\begin{tikzpicture}
+
+	\draw[rounded corners=3mm, fill=gray!30, thick] (11,10) rectangle (14.5,13.2);
+	\draw[rounded corners=3mm, fill=yellow!40, thick] (11.05,10.1) rectangle (14.45,10.95);
+	\draw[rounded corners=3mm, fill=red!40, thick] (11.05,10.95) rectangle (14.45,11.95);		
+	\draw[rounded corners=3mm, fill=green!40, thick] (11.05,11.95) rectangle (14.45,12.95);
+	
+	\node at (12.75,10.8)  {\textsc{\tiny Hardware virtual}};
+	\node at (12.75,11.45) {\textsc{\scriptsize Aplicaciones}};
+	\node at (12.75,12.45) {\textsc{\tiny Sistema Operativo}};
+	\node at (12.75,13.05) {\textsc{\tiny Máquina Virtual 1}};
+	
+	\node at (11.5,10.4) {\includegraphics[scale=0.3]{./images/memoria.png}};
+	\node at (12.3,10.4) {\includegraphics[scale=0.3]{./images/hdd.png}};
+	\node at (13.3,10.4) {\includegraphics[scale=0.3]{./images/cpu.png}};
+	\node at (14.1,10.4) {\includegraphics[scale=0.3]{./images/red.png}};
+	
+	\draw[rounded corners=3mm, fill=gray!30, thick] (7,8) rectangle (10.5,11.2);
+	\draw[rounded corners=3mm, fill=yellow!40, thick] (7.05,8.1) rectangle (10.45,8.95);
+	\draw[rounded corners=3mm, fill=red!40, thick] (7.05,8.95) rectangle (10.45,9.95);		
+	\draw[rounded corners=3mm, fill=green!40, thick] (7.05,9.95) rectangle (10.45,10.95);
+	
+	\node at (8.75,8.8) { \textsc{\tiny Hardware virtual}};
+	\node at (8.75,10.45) {\textsc{\scriptsize Aplicaciones}};
+	\node at (8.75,9.45) {\textsc{\tiny Sistema Operativo}};
+	\node at (8.75,11.05) {\textsc{\tiny Máquina Virtual 2}};
+	
+	\node at (7.5,8.4) {\includegraphics[scale=0.3]{./images/memoria.png}};
+	\node at (8.3,8.4) {\includegraphics[scale=0.3]{./images/hdd.png}};
+	\node at (9.3,8.4) {\includegraphics[scale=0.3]{./images/cpu.png}};
+	\node at (10.1,8.4) {\includegraphics[scale=0.3]{./images/red.png}};
+	
+	\draw[<-, very thick] (2,10.4) to[in=0, out=-10] (5.5,5.5);
+	\draw[->, thick] (3,11.4) to[in=100, out=1] (8,11.5);
+	\draw[->, thick] (3,12.4) to[in=130, out=1] (12,13.5);
+
+	\draw[rounded corners=3mm, fill={blue!40}, thick] (3,4) rectangle (14.5,5);
+	\draw[rounded corners=3mm, fill={red!40}, thick] (-0.05,3.05) rectangle (14.5,4);  
+	\draw[rounded corners=3mm, fill=yellow!40, thick] (-0.05,-0.05) rectangle (14.5,3.05);
+	\draw[rounded corners=3mm, fill=green!30, thick] (-0.05,4) rectangle (2.85,8.2);
+	
+	\node at (1.45,6.5) {Apps};
+	\node at (1.45,6) {del};
+	\node at (1.45,5.5) {S.O};
+	
+	\node at (8.5,4.5) {\textsc{Hipervisor vmWare}};
+	\node at (7.25,3.5) {\textsc{Sistema Operativo}};
+	\node at (2,2.5) {\textsc{Hardware Real}};
+			
+	\node at (1,1.4) {\includegraphics{./images/memoria.png}};
+	\node at (1,0.5) {\textsc{Memoria}};
+		
+	\node at (5.5,1.4) {\includegraphics{./images/hdd.png}};
+	\node at (5.5,0.5) {\textsc{Disco}};
+		
+	\node at (9.5,1.4) {\includegraphics{./images/cpu.png}};
+	\node at (9.5,0.5) {\textsc{CPU}};
+			
+	\node at (13.5,1.4) {\includegraphics{./images/red.png}};
+	\node at (13.5,0.5) {\textsc{Red}};
+	
+	\node at (2,12.4) {\includegraphics[scale=0.4]{./images/servidor.jpg}};
 \end{tikzpicture}
 }
