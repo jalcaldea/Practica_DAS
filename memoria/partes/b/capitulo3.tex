@@ -1,44 +1,44 @@
 \chapter{Arquitectura y Diseño}
 
-\lettrine[lines=1,slope=4pt,findent=0pt]{I}{}ntroducción
+\lettrine[lines=1,slope=4pt,findent=0pt]{E}{}n este apartado nos centramos plenamente en lo que al diseño se refiere.\\
 
+Los pasos a seguir son: primero describiremos la arquitectura de pizarra mediante un esquema y un diagrama UML de casos de uso; después, analizaremos el diseño en función de los requisitos obtenidos anteriormente y finalmente, diseñaremos la plataforma.
 
-\section{Modelado UML}
-Tras la extracción de los requisitos es necesario documentar la estructura de cada una de las partes que componen la plataforma a crear. Para esto usamos el lenguaje de modelado UML.\\
-%UML es un lenguaje de modelado para visualizar, especificar y documentar de forma gráfica cada una de las partes del desarrollo software. \\
+\section{Arquitectura}
+Ahora vamos a centrarnos en definir gráficamente la arquitectura, en todo momento tenemos en cuenta los requisitos obtenidos en el capítulo anterior (\textit{Véase apartado \ref{reqdiseñopiz}}).
 
-En primer lugar diseñaremos un diagrama de clases que permita una visión general de las clases que componen la plataforma y su relación, para después incluir un diagrama de casos de uso que permite ver de una forma más detallada los requisitos extraídos anteriormente así como su relación con los distintos actores. Para finalizar, analizaremos de forma detallada y mediante diagramas de actividad cada uno de los casos de uso resultantes.\\
+\subsection[Estructura de la arquitectura]{Estructura de nuestra arquitectura de pizarra}
+Para conocer un poco más nuestra arquitectura, es necesario realizar ciertos esquemas o diagramas. Este es uno de ellos que hacen que se entienda bastante bien la arquitectura:
 
+\begin{figure}[H]
+\begin{center}
+\figura{defarquitectura}
+\end{center}
+\caption[Estructura de la arquitectura]{Esquema donde se define la estructura básica de nuestra arquitectura de pizarra}
+\end{figure}
 
-\subsection{Diagrama de clases}
-Un diagrama de clases es un diagrama estático destinado a la programación orientada a objetos que permite describir las clases de un sistema, así como sus propiedades, operaciones, relaciones entre ellas y herencia.\\
+Con esto queda claro como se organizan los agente con la pizarra, pero a grandes rasgos.
 
-A continuación detallamos cada una de las clases que aparecen en el diagrama centrándose en la funcionalidad y las relaciones entre ellas. Para una descripción más en profundidad de las operaciones que implementa ver Manual de uso.\\
+\subsection{Análisis de la estructura}
+Para dar un poco más de detalle y ver de que manera se relacionan agente y pizarra, hemos construido un diagrama de casos de uso (\textit{Véase apartado \ref{casosdeuso}}) a partir de los requisitos obtenidos previamente (\textit{Véase apartado \ref{reqdiseñopiz}}), este ha sido el resultado:
 
-\textbf{Pizarra:} El diagrama de clases se centra en esta clase. Contiene las operaciones necesarias para que los agentes puedan interactuar con ella. Almacena los datos relacionados con el estado de la pizarra, así como la lista de usuarios, las estadísticas, los permisos y la configuración.\\
-
-\textbf{Agente:} Permite interactuar con la pizarra, dando opciones para leer o escribir en la misma, así como modificar su configuración o permisos. Hace las veces de interfaz al usuario para usar la pizarra. Contiene el nombre de usuario y la contraseña con la que se interactúa con la pizarra.\\
-
-\textbf{Estado:} Contiene la lista de elementos.\\
-
-\textbf{Elemento:} Puede ser de dos tipos, representado como herencia. Un archivo o una carpeta. Una carpeta contendrá a su vez un listado de elementos.\\
-
-\textbf{Nivel: }Proporciona las operaciones necesarias para comprobar y editar los permisos de la pizarra.\\
-
-\textbf{Configuración: }Permite la visualización y modificación de las configuraciones de la pizarra.\\
-
-\textbf{Estadísticas: }Permite visualizar las estadísticas.\\
-
-\textbf{Usuario:} Permite la modificación y visualización de los datos del usuario, como el nombre, el id, la contraseña y los permisos.
-
-
-\begin{sidewaysfigure}
+\begin{figure}[H]
 \centering
-\clases
-\caption{Diagrama de clases}
-\end{sidewaysfigure}
+\casosdeuso\label{casodeuso1}
+\caption{Diagrama de casos de uso de la arquitectura}
+\end{figure}
 
-\subsection{Diagrama de casos de uso}
+Como se puede apreciar en la \emph{figura \ref{casodeuso1}} los agentes se comunican a la pizarra mediante \emph{Comprobar nivel} y \emph{Actualizar estado}, esto significa que en esas funcionalidades habrá que incluir la conexión entre ambos.\\
+
+Por otro lado, se trata de un diagrama sencillo que no tiene gran contenido, como era de esperar.
+
+\section{Diseño inicial o análisis}
+En este apartado el principal objetivo es realizar un análisis de los requisitos obtenidos y un diseño previo, similar al realizado en el apartado anterior, sólo que en este caso de una manera más completa.\\
+
+En primer lugar diseñaremos un diagrama de casos de uso que permite ver de una forma más detallada los requisitos extraídos anteriormente así como su relación con los distintos actores, para después analizar de forma detallada mediante diagramas de actividad cada uno de los casos de uso resultantes. Para finalizar, incluiremos un diagrama de clases que permita una visión general de las clases que componen la plataforma y su relación.\\
+
+
+\subsection{Diagrama de casos de uso}\label{casosdeuso}
 Un diagrama de casos de uso permite la visualización de las actividades que se permite realizar la plataforma. A estas actividades se las denomina \textit{casos de uso}. El diagrama de casos de uso define también los actores o roles que interactúan con la aplicación y las relaciones que existen entre los distintos casos de uso. Las relaciones pueden ser de dos tipos:
 
 \begin{itemize}
@@ -141,7 +141,7 @@ Los pasos a seguir son iniciar sesión, se muestra el estado de la pizarra, se a
 Todos los diagramas se muestran a continuación: 
 
 \vspace*{3cm}
-\begin{figure}[!h]
+\begin{figure}[!h,scale=0.3]
 \centering
 \actualizarPizarra\label{fig:actualizarPizarra}
 \caption{Actualizar pizarra}
@@ -239,6 +239,38 @@ Todos los diagramas se muestran a continuación:
 \end{figure}
 \newpage
 
+\subsection{Diagrama de clases}
+Un diagrama de clases es un diagrama estático destinado a la programación orientada a objetos que permite describir las clases de un sistema, así como sus propiedades, operaciones, relaciones entre ellas y herencia.\\
+
+A continuación detallamos cada una de las clases que aparecen en el diagrama centrándose en la funcionalidad y las relaciones entre ellas. Para una descripción más en profundidad de las operaciones que implementa ver Manual de uso.\\
+
+\textbf{Pizarra:} El diagrama de clases se centra en esta clase. Contiene las operaciones necesarias para que los agentes puedan interactuar con ella. Almacena los datos relacionados con el estado de la pizarra, así como la lista de usuarios, las estadísticas, los permisos y la configuración.\\
+
+\textbf{Agente:} Permite interactuar con la pizarra, dando opciones para leer o escribir en la misma, así como modificar su configuración o permisos. Hace las veces de interfaz al usuario para usar la pizarra. Contiene el nombre de usuario y la contraseña con la que se interactúa con la pizarra.\\
+
+\textbf{Estado:} Contiene la lista de elementos.\\
+
+\textbf{Elemento:} Puede ser de dos tipos, representado como herencia. Un archivo o una carpeta. Una carpeta contendrá a su vez un listado de elementos.\\
+
+\textbf{Nivel: }Proporciona las operaciones necesarias para comprobar y editar los permisos de la pizarra.\\
+
+\textbf{Configuración: }Permite la visualización y modificación de las configuraciones de la pizarra.\\
+
+\textbf{Estadísticas: }Permite visualizar las estadísticas.\\
+
+\textbf{Usuario:} Permite la modificación y visualización de los datos del usuario, como el nombre, el id, la contraseña y los permisos.
+
+
+\begin{sidewaysfigure}
+\centering
+\clases
+\caption{Diagrama de clases}
+\end{sidewaysfigure}
+
+
+
+
+
 \subsection{Diagramas de secuencia}
 
 El diagrama de secuencia es un diagrama UML utilizado para modelar la interacción entre objetos. Este diagrama se modela para cada caso de uso. Consta de dos tipos de mensajes:
@@ -254,3 +286,5 @@ Los diagramas de secuencia correspondientes a los casos de uso de nuestra plataf
 \seqIniciarSesion
 \caption{Diagrama de secuencia de iniciar sesión}
 \end{figure}
+
+\section{Diseño final}
