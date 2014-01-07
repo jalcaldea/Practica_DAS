@@ -19,6 +19,7 @@
 		{vmware}{\fbox{\parbox{70mm}{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA\\ ES COMO LA ÚLTIMA PERO LAS VM ESTAN EL EL SERVIDOR}}}}
 	% PARTE II %
 		{pizarra}{\pizarra}
+		{defarquitectura}{HAY QUE HACERLO}
 	}[\PackageError{figura}{Figura no declarada: #1}{}]
 }
 
@@ -274,5 +275,24 @@
 	\node at (-1.5,2.25) {\textsc{Agente}};
 	\node[rotate=90] at (1.5,4.5) {\textsc{Agente}};
 	\node[rotate=90] at (4.5,4.5) {\textsc{Agente}};
+\end{tikzpicture}
+}
+
+\newcommand{\arqdef}{
+\begin{tikzpicture}
+
+	\node at (2,2.5) {\textsc{Hardware Real}};
+	
+	\node at (1.25,1.4) {\includegraphics{./images/memoria.png}};
+	\node at (1.25,0.5) {\textsc{Memoria}};
+	
+	\node at (3.75,1.4) {\includegraphics{./images/hdd.png}};
+	\node at (3.75,0.5) {\textsc{Disco}};
+	
+	\node at (6.25,1.4) {\includegraphics{./images/cpu.png}};
+	\node at (6.25,0.5) {\textsc{CPU}};
+	
+	\node at (8.75,1.4) {\includegraphics{./images/red.png}};
+	\node at (8.75,0.5) {\textsc{Red}};
 \end{tikzpicture}
 }
