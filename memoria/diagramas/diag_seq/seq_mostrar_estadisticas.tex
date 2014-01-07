@@ -1,0 +1,25 @@
+
+\newcommand{\seqMostrarEstadisticas}{
+	\begin{tikzpicture}
+	\begin{umlseqdiag}
+	\umlobject{L}
+	\umlobject{Agente}
+	\umlobject{Pizarra}
+	\umlobject{Usuario}
+	\umlobject{Estadisticas}
+	\begin{umlcall}[op=establecerConexion(), type=synchron, return=establecerConexion()]{L}{Agente}
+		\begin{umlcall}[op=comprobarUsuario(), type=synchron, return=comprobarUsuario()]{Agente}{Pizarra}
+			\begin{umlcall}[op=comprobarUser(), type=synchron, return=comprobarUser()]{Pizarra}{Usuario}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+	\begin{umlcall}[op=mostrarEstadisticas(), type=synchron, return=mostrarEstadisticas()]{L}{Agente}
+		\begin{umlcall}[op=mostrarEstadisticas(), type=synchron, return=mostrarEstadisticas()]{Agente}{Pizarra}
+			\begin{umlcall}[op=getUsuario(), type=synchron, return=getUsuario()]{Pizarra}{Estadisticas}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+	
+	\end{umlseqdiag}
+	\end{tikzpicture}
+}

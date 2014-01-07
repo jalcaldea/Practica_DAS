@@ -1,0 +1,37 @@
+\newcommand{\seqComparar}{
+	\begin{tikzpicture}
+	\begin{umlseqdiag}
+	\umlobject{L}
+	\umlobject{Agente}
+	\umlobject{Pizarra}
+	\umlobject{Usuario}
+	\umlobject{Estado}
+	\umlobject{Elemento}
+	\umlobject{Carpeta}
+	\umlobject{Archivo}
+	\begin{umlcall}[op=establecerConexion(), type=synchron, return=establecerConexion()]{L}{Agente}
+		\begin{umlcall}[op=comprobarUsuario(), type=synchron, return=comprobarUsuario()]{Agente}{Pizarra}
+			\begin{umlcall}[op=comprobarUser(), type=synchron, return=comprobarUser()]{Pizarra}{Usuario}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+	\begin{umlcall}[op=comparar(), type=synchron, return=comparar()]{L}{Agente}
+		\begin{umlcall}[op=comparar(), type=synchron, return=comparar()]{Agente}{Pizarra}
+			\begin{umlcall}[op=comparar(), type=synchron, return=comparar()]{Pizarra}{Estado}
+				\begin{umlcall}[op=comparar(), type=synchron, return=comparar()]{Estado}{Elemento}
+					\begin{umlcall}[op=comparar(), type=synchron, return=comparar()]{Elemento}{Carpeta}
+						\begin{umlcall}[op=comparar(), type=synchron, return=comparar()]{Carpeta}{Archivo}
+						\end{umlcall}
+					\end{umlcall}
+				\end{umlcall}
+			\end{umlcall}
+		\end{umlcall}
+		\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Agente}{Pizarra}
+			\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Agente}{Estado}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+
+	\end{umlseqdiag}
+	\end{tikzpicture}
+}

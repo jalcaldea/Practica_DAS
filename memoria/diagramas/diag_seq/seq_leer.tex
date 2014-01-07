@@ -1,0 +1,32 @@
+\newcommand{\seqLeer}{
+	\begin{tikzpicture}
+	\begin{umlseqdiag}
+	\umlobject{L}
+	\umlobject{Agente}
+	\umlobject{Pizarra}
+	\umlobject{Usuario}
+	\umlobject{Estado}
+	\umlobject{Estadisticas}
+	\begin{umlcall}[op=establecerConexion(), type=synchron, return=establecerConexion()]{L}{Agente}
+		\begin{umlcall}[op=comprobarUsuario(), type=synchron, return=comprobarUsuario()]{Agente}{Pizarra}
+			\begin{umlcall}[op=comprobarUser(), type=synchron, return=comprobarUser()]{Pizarra}{Usuario}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+	\begin{umlcall}[op=leer(), type=synchron, return=leer()]{L}{Agente}
+		\begin{umlcall}[op=leer(), type=synchron, return=leer()]{Agente}{Pizarra}
+			\begin{umlcall}[op=leer(), type=synchron, return=leer()]{Pizarra}{Estado}
+			\end{umlcall}
+		\end{umlcall}
+		\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Agente}{Pizarra}
+			\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Pizarra}{Estado}
+			\end{umlcall}
+	\begin{umlcall}[op=actualizarEstadisticas(), type=synchron, return=actualizarEstadisticas()]{Pizarra}{Estadisticas}
+		\end{umlcall}
+	\end{umlcall}
+	\end{umlcall}
+
+	
+	\end{umlseqdiag}
+	\end{tikzpicture}
+}

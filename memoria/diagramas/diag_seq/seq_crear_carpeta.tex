@@ -1,0 +1,35 @@
+\newcommand{\seqCrearCarpeta}{
+	\begin{tikzpicture}
+	\begin{umlseqdiag}
+	\umlobject{L}
+	\umlobject{Agente}
+	\umlobject{Pizarra}
+	\umlobject{Usuario}
+	\umlobject{Estado}
+	\umlobject{Elemento}
+	\umlobject{Carpeta}
+	\begin{umlcall}[op=establecerConexion(), type=synchron, return=establecerConexion()]{L}{Agente}
+		\begin{umlcall}[op=comprobarUsuario(), type=synchron, return=comprobarUsuario()]{Agente}{Pizarra}
+			\begin{umlcall}[op=comprobarUser(), type=synchron, return=comprobarUser()]{Pizarra}{Usuario}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+	\begin{umlcall}[op=crearCarpeta(), type=synchron, return=crearCarpeta()]{L}{Agente}
+		\begin{umlcall}[op=crearCarpeta(), type=synchron, return=crearCarpeta()]{Agente}{Pizarra}
+			\begin{umlcall}[op=crearCarpeta(), type=synchron, return=crearCarpeta()]{Pizarra}{Estado}
+				\begin{umlcall}[op=crearCarpeta(), type=synchron, return=crearCarpeta()]{Estado}{Elemento}
+					\begin{umlcall}[op=<<create>>, type=synchron]{Elemento}{Carpeta}
+					\end{umlcall}
+				\end{umlcall}
+			\end{umlcall}
+		\end{umlcall}
+		\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Agente}{Pizarra}
+			\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Pizarra}{Estado}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+
+	
+	\end{umlseqdiag}
+	\end{tikzpicture}
+}
