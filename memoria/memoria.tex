@@ -1,45 +1,97 @@
-\documentclass[12pt,a4paper,titlepage]{report}
-\usepackage[latin1]{inputenc}
-\usepackage[spanish]{babel}
+\documentclass[12pt,a4paper,titlepage,twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish, es-lcroman]{babel}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black]{hyperref}
 \usepackage{graphicx}
 \usepackage{lettrine}
 \usepackage{float}
 \usepackage{color}
-\usepackage[left=3.00cm, right=3.00cm, top=3.00cm]{geometry}
+\usepackage[top=2cm,bottom=4cm,outer=1.5cm,inner=3cm]{geometry}
+\usepackage[nottoc]{tocbibind}	%Para mostrar la bibliografia en el √≠ndice
+\usepackage{tikz}
+\usepackage[refpages]{gloss} % Para el glosario
+\usepackage{emptypage} % Para eliminar encabezado de las p√°ginas en blanco
+\usepackage{chngcntr}
+\usepackage{etoolbox}
+\usepackage{listings}
+\usepackage{./tikz-uml} % De esta forma no hay que a√±adir paquete al directorio de LaTeX
+\usepackage{rotating} % Para una mejor visualizaci√≥n en el pdf se puede usar \usepackage{pdflscape}
+\usepackage[T1]{fontenc} % Necesario para que se vea el diagrama de casos de uso
+\usepackage{lmodern} % Mejor renderizado al generar el pdf
+\lstset{language=C++} 
+\input{comandos}
+\input{diagramas}
 
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black]{hyperref}
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % 
+
+\counterwithout{figure}{part}
+
+\setlength\parindent{0pt} % Quita la indentaci√≥n
+
+\renewcommand{\glossname}{Glosario} 
+
+\newtheorem{teorema}{Teorema}
+
+\makegloss
 
 \newcommand*{\autores}{
 \begin{tabular}{r l}
-GII+GIS: &  Jes˙s Alcalde Alc·zar \\
- & Adri·n GutiÈrrez JimÈnez \\
- & Germ·n Alonso Azcutia \\
-GIS+MAT: & JosÈ Ignacio Escribano Pablos \\
-GIS: & Carlos V·zquez S·nchez
+GII+GIS: & Jes√∫s Alcalde Alc√°zar \\
+		 & Germ√°n Alonso Azcutia \\
+		 & Adri√°n Guti√©rrez Jim√©nez \\
+GIS+MAT: & Jos√© Ignacio Escribano Pablos \\
+GIS:  	 & Carlos V√°zquez S√°nchez
 \end{tabular}
 }
 
 % Incluye archivo para utilizar el comando \portada
 \include{portada}
+\include{figuras}
+
+% Reinicia el contador a 1 en cada parte
+\makeatletter
+\@addtoreset{chapter}{part} 
+\makeatother
 
 \begin{document}
 
+\frontmatter % Incluye √≠ndice, portada, prefacio, ...
+ 
 % Portada
-\portada{Pr·ctica Obligatoria}{DiseÒo y Arquitectura Software}{\ }{\autores}{MÛstoles}
+
+\portada{Pr√°ctica Obligatoria}{Dise√±o y Arquitectura del Software}{\ }{\autores}{M√≥stoles}
 % Fin Portada
 
 \tableofcontents
-\thispagestyle{empty}
-\part{ObservaciÛn}
-\input{./partes/a/parteA.tex}
-\part{DiseÒo}
-\input{./partes/b/parteB.tex}
-\lettrine[lines=1,slope=4pt,findent=0pt]{P}{}rimera revisiÛn de la memoria.
+\newpage{\ } %A√±adida p√°gina para que no acabe y comience el prefacio
+%\thispagestyle{empty}
 
+
+\input{./partes/prefacio.tex}
+
+\mainmatter % Parte principal
+
+\part{Observaci√≥n}
+\input{./partes/a/parteA.tex}
+
+\part{Dise√±o}
+\input{./partes/b/parteB.tex}
+
+\backmatter % Bibliografia, lista de figuras, glosario, ...
+
+
+\printgloss{./glosario}
+
+\listoffigures
 
 \bibliographystyle{plain}
-\bibliography{./bibliografia/bibliografia.bib}
+\bibliography{./bibliografia/bibliografia}
+
+
+
 \end{document}

@@ -1,0 +1,31 @@
+% Actualizar pizarra
+\newcommand{\actualizarPizarra}{
+\begin{tikzpicture}
+\tikzumlset{fill state=white}
+\umlstateinitial[name=initial]
+\begin{umlstate}[x=0, y=-3,name=datos]{Obtener nuevos datos de la pizarra}
+\end{umlstate}
+
+\begin{umlstate}[x=0, y=-6,name=comprobar]{Conectar con la BD}
+\end{umlstate}
+
+%\umlstatedecision[y=-8, name=check] 
+
+\begin{umlstate}[y=-9,name=sesion]{Guardar cambios en BD}
+\end{umlstate}
+
+\begin{umlstate}[y=-12,name=notificar]{Notificar}
+\end{umlstate}
+
+\umlstatefinal[y=-15, name=final]
+
+\umltrans{initial}{datos}
+\umltrans{datos}{comprobar}
+\umltrans{comprobar}{sesion}
+%\umltrans[arg1=Datos válidos]{check}{sesion}
+\umltrans{sesion}{notificar}
+\umltrans{notificar}{final}
+%\umlHVHtrans[arg1=Datos incorrectos, arm2=-4,pos1=0.4]{check}{notificar}
+
+\end{tikzpicture}
+}

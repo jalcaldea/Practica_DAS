@@ -1,0 +1,24 @@
+
+\newcommand{\seqCrearUsuario}{
+	\begin{tikzpicture}
+\tikzumlset{fill object=gray!30,font =\tiny}
+	\begin{umlseqdiag}
+	\umlobject{L}
+	\umlobject{Agente}
+	\umlobject{Pizarra}
+	\umlobject{Usuario}
+	\begin{umlcall}[op=establecerConexion(), type=synchron, return=establecerConexion()]{L}{Agente}
+		\begin{umlcall}[op=comprobarUsuario(), type=synchron, return=comprobarUsuario()]{Agente}{Pizarra}
+			\begin{umlcall}[op=comprobarUser(), type=synchron, return=comprobarUser()]{Pizarra}{Usuario}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+	\begin{umlcall}[op=crearUsuario(), type=synchron, return=crearUsuario()]{L}{Agente}
+		\begin{umlcall}[op=crearUsuario(), type=synchron, return=crearUsuario()]{Agente}{Pizarra}
+			\begin{umlcall}[op=<<create>>, type=synchron]{Pizarra}{Usuario}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}	
+	\end{umlseqdiag}
+	\end{tikzpicture}
+}

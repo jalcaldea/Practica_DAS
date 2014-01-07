@@ -1,0 +1,224 @@
+\chapter{Manual de uso de la librería}
+\lettrine[lines=1,slope=4pt,findent=0pt]{U}{}na vez especificados los requisitos de nuestra pizarra, además de los UML necesarios que describen su funcionamiento, incorporamos un breve manual de usuario con el que un programador ajeno podría construir fácilmente una aplicación que implemente un agente de nuestra plataforma.
+
+\section{Consideraciones previas}
+Se considerará que nuestro PC cumple con todos los requisitos necesarios para que tanto nuestra librería como nuestra aplicación puedan funcionar sin problemas. Ello conlleva que se disponga de conexión a la red y tenga instalado algún compilador de C++, preferiblemente algún entorno de desarrollo como Qt\cite{QT}. En definitiva, que se pueda compilar una aplicación que incluya la plataforma.
+
+\section{Primeros pasos} \label{sec:puesta}
+En primer lugar se detallarán los primeros pasos típicos que realizará nuestra aplicación.\\
+
+Primeramente será necesario conectarnos. Se considerará que el registro (donde se especifican tanto el nombre de usuario como la contraseña) se ha realizado anterior y correctamente, por ejemplo en nuestra aplicación).\\
+
+\subsection{Tipos de usuarios}
+Antes de comenzar es necesario recalcar que existen dos tipos de usuarios: administradores y normales. Los primeros cuentan con más opciones a la hora de organizar la pizarra, tal y como se explicará más adelante, tanto para administradores como para usuarios corrientes será iniciar sesión.
+
+\subsection{Conectarse a la pizarra, Iniciar sesión}
+Ahora se proporciona un ejemplo básico para crear un objeto agente que se conecte a la pizarra:
+
+\begin{lstlisting}
+#include <pizarra.h>
+#include <iostream.h>
+
+using namespace std;
+
+Agente app = new Agente(loginuser, passuser, new Pizarra(IP, puerto, nombre)); 
+//Creamos un agente con los parametros que hemos introducido por teclado
+
+Usuario user = app.iniciarSesion(app.getUser(), pass); 
+//Llama al metodo que nos permitira iniciar sesion
+
+if(user != null){ 
+// Si el usuario ha introducido sus datos correctamente 
+// y estos se encuentran en la base de datos
+
+}else{            
+// No ha encontrado el usuario o la contrasena incorrecta, y 
+// se mostrara el pertinente mensaje 
+
+    Pizarra.existe(user) ? cout << "Invalid Password":
+    cout << "Invalid user name";
+}
+\end{lstlisting}
+
+\textbf{Nota: }En el ejemplo anterior se incluyen las credenciales del usuario en el código por simplificar, deben ser tratados con cuidado estos parámetros, la plataforma no se hará cargo si se pierden o son robados por culpa de una mala implementación.
+
+A continuación se hará una breve descripción de las funcionalidades de las que dispone un agente:
+\section{Funcionalidades y ejemplos}
+Ahora vamos a analizar las distintas funcionalidades que se proporciona con el agente de la plataforma.\\
+\subsection{Funcionalidades básica}
+Aquí encontraras una lista con ejemplos de la funcionalidad más básica de la plataforma.
+
+\subsubsection{Iniciar sesión}
+Como ya se ha explicado en el apartado de primeros pasos (Véase apartado \ref{sec:puesta}) , este método será invocado constantemente por parte de los usuarios de nuestra aplicación, y su funcionamiento es el siguiente:\\
+
+\begin{center}
+\texttt{Usuario user = app.iniciarSesion(app.getUser(), pass);}
+\end{center}
+
+En primer lugar el usuario deberá introducir su nombre de usuario y contraseña formados por sendos string y si los datos con correctos, el método devolverá el usuario con sus correspondientes permisos, lo que permitirá al agente comprobar que puede y que no puede hacer.
+
+\subsubsection{Mostrar estadísticas}\label{sec:est}
+Esta funcionalidad permite saber las estadísticas a nivel de usuario, es decir, el número de archivos editados, datos borrados etc.\\
+Para ello será necesario que el agente introduzca su nombre de usuario, que mediante:
+
+\begin{center}
+\texttt{Estadisticas stats = mostrarEstadisticas(String userid);}
+\end{center}
+
+Se podrán consultar los cambios realizados por cada usuario, con los modos de la clase estadísticas.
+
+\subsubsection{Mostrar estadísticas generales}
+Funciona de un modo muy parecido a mostrar estadísticas, con la diferencia de que ahora podremos consultar las estadísticas a nivel global, de todos los usuarios como un solo grupo de trabajo. Esto permitirá consultar el número de archivos subidos al repositorio, archivos borrados, etc pero todo desde un punto de vista grupal.
+
+\begin{center}
+\texttt{Estadisticas stats = mostrarEstadisticasGenerales();}
+\end{center}
+
+\subsubsection{Escribir}
+Es una operación básica de la pizarra, junto a leer y lectura/escritura. Esta operación permite tanto añadir, no permite sobrescribir archivos de la pizarra. Esta operación está limitada por los permisos del usuario que quiera escribir (salvo el usuario Admin).\\
+
+\begin{center}
+\texttt{app.escribir(''. $\backslash$problemas$\backslash$tema1'', Archivo ejemplo);)}
+\end{center}
+
+Para poder escribir será necesario que el agente especifique el archivo que se quiere escrbir (\emph{''.$\backslash$problemas$\backslash$tema1$\backslash$ejemplo.getNombre()'' en nuestro caso}).\\
+
+Debido a la importancia de esta funcionalidad se adjunta un pequeño código de ejemplo (consideramos que ya ha iniciado sesión) :
+\begin{lstlisting}
+
+. . .
+
+if(this.user.getPermiso() == 0){ 
+// El usuario dispone de los permisos necesarios
+
+app.escribir(''.\problemas\tema1'', Archivo ejemplo) 
+
+
+}else{            
+// No tiene los permisos y salta un mensaje de advertencia
+
+    Pizarra.existe(user) ? cout << "No dispone de los permisos necesarios":
+}
+
+. . .
+\end{lstlisting}
+
+\subsubsection{Lectura/Escritura}
+Lectura/Escritura funciona de manera análoga a escribir, salvo que en esta operación si soporta la sobrescritura.
+
+\begin{center}
+\texttt{app.lecturaEscritura(''.$\backslash$problemas$\backslash$tema1'', Archivo ejemplo);)}
+\end{center}
+
+Por lo tanto no escribirá si el archivo ya existe.
+
+\subsubsection{Leer}
+Esta operación es análoga a escribir, salvo que en lugar de escribir se leen archivos.
+
+\begin{center}
+\texttt{Archivo ejemplo = app.lectura(''.$\backslash$problema $\backslash$tema1'');}
+\end{center}
+
+Es altamente recomendable utilizar conjuntamente los métodos \emph{leer} y \emph{lecturaEscritura} para poder editar archivos, cómo por ejemplo así:
+
+\begin{lstlisting}
+
+. . .
+
+if(this.user.getPermiso() == 1 && this.user.getPermiso() == 2){ 
+// El usuario dispone de los permisos necesarios
+
+Archivo ejemplo = app.leer(''.\problemas\tema1\ej1.c'') 
+
+\\Se edita el archivo ejemplo
+      .  .  .
+\\Se edita el archivo ejemplo
+
+app.lecturaEscritura(''.\problemas\tema1'', ejemplo);
+
+}else{            
+// No tiene los permisos y salta un mensaje de advertencia
+
+    Pizarra.existe(user) ? cout << "No dispone de los permisos necesarios":
+}
+
+. . .
+\end{lstlisting}
+ 
+\subsubsection{Mostrar estado}
+Permite mostrar el estado actual de la pizarra, es decir, el número de usuarios totales, el número de archivos en la pizarra, el historial de todas las modificaciones, etc.
+
+\begin{center}
+\texttt{app.mostrarEstado();}
+\end{center}
+
+\subsubsection{Buscar}
+Permite buscar archivos en la pizarra. Sólo se podrá especificar el nombre del archivo o carpeta a buscar. El agente debe introducir un String con el nombre del archivo deseado y se facilitará una lista con los archivos encontrados, en caso de que los hubiera.
+
+\begin{center}
+\texttt{app.buscar(''ejercicio1'');}
+\end{center}
+
+
+\subsubsection{Comparar}
+Permite comparar dos archivos, pudiendo por tanto apreciar las diferencias existentes en aspectos como tamaño, formato o líneas modificadas.\\
+
+Para ello será necesario que el agente introduzca el archivo en comparar(Archivo archivo), y al igual que en otras funcionalidades se guardará el usuario que ha realizado dicha comparación. Finalmente se devuelve un archivo donde se indican las diferencias.
+
+\begin{center}
+\texttt{Archivo diff = app.comparar(ejercicio1, solucion1);}
+\end{center}
+
+\subsubsection{Crear Carpeta}
+Permite crear una carpeta dentro de la pizarra. Para ello será necesario introducir la ruta y nombre de la carpeta que deseamos crear (debe tener un nombre único).
+
+\begin{center}
+\texttt{app.crearCarpeta(''.$\backslash$ejercicios$\backslash$tema1$\backslash$soluciones'');}
+\end{center}
+
+Este método, al igual que todos requiere una comprobación de los permisos.
+
+\subsubsection{Crear Usuario}
+Permite crear nuevos agentes en la pizarra. Esta función solo puede ser usada por el Administrador.\\
+
+\begin{center}
+\texttt{app.crearUsuario(new Usuario(nombre, userid, pass, niveluser));}
+\end{center}
+
+Para ello se deberán especificar, como bien se muestra arriba, el nuevo nombre de usuario, contraseña, y nivel que dispondrá el nuevo usuario. Finalmente se comprobará que el nombre de usuario deseado no esté ya en uso, en cuyo caso se deberá cambiar.
+
+\subsubsection{Configurar pizarra}
+Mediante esta función podemos configurar algunos aspectos de nuestra pizarra, como podrían ser asuntos de conexión, máximo de conexiones simultáneas, número máximo de usuarios permitidos y algunas opciones de depuración.\\
+
+\begin{center}
+\texttt{app.configurarPizarra(new Configuracion(datos[]));}
+\end{center}
+
+\subsection{Gestionar permisos}
+Una explicación más detallada precisan los permisos, que pueden tener los distintos usuarios. En nuestra aplicación los usuarios podrán tener los 7 permisos básicos típicos, tal y como se explica en la siguiente tabla: \\
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Número & Permiso  & Descripción \\
+\hline
+0& Leer & El usuario puede obtener información de la pizarra\\
+1& Escribir & El usuario puede añadir datos a la pizarra\\
+2& Lectura Escritura & El usuario puede sobrescribir datos en la pizarra\\
+3& Buscar & El usuario puede buscar datos en la pizarra\\
+4& Comparar & El usuario puede comparar archivos de la pizarra\\
+5& Buscar & El usuario puede buscar archivos en la pizarra\\
+6& Crear Carpeta & El usuario puede crear carpetas en la pizarra\\
+7& Admin & El usuario que posee este permiso se comporta como admin.\\
+\hline
+\end{tabular}
+\end{center}
+\footnote{Sólo un usuario puede poseer los permisos de admin}\\
+
+Dichos permisos sólo pueden ser modificados por el usuario Administrador mediante:
+
+\begin{center}
+\texttt{app.gestionarPermisos(usuario);}
+\end{center}
+
+

@@ -1,0 +1,11 @@
+\newcommand{\seqComprobarNivel}{
+	\begin{tikzpicture}
+\tikzumlset{fill object=gray!30,font =\tiny}
+	\begin{umlseqdiag}
+		\umlobject{Agente}
+		\umlobject{Pizarra}
+		\begin{umlcall}[op=comprobarPermisos(), type=synchron, return=comprobarPermisos)]{Agente}{Pizarra}
+		\end{umlcall}
+		\end{umlseqdiag}
+	\end{tikzpicture}
+}

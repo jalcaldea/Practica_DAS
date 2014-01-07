@@ -1,0 +1,41 @@
+% Estadisticas
+\newcommand{\estadisticas}{
+\begin{tikzpicture}
+\tikzumlset{fill state=white}
+\umlstateinitial[name=initial]
+
+\begin{umlstate}[x=0, y=-3,name=sesion]{Iniciar sesión}
+\end{umlstate}
+
+\umlstatedecision[y=-6, name=check] 
+
+\begin{umlstate}[x=0, y=-9,name=datos]{Introducir datos de las estadísticas buscadas}
+\end{umlstate}
+
+\begin{umlstate}[y=-12,name=bd]{Conectar a la BD}
+\end{umlstate}
+
+\begin{umlstate}[y=-15,name=comprobar]{Buscar las estadísticas}
+\end{umlstate}
+
+\begin{umlstate}[x=7, y=-15, name=actualizar]{Mostrar resultados}
+\end{umlstate}
+
+\umlstatefinal[x=7, y=-9, name=final]
+
+\begin{umlstate}[x=7, y=-6, name=notificar]{Notificar}
+\end{umlstate}
+
+
+\umltrans{initial}{sesion}
+\umltrans{sesion}{check}
+\umltrans[arg1=SI]{check}{datos}
+\umltrans{datos}{bd}
+\umltrans{bd}{comprobar}
+\umltrans{comprobar}{actualizar}
+\umltrans{actualizar}{final}
+\umltrans{notificar}{final}
+\umltrans[arg1=NO]{check}{notificar}
+
+\end{tikzpicture}
+}

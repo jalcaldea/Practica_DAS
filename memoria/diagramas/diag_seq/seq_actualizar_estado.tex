@@ -1,0 +1,14 @@
+\newcommand{\seqActualizarEstado}{
+	\begin{tikzpicture}
+	\tikzumlset{fill object=gray!30,font =\tiny}
+	\begin{umlseqdiag}
+		\umlobject{Agente}
+		\umlobject{Pizarra}
+		\umlobject{Estado}
+		\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Agente}{Pizarra}
+			\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Pizarra}{Estado}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlseqdiag}
+	\end{tikzpicture}
+}

@@ -1,0 +1,30 @@
+\newcommand{\seqMostrarEstado}{
+	\begin{tikzpicture}
+	\tikzumlset{fill object=gray!30,font =\tiny}
+	\begin{umlseqdiag}
+	\umlobject{L}
+	\umlobject{Agente}
+	\umlobject{Pizarra}
+	\umlobject{Usuario}
+	\umlobject{Estado}
+	\begin{umlcall}[op=establecerConexion(), type=synchron, return=establecerConexion()]{L}{Agente}
+		\begin{umlcall}[op=comprobarUsuario(), type=synchron, return=comprobarUsuario()]{Agente}{Pizarra}
+			\begin{umlcall}[op=comprobarUser(), type=synchron, return=comprobarUser()]{Pizarra}{Usuario}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+	\begin{umlcall}[op=mostrarEstado(), type=synchron, return=mostrarEstado()]{L}{Agente}
+		\begin{umlcall}[op=mostrarEstado(), type=synchron, return=mostrarEstado()]{Agente}{Pizarra}
+			\begin{umlcall}[op=mostrarEstado), type=synchron, return=mostrarEstado()]{Pizarra}{Estado}
+			\end{umlcall}
+		\end{umlcall}
+		\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Agente}{Pizarra}
+			\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Pizarra}{Estado}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+
+	
+	\end{umlseqdiag}
+	\end{tikzpicture}
+}

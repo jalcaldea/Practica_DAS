@@ -1,0 +1,433 @@
+\chapter{Arquitectura y Diseño}
+
+\lettrine[lines=1,slope=4pt,findent=0pt]{E}{}n este apartado nos centramos plenamente en lo que al diseño se refiere.\\
+
+Los pasos a seguir son: primero describiremos la arquitectura de pizarra mediante un esquema y un diagrama UML de casos de uso; después, analizaremos el diseño en función de los requisitos obtenidos anteriormente y finalmente, diseñaremos la plataforma.
+
+\section{Arquitectura}
+Ahora vamos a centrarnos en definir gráficamente la arquitectura, en todo momento tenemos en cuenta los requisitos obtenidos en el capítulo anterior (\textit{Véase apartado \ref{reqdiseñopiz}}).
+
+\subsection[Estructura de la arquitectura]{Estructura de nuestra arquitectura de pizarra}
+Para conocer un poco más nuestra arquitectura, es necesario realizar ciertos esquemas o diagramas. Este es uno de ellos que hacen que se entienda bastante bien la arquitectura:
+
+\begin{figure}[H]
+\begin{center}
+\figura{defarquitectura}
+\end{center}
+\caption[Estructura de la arquitectura]{Esquema donde se define la estructura básica de nuestra arquitectura de pizarra}
+\end{figure}
+
+Con esto queda claro como se organizan los agente con la pizarra, pero a grandes rasgos.
+
+\subsection{Análisis de la estructura}
+Para dar un poco más de detalle y ver de que manera se relacionan agente y pizarra, hemos construido un diagrama de casos de uso (\textit{Véase apartado \ref{casosdeuso}}) a partir de los requisitos obtenidos previamente (\textit{Véase apartado \ref{reqdiseñopiz}}), este ha sido el resultado:
+
+\begin{figure}[H]
+\centering
+\casosdeuso
+\caption{Diagrama de casos de uso de la arquitectura}
+\label{casodeuso1}
+\end{figure}
+
+Como se puede apreciar en la \emph{figura \ref{casodeuso1}} los agentes se comunican a la pizarra mediante \emph{Comprobar nivel} y \emph{Actualizar estado}, esto significa que en esas funcionalidades habrá que incluir la conexión entre ambos.\\
+
+Por otro lado, se trata de un diagrama sencillo que no tiene gran contenido, como era de esperar.
+
+\section{Diseño inicial o análisis}
+En este apartado el principal objetivo es realizar un análisis de los requisitos obtenidos y un diseño previo, similar al realizado en el apartado anterior, sólo que en este caso de una manera más completa.\\
+
+En primer lugar diseñaremos un diagrama de casos de uso que permite ver de una forma más detallada los requisitos extraídos anteriormente así como su relación con los distintos actores, para después analizar de forma detallada mediante diagramas de actividad cada uno de los casos de uso resultantes. Para finalizar, incluiremos un diagrama de clases que permita una visión general de las clases que componen la plataforma y su relación.\\
+
+
+\subsection{Diagrama de casos de uso}\label{casosdeuso}
+Un diagrama de casos de uso permite la visualización de las actividades que se permite realizar la plataforma. A estas actividades se las denomina \textit{casos de uso}. El diagrama de casos de uso define también los actores o roles que interactúan con la aplicación y las relaciones que existen entre los distintos casos de uso. Las relaciones pueden ser de dos tipos:
+
+\begin{itemize}
+	\item \textbf{Inclusión:} Un caso de uso depende de la salida que el caso de uso con el que se relaciona produce.
+	\item \textbf{Extensión:} Un caso de uso que extiende su comportamiento a otro caso de uso, que realiza la misma función. 
+\end{itemize}
+
+\subsubsection{Diagrama de casos de uso de la paltaforma}
+
+En nuestro caso el diagrama se encuentra el la \emph{figura \ref{casodeusos2}}, en ella se aprecia que nuestra plataforma consta de tres actores:
+
+\begin{itemize}
+\item \textbf{Usuario:} Cualquier persona con una cuenta a la que se le permita la interacción con el servidor.
+\item \textbf{Administrador:} Es un usuario normal, pero con funcionalidad añadida; sólo existe uno en el sistema.
+\item \textbf{Pizarra:} Es el actor principal de nuestra aplicación; es el responsable de interrelacionar a los usuario y al administrador.   
+\end{itemize}
+
+También se ha de apreciar que los casos de uso son muy similares a los que encontramos en la \emph{figura \ref{casodeuso1}}, correspondiente con el diseño de la arquitectura, en realidad el único cambio que se produce es el cambio entre agente y usuario.\\
+
+Ahora, en su lugar, encontramos un actor \emph{Usuario} que solo tiene acceso a \emph{Iniciar Sesión}, y es que, en resumidas cuantas, podemos descomponer un \emph{Agente} como un usuario que inicia sesión desde un ordenador.
+
+\begin{sidewaysfigure}
+\centering
+\casos
+\caption{Diagrama de casos de uso}
+\label{casodeusos2}
+\end{sidewaysfigure}
+
+\newpage
+
+\subsection{Diagramas de actividad}
+Un diagrama de actividad es una representación de un proceso de forma gráfica. Consta de una serie de símbolos que representan los distintos pasos a seguir y flechas que indican el flujo de ejecución que se sigue un caso de uso. Hemos realizado uno para cada caso de uso:\\
+
+\textbf{Comprobar nivel:} (\emph{Figura \ref{fig:comprobarNivel}}) este caso de uso permite comprobar el nivel en el que se encuentra el usuario.
+\begin{figure}[H]
+\centering
+\comprobarNivel
+\caption{Diagrama de actividad de Comprobar nivel}
+\label{fig:comprobarNivel}
+\end{figure}
+\newpage
+
+\textbf{Iniciar sesión:} (\emph{Figura \ref{fig:iniciarSesion}}) se introduce el id de usuario y la contraseña para poder tener acceso a la plataforma.
+
+\begin{figure}[H]
+\centering
+\iniciarSesion
+\caption{Diagrama de actividad de Iniciar sesión}
+\label{fig:iniciarSesion}
+\end{figure}
+\newpage
+
+\textbf{Actualizar Pizarra:} (\emph{Figura \ref{fig:actualizarPizarra}}) éste es uno de los estados básicos de la pizarra, ya que cada vez se escribe, se borra o se modifica algún archivo hay que hacer uso de éste.
+
+\begin{figure}[H]
+\centering
+\actualizarPizarra
+\caption{Diagrama de actividad de Actualizar pizarra}
+\label{fig:actualizarPizarra}
+\end{figure}
+\newpage
+
+\textbf{Estadísticas:} (\emph{Figura \ref{fig:estadisticas}}) permite ver las estadísticas de un determinado usuario.
+
+\begin{figure}[H]
+\centering
+\estadisticas
+\caption{Diagrama de actividad de Estadísticas}
+\label{fig:estadisticas}
+\end{figure}
+\newpage
+
+\textbf{Escribir (in):} (\emph{Figura \ref{fig:escribir}}) éste es uno de las operaciones básicas de la pizarra. Escribe un nuevo dato en la pizarra.
+
+\begin{figure}[H]
+\centering
+\escribir
+\caption{Diagrama de actividad de Escribir}
+\label{fig:escribir}
+\end{figure}
+\newpage
+
+\textbf{Leer (out):} (\emph{Figura \ref{fig:leer}}) leer datos de la pizarra.
+
+\begin{figure}[H]
+\centering
+\leer
+\caption{Diagrama de actividad de Leer}
+\label{fig:leer}
+\end{figure}
+\newpage
+
+\textbf{Lectura/Escritura (rd):} (\emph{Figura \ref{fig:lecturaEscritura}}) este caso de uso permite la escritura en la pizarra pero sin eliminar los datos anteriores, es decir que permite tanto leer como escribir en la pizarra.
+
+\begin{figure}[H]
+\centering
+\lecturaEscritura
+\caption{Diagrama de actividad de Lectura/Escritura}
+\label{fig:lecturaEscritura}
+\end{figure}
+\newpage
+
+\textbf{Mostrar estado:} (\emph{Figura \ref{fig:mostrarEstado}}) muestra el estado actual de la pizarra.
+
+\begin{figure}[H]
+\centering
+\mostrarEstado
+\caption{Diagrama de actividad de Mostrar estado}
+\label{fig:mostrarEstado}
+\end{figure}
+\newpage
+
+\textbf{Buscar:} (\emph{Figura \ref{fig:buscar}}) este caso de uso busca entre los archivos de la pizarra y devuelve los datos de los archivos en caso de que se hayan encontrado de acuerdo a los datos de la búsqueda.
+
+\begin{figure}[H]
+\centering
+\buscar
+\caption{Diagrama de actividad de Buscar}
+\label{fig:buscar}
+\end{figure}
+\newpage
+
+\textbf{Comparar:} (\emph{Figura \ref{fig:comparar}}) este caso de uso compara dos o más archivos y devuelve si se ha modificado algo y qué es lo que se ha modificado.
+
+\begin{figure}[H]
+\centering
+\comparar
+\caption{Diagrama de actividad de Comparar}
+\label{fig:comparar}
+\end{figure}
+\newpage
+
+\textbf{Crear carpeta:} (\emph{Figura \ref{fig:crearCarpeta}}) este caso de uso permite crear nuevas carpetas a los usuarios.
+
+\begin{figure}[H]
+\centering
+\crearCarpeta
+\caption{Diagrama de actividad de Crear carpeta}
+\label{fig:crearCarpeta}
+\end{figure}
+\newpage
+
+\textbf{Gestionar permisos:} (\emph{Figura \ref{fig:gestionarPermisos}}) permite cambiar los permisos tanto de lectura como de escritura de un determinado usuario.
+
+\begin{figure}[H]
+\centering
+\gestionarPermisos
+\caption{Diagrama de actividad de Gestionar permisos}
+\label{fig:gestionarPermisos}
+\end{figure}
+\newpage
+
+\textbf{Configurar pizarra:} (\emph{Figura \ref{fig:configurarPizarra}}) este caso de uso sirve para configurar la pizarra, cambiando los distintos parámetros.
+
+\begin{figure}[H]
+\centering
+\configurarPizarra
+\caption{Diagrama de actividad de Configurar pizarra}
+\label{fig:configurarPizarra}
+\end{figure}
+\newpage
+
+\textbf{Crear usuario:} (\emph{Figura \ref{fig:crearUsuario}}) este caso de uso está restringido sólo al administrador. Crea un nuevo usuario en la pizarra.
+
+\begin{figure}[H]
+\centering
+\crearUsuario
+\caption{Diagrama de actividad de Crear usuario}
+\label{fig:crearUsuario}
+\end{figure}
+\newpage
+
+\subsection{Diagrama de clases}
+Un diagrama de clases es un diagrama estático destinado a la programación orientada a objetos que permite describir las clases de un sistema, así como sus propiedades, operaciones, relaciones entre ellas y herencia.\\
+
+Se suelen hacer varias versiones de estos diagramas, generalmente dos, una para la parte de análisis que abordaremos ahora y otra para la parte de diseño que describiremos más adelante.\\
+
+\subsubsection{Clases de la plataforma}
+A continuación detallamos cada una de las clases que aparecen en el diagrama (\emph{figura \ref{diagramadeclases}}) centrándose en sus propiedades y las relaciones entre ellas.\\
+
+\textbf{Pizarra:} El diagrama de clases se centra en esta clase. Almacena los datos relacionados con el estado de la pizarra, así como la lista de usuarios, las estadísticas, los permisos y la configuración.\\
+
+\textbf{Agente:} Permite interactuar con la pizarra y hace las veces de interfaz al usuario para usar la pizarra. Contiene el nombre de usuario y la contraseña con la que se interactúa con la pizarra.\\
+
+\textbf{Estado:} Contiene la lista de elementos.\\
+
+\textbf{Elemento:} Puede ser de dos tipos, representado como herencia. Un archivo o una carpeta. Una carpeta contendrá a su vez un listado de elementos.\\
+
+\textbf{Nivel: }Proporciona las operaciones necesarias para comprobar y editar los permisos de la pizarra.\\
+
+\textbf{Configuración: }Permite la visualización y modificación de las configuraciones de la pizarra.\\
+
+\textbf{Estadísticas: }Permite visualizar las estadísticas.\\
+
+\textbf{Usuario:} Contiene el nombre, el id, la contraseña y los permisos del usuario.
+
+
+\begin{sidewaysfigure}
+\centering
+\clasesanalisis
+\caption{Diagrama de clases}
+\label{diagramadeclases}
+\end{sidewaysfigure}
+\newpage
+
+
+\section{Diseño final}
+En este apartado nos centramos en un diseño más profundo, destinado a ser la documentación que se proporcionaría a los encargados de la implementación de la plataforma.\\
+
+Para comenzar, vamos a completar el diagrama de clases añadiéndole los métodos necesarios para su correcto funcionamiento y después realizaremos una serie de diagramas de secuencia, sólo correspondientes a la parte de \emph{Agente} debido a que es lo que se nos pide en esta práctica.
+
+\subsection{Diagrama de clases}
+Completamos el diagrama anterior (\emph{Figura \ref{diagramadeclases}}) añadiendole los métodos correspondientes, obteniendo como resultado la \emph{figura \ref{diagramadeclases2}}.\\
+
+Ahora vamos a analizar la funcionalidad de cada clase:
+
+\textbf{Pizarra:} Contiene las operaciones necesarias para que los agentes puedan interactuar con ella.\\
+
+\textbf{Agente:} Permite interactuar con la pizarra, dando opciones para leer o escribir en la misma, así como modificar su configuración o permisos.\\
+
+\textbf{Estado:} Permite actualizar su contenido agregando, modificando o eliminando archivos.\\
+
+\textbf{Nivel: }Proporciona las operaciones necesarias para comprobar y editar los permisos de la pizarra.\\
+
+\textbf{Configuración: }Permite la visualización y modificación de las configuraciones de la pizarra.\\
+
+\textbf{Estadísticas: }Permite visualizar las estadísticas.\\
+
+\textbf{Usuario:} Permite la modificación y visualización de los datos del usuario.
+
+\begin{sidewaysfigure}
+\centering
+\clases
+\caption{Diagrama de clases}
+\label{diagramadeclases2}
+\end{sidewaysfigure}
+\newpage
+
+\subsection{Diagramas de secuencia}
+
+El diagrama de secuencia es un diagrama UML utilizado para modelar la interacción entre objetos. Este diagrama se modela para cada caso de uso. Consta de dos tipos de mensajes:
+\begin{enumerate}
+	\item \textbf{Síncrono: }Corresponden con llamadas a métodos. Se representan con flechas rellenas en negro.
+	\item \textbf{Asíncrono: }Terminan inmediatamente y crean un nuevo hilo de ejecución dentro de la secuencia. Se representan con flechas sin rellenar.
+\end{enumerate}
+
+Los diagramas de secuencia correspondientes a los casos de uso de nuestra plataforma se ponen a continuación.\\
+
+
+\textbf{Actualizar estado:} actualiza el estado actual de la pizarra. (\emph{Figura \ref{fig:seqActualizarEstado}}) 
+
+\begin{figure}[H]
+\centering
+\seqActualizarEstado
+\caption{Diagrama de secuencia de Actualizar estado}
+\label{fig:seqActualizarEstado}
+\end{figure}
+
+
+\textbf{Comprobar Nivel:} Comprueba los permisos del usuario. (\emph{Figura \ref{fig:seqComprobarNivel}}) 
+
+\begin{figure}[H]
+\centering
+\seqComprobarNivel
+\caption{Diagrama de secuencia de comprobar nivel}
+\label{fig:seqComprobarNivel}
+\end{figure}
+
+
+
+\textbf{Crear Usuario:} Crea un nuevo usuario en la BD de usuarios. (\emph{Figura \ref{fig:seqcrearusuario}}) 
+
+\begin{figure}[H]
+\centering
+\seqCrearUsuario
+\caption{Diagrama de secuencia de crear usuario}
+\label{fig:seqcrearusuario}
+\end{figure}
+
+
+\textbf{Iniciar sesión:} Comprueba el usuario en la BD comprobando los permisos de dicho usuario. (\emph{Figura \ref{fig:seqIniciarSesion}}) 
+
+\begin{figure}[H]
+\centering
+\seqIniciarSesion
+\caption{Diagrama de secuencia de iniciar sesión}
+\label{fig:seqIniciarSesion}
+\end{figure}
+
+
+\textbf{Mostrar estadísticas:} Muestra las estadísticas de la actividad del usuario en la pizarra. (\emph{Figura \ref{fig:seqMostrarEstadisticas}}) 
+
+\begin{figure}[H]
+\centering
+\seqMostrarEstadisticas
+\caption{Diagrama de secuencia de mostrar estadísticas}
+\label{fig:seqMostrarEstadisticas}
+\end{figure}
+
+\textbf{Mostrar estadísticas generales:} Muestra las estadísticas generales de la actividad de todos usuarios en la pizarra(\emph{Figura \ref{fig:seqMostrarEstadisticasGenerales}}) 
+
+\begin{figure}[H]
+\centering
+\seqMostrarEstadisticasGenerales
+\caption{Diagrama de secuencia de mostrar estadísticas generales}
+\label{fig:seqMostrarEstadisticasGenerales}
+\end{figure}
+
+\textbf{Mostrar estado:} Muestra el estado actual de la pizarra.(\emph{Figura \ref{fig:seqMostrarEstado}}) 
+
+\begin{figure}[H]
+\centering
+\seqMostrarEstado
+\caption{Diagrama de secuencia de mostrar estado}
+\label{fig:seqMostrarEstado}
+\end{figure}
+
+
+\textbf{Buscar:} Busca un archivo en el estado de la pizarra.(\emph{Figura \ref{fig:seqBuscar}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqBuscar
+\caption{Diagrama de secuencia de buscar}
+\label{fig:seqBuscar}
+\end{sidewaysfigure}
+
+\textbf{Comparar:} Compara dos archivos que se encuentran en el estado de la pizarra.(\emph{Figura \ref{fig:seqComparar}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqComparar
+\caption{Diagrama de secuencia de comparar}
+\label{fig:seqComparar}
+\end{sidewaysfigure}
+
+
+\textbf{Configurar pizarra:} Cambia la configuración de la pizarra. (\emph{Figura \ref{fig:seqConfigurarPizarra}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqConfigurarPizarra
+\caption{Diagrama de secuencia de configurar pizarra}
+\label{fig:seqConfigurarPizarra}
+\end{sidewaysfigure}
+
+\textbf{Crear Carpeta:} Crea una nueva carpeta en el estado de la pizarra. (\emph{Figura \ref{fig:seqCrearCarpeta}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqCrearCarpeta
+\caption{Diagrama de secuencia de crear carpeta}
+\label{fig:seqCrearCarpeta}
+\end{sidewaysfigure}
+
+
+\textbf{Escribir:} Sobreescribe el estado de la pizarra. (\emph{Figura \ref{fig:seqEscribir}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqEscribir
+\caption{Diagrama de secuencia de escribir}
+\label{fig:seqEscribir}
+\end{sidewaysfigure}
+
+\textbf{Lectura/Escritura:} Escribe en el estado de la pizarra sin sobreescribir. (\emph{Figura \ref{fig:seqEscrituraLectura}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqEscrituraLectura
+\caption{Diagrama de secuencia de lectura/escritura}
+\label{fig:seqEscrituraLectura}
+\end{sidewaysfigure}
+
+\textbf{Leer:} Lee el estado de la pizarra(\emph{Figura \ref{fig:seqLeer}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqLeer
+\caption{Diagrama de secuencia de leer}
+\label{fig:seqLeer}
+\end{sidewaysfigure}
+
+\textbf{Gestionar permisos:} Modifica los permisos de un usuario.(\emph{Figura \ref{fig:seqGestionarPermisos}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqGestionarPermisos
+\caption{Diagrama de secuencia de gestionar permisos}
+\label{fig:seqGestionarPermisos}
+\end{sidewaysfigure}

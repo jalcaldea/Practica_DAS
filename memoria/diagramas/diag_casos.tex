@@ -1,0 +1,107 @@
+%Diagrama de casos de uso
+
+\newcommand{\casosdeuso}{
+\begin{tikzpicture}
+\tikzumlset{fill usecase=white}
+\tikzumlset{fill note=gray!30}
+\umlusecase[name=configPizarra]{Configurar pizarra}
+\umlusecase[y=-1, name=crearCarpeta]{Crear carpeta}
+\umlusecase[y=-2, name=buscar]{Buscar}
+\umlusecase[y=-3, name=comparar]{Comparar}
+\umlusecase[x=2, y=3, name=actualizarEstado]{Actualizar estado}
+\umlusecase[x=2, y=1, name=mostrarEstado]{Mostrar estado}
+\umlusecase[x=8, y=1, name=escribir]{Escribir (in)}
+\umlusecase[x=8, y=0, name=leer]{Leer (out)}
+\umlusecase[x=8, y=-1, name=rd]{Escritura/Lectura (rd)}
+\umlusecase[x=6, y=-5, name=gestionarPermisos]{Gestionar permisos}
+\umlusecase[x=14, y=-5, name=nivel]{Comprobar Nivel}
+
+\umlactor[x=3, y=-2]{PIZARRA}
+\umlactor[x=13, y=0]{AGENTE}
+
+\umlinclude{mostrarEstado}{actualizarEstado}
+\umlinclude{configPizarra}{actualizarEstado}
+\umlinclude{rd}{actualizarEstado}
+\umlinclude{leer}{actualizarEstado}
+\umlinclude{escribir}{actualizarEstado}
+\umlextend{escribir}{nivel}
+\umlextend{leer}{nivel}
+\umlextend{nivel}{gestionarPermisos}
+\umlextend{rd}{nivel}
+\umlassoc{AGENTE}{escribir}
+\umlassoc{AGENTE}{leer}
+\umlassoc{AGENTE}{rd}
+\umlassoc{PIZARRA}{comparar}
+\umlassoc{PIZARRA}{buscar}
+\umlassoc{PIZARRA}{crearCarpeta}
+\umlassoc{PIZARRA}{configPizarra}
+\umlassoc{PIZARRA}{mostrarEstado}
+\umlassoc{PIZARRA}{gestionarPermisos}
+\umlassoc{PIZARRA}{mostrarEstado}
+\umlassoc{PIZARRA}{nivel}
+\end{tikzpicture}
+}
+
+\newcommand{\casos}{
+\begin{tikzpicture}
+\tikzumlset{fill usecase=white}
+\tikzumlset{fill note=gray!30}
+\tikzumlset{font=\tiny}
+
+\umlactor[x=6, y=3]{USUARIO}
+\umlactor[x=-4, y=-2]{PIZARRA}
+\umlactor[x=11, y=2]{ADMIN}
+
+\umlusecase[name=estado]{Mostrar estado}
+\umlusecase[y=1, name=rd]{Lectura/Escritura(rd)}
+\umlusecase[y=2, name=out]{Leer(out)}
+\umlusecase[y=3, name=in]{Escribir (in)}
+\umlusecase[y=4, name=estadisticas]{Estadísticas}
+\umlusecase[y=-1, name=buscar]{Buscar}
+\umlusecase[y=-2, name=comparar]{Comparar}
+\umlusecase[y=-3, name=carpeta]{Crear carpeta}
+\umlusecase[y=-5, name=permisos]{Gestionar permisos}
+\umlusecase[x=-1, y=-7, name=configurar]{Configurar pizarra}
+\umlusecase[x=-8, y=3, name=actualizar]{Actualizar estado}
+\umlusecase[x=6, y=1, name=sesionusuario]{Iniciar sesión}
+\umlusecase[x=8, y= -4, name=nivel]{Comprobar nivel}
+\umlusecase[x=11, y=0, name=sesionadmin]{Iniciar sesión}
+\umlusecase[x=13, y=-2, name=crearusuario]{Crear usuario}
+
+\umlnote[x=11, y=4]{ADMIN}{Se trata de un usuario normal con funcionalidad añadida. Sólo existe un solo usuario ADMIN}
+
+\umlassoc{sesionusuario}{estadisticas}
+\umlassoc{PIZARRA}{estado}
+\umlassoc{PIZARRA}{buscar}
+\umlassoc{PIZARRA}{comparar}
+\umlassoc{PIZARRA}{carpeta}
+\umlassoc{PIZARRA}{permisos}
+\umlassoc{PIZARRA}{configurar}
+\umlassoc{ADMIN}{sesionadmin}
+\umlassoc{USUARIO}{sesionusuario}
+
+
+\umlinherit{ADMIN}{USUARIO}
+
+\umlinclude{sesionadmin}{crearusuario}
+\umlinclude{sesionadmin}{permisos}
+\umlinclude{sesionadmin}{configurar}
+\umlextend{sesionadmin}{nivel}
+\umlinclude{sesionusuario}{in}
+\umlinclude{sesionusuario}{out}
+\umlinclude{sesionusuario}{rd}
+\umlinclude{sesionusuario}{estado}
+\umlinclude{sesionusuario}{buscar}
+\umlinclude{sesionusuario}{comparar}
+\umlinclude{sesionusuario}{carpeta}
+\umlextend{nivel}{permisos}
+\umlinclude{estadisticas}{actualizar}
+\umlinclude{in}{actualizar}
+\umlinclude{out}{actualizar}
+\umlinclude{rd}{actualizar}
+\umlHVinclude{configurar}{actualizar}
+\umlextend{sesionusuario}{nivel}
+
+
+\end{tikzpicture}
+}

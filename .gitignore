@@ -10,6 +10,7 @@
 
 /memoria/*.aux
 /memoria/*.log
+/memoria/*.lof
 /memoria/*.out
 /memoria/*.synctex.gz
 /memoria/*.toc
@@ -19,8 +20,12 @@
 /memoria/bibliografia/*.log
 /memoria/*.glo
 /memoria/*.ist
+<<<<<<< HEAD
 
-!/memoria/memoria.pdf
+#!/memoria/memoria.pdf
+=======
+/memoria/*.synctex.gz(busy)
+>>>>>>> a872ce47bde0cc987bafb4d423bafd0d4ee8259e
 
 # -- Sistemas Operativos ------------------------------
 

@@ -1,0 +1,31 @@
+\newcommand{\seqGestionarPermisos}{
+	\begin{tikzpicture}
+	\tikzumlset{fill object=gray!30,font =\tiny}
+	\begin{umlseqdiag}
+	\umlobject{L}
+	\umlobject{Agente}
+	\umlobject{Pizarra}
+	\umlobject{Usuario}
+	\umlobject{Estado}
+	\umlobject{Nivel}
+	\begin{umlcall}[op=establecerConexion(), type=synchron, return=establecerConexion()]{L}{Agente}
+		\begin{umlcall}[op=comprobarUsuario(), type=synchron, return=comprobarUsuario()]{Agente}{Pizarra}
+			\begin{umlcall}[op=comprobarUser(), type=synchron, return=comprobarUser()]{Pizarra}{Usuario}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+	\begin{umlcall}[op=gestionarPermisos(), type=synchron, return=gestionarPermisos()]{L}{Agente}
+		\begin{umlcall}[op=gestionarPermisos(), type=synchron, return=gestionarPermisos()]{Agente}{Pizarra}
+			\begin{umlcall}[op=setNivel(), type=synchron, return=setNivel()]{Pizarra}{Nivel}
+			\end{umlcall}
+		\end{umlcall}
+		\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Agente}{Pizarra}
+			\begin{umlcall}[op=actualizarEstado(), type=synchron, return=actualizarEstado()]{Pizarra}{Estado}	
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+
+	
+	\end{umlseqdiag}
+	\end{tikzpicture}
+}

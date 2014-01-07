@@ -1,0 +1,28 @@
+% Comprobar nivel
+\newcommand{\comprobarNivel}{
+\begin{tikzpicture}
+\tikzumlset{fill state=white}
+\umlstateinitial[x=0, y=3, name=initial]
+
+\begin{umlstate}[y=0,name=datos]{Obtener datos de usuario}
+\end{umlstate}
+
+\begin{umlstate}[x=0, y=-3,name=bd]{Conectar con la BD}
+\end{umlstate}
+
+\begin{umlstate}[x=0, y=-6,name=usuario]{Buscar información de usuario}
+\end{umlstate}
+
+\begin{umlstate}[x=0, y=-9,name=nivel]{Mostrar opciones del nivel}
+\end{umlstate}
+
+\umlstatefinal[y=-11, name=final]
+
+\umltrans{initial}{datos}
+\umltrans{datos}{bd}
+\umltrans{bd}{usuario}
+\umltrans{usuario}{nivel}
+\umltrans{nivel}{final}
+
+\end{tikzpicture}
+}

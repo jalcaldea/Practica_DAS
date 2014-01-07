@@ -1,0 +1,31 @@
+% Leer (out)
+\newcommand{\leer}{
+\begin{tikzpicture}
+\tikzumlset{fill state=white}
+\umlstateinitial[name=initial]
+\begin{umlstate}[x=0, y=-3,name=datos]{Iniciar sesión}
+\end{umlstate}
+
+\umlstatedecision[y=-5, name=permiso] 
+
+\begin{umlstate}[x=0, y=-8,name=comprobar]{Leer datos (Lectura)}
+\end{umlstate}
+
+\begin{umlstate}[y=-11,name=actualizar]{Actualizar pizarra}
+\end{umlstate}
+
+\begin{umlstate}[y=-14,name=notificar]{Notificar}
+\end{umlstate}
+
+\umlstatefinal[y=-16, name=final]
+
+\umltrans{initial}{datos}
+\umltrans{datos}{permiso}
+\umltrans[arg1=SI]{permiso}{comprobar}
+\umltrans{comprobar}{actualizar}
+\umltrans{actualizar}{notificar}
+\umltrans{notificar}{final}
+\umlHVHtrans[arg1=NO, arm2=-4]{permiso}{notificar}
+
+\end{tikzpicture}
+}
