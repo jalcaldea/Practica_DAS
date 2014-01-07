@@ -126,38 +126,6 @@ Pronto descubrimos que sí eran válidos, pero no eran eficientes, al estar todo
 
 Para que el diseño sea más conciso hemos optado por separar los requisitos en dos apartados adicionales: requisitos de la librería, que serán los requisitos de las funcionalidades que se le añaden a la pizarra y requisitos de la pizarra en sí, donde se definirá y diseñará la arquitectura propiamente dicha. 
 
-\subsubsection{Requisitos de la librería}
-Lista con todos los requisitos de librería.
-\begin{itemize}
-\item \textbf{Requisitos funcionales}
-		\begin{itemize}
-			\item La plataforma se gestiona mediante usuarios.
-					\item La plataforma permitirá la creación de nuevos usuarios.
-					\item La plataforma debe guardar las estadísticas de colaboración de cada usuario, mediante gráficos, porcentajes, etc
-					\item La plataforma pedirá las credenciales del usuario al comenzar.
-					\item La plataforma se encargará de revisar la veracidad de los credenciales del usuario.
-					\item El agente adquirirá permisos y funciones dependiendo del usuario que lo ese usando.
-		\end{itemize}
-\item \textbf{Requisitos no funcionales}
-		\begin{itemize}
-			\item \textbf{De producto}
-					\begin{itemize}
-					\item La plataforma debe bloquear a los usuarios para que no puedan acceder a problemas que no se les han asignado.
-					\item La plataforma debe almacenar una contraseña y un identificador único para cada usuario y no permitir que otros accedan.
-					\item La plataforma debe permitir a los usuarios de mayor nivel bloquear contenido.
-					\item Por seguridad los usuarios deben proteger su cuenta con una contraseña de más de 6 caracteres.
-					\item La plataforma no revelará información personal acerca de los usuarios a parte del nombre.
-					\item Cada usuario accederá a la pizarra a través de un agente.
-					\end{itemize}
-			\item \textbf{Organizacionales}
-					\begin{enumerate}
-						\item La plataforma se realizará con el lenguaje de programación C++.
-						\item La plataforma estará implementada siguiendo una arquitectura de pizarra.
-					\end{enumerate}
-			\item \textbf{Externos}
-		\end{itemize}
-\end{itemize}
-
 \subsubsection{Requisitos de la pizarra}
 Lista con todos los requisitos de pizarra.
 \begin{itemize}
@@ -193,3 +161,38 @@ Lista con todos los requisitos de pizarra.
 		\end{itemize}
 \end{itemize}
 
+\subsubsection{Requisitos de la librería}
+Lista con todos los requisitos de librería.
+\begin{itemize}
+\item \textbf{Requisitos funcionales}
+		\begin{itemize}
+			\item La plataforma se gestiona mediante usuarios.
+					\item La plataforma permitirá la creación de nuevos usuarios.
+					\item La plataforma debe guardar las estadísticas de colaboración de cada usuario, mediante gráficos, porcentajes, etc
+					\item La plataforma pedirá las credenciales del usuario al comenzar.
+					\item La plataforma se encargará de revisar la veracidad de los credenciales del usuario.
+					\item El agente adquirirá permisos y funciones dependiendo del usuario que lo ese usando.
+		\end{itemize}
+\item \textbf{Requisitos no funcionales}
+		\begin{itemize}
+			\item \textbf{De producto}
+					\begin{itemize}
+					\item La plataforma debe bloquear a los usuarios para que no puedan acceder a problemas que no se les han asignado.
+					\item La plataforma debe almacenar una contraseña y un identificador único para cada usuario y no permitir que otros accedan.
+					\item La plataforma debe permitir a los usuarios de mayor nivel bloquear contenido.
+					\item Por seguridad los usuarios deben proteger su cuenta con una contraseña de más de 6 caracteres.
+					\item La plataforma no revelará información personal acerca de los usuarios a parte del nombre.
+					\item Cada usuario accederá a la pizarra a través de un agente.
+					\end{itemize}
+			\item \textbf{Organizacionales}
+					\begin{enumerate}
+						\item La plataforma se realizará con el lenguaje de programación C++.
+						\item La plataforma estará implementada siguiendo una arquitectura de pizarra.
+					\end{enumerate}
+			\item \textbf{Externos}
+		\end{itemize}
+\end{itemize}
+
+
+
+Ahora sí, con estos requisitos estamos plenamente preparados para comenzar el diseño de la plataforma, eso sí, comenzando primero por la arquitectura de pizarra.
