@@ -1,5 +1,5 @@
 \chapter{Introducción}
-\lettrine[lines=1,slope=4pt,findent=0pt]{E}{}n la segunda parte de la práctica se nos pide el diseño de una plataforma que implemente una arquitectura de pizarra, para ello vamos a seguir un modelo de desarrollo en cascada\footnote{Modelo de que divide el desarrollo de software en etapas rigurosamente definidas, de forma que para el inicio de una etapa debe esperarse previamente que finalice la anterior. Las etapas son: análisis de requerimientos, diseño, implementación, pruebas y mantenimiento.}.\\
+\lettrine[lines=1,slope=4pt,findent=0pt]{E}{}n la segunda parte de la práctica se nos pide el diseño de una plataforma que implemente una arquitectura de pizarra, para ello vamos a seguir un modelo de desarrollo en cascada\footnote{\textbf{Modelo en cascada:} Divide el desarrollo de software en etapas rigurosamente definidas, de forma que para el inicio de una etapa debe esperarse previamente que finalice la anterior. Las etapas son: análisis de requerimientos, diseño, implementación, pruebas y mantenimiento.}.\\
 
 Por tanto, hemos dividido esta parte de la memoria en cada una de las fases de éste modelo de desarrollo, pero antes es necesario centrarnos en cómo debe diseñarse esta plataforma y que implica que se diseñe de esta manera.
 
@@ -23,7 +23,7 @@ La siguiente figura muestra como interactúan estos \emph{agentes} con la \emph{
 
 \begin{figure}[!h]
 \centering
-\figura{3}
+\figura{pizarra}
 \caption{Interacción entre los agentes y la pizarra}
 \end{figure}
  
@@ -48,15 +48,19 @@ Las arquitecturas en pizarra presentan una serie de inconvenientes importantes, 
 \end{itemize}
 
 \section{¿Qué implica la arquitectura de pizarra?}
-La arquitectura de pizarra implica que no existe interrelación entre los agentes, sólo a través de la pizarra. De esta forma, los agentes colaboran entre ellos para obtener una solución común al problema que se plantea. Por ejemplo, en una plataforma como GitHub, donde distintas personas, de distintos países del mundo, colaboran entre ellos, en este caso, en conseguir hacer una aplicación informática. 
+El utilizar una arquitectura de pizarra para el diseño de la plataforma supone restringir ciertos aspectos.\\
+
+Implica que no existe interrelación entre los agentes, sólo a través de la pizarra de manera que los agentes colaboran entre ellos para obtener una solución común al problema que se plantea. Por ejemplo, en una plataforma como GitHub, donde distintas personas, de distintos países del mundo, colaboran entre ellos, en este caso, en conseguir hacer un producto software, generalmente.\\
+
+Por otro lado, se nos dice en el enunciado que esta pizarra tendrá la característica de que se implementara siguiendo un modelo cliente-servidor, es decir: Debe estar preparada para poder crear la pizarra en un computador y cada agente en otro, conectados a través de la red, esto no quiere decir que en un mismo ordenador no s puedan ejecutar una aplicación cliente y otra servidor, al contrario, en caso de implementar algo de código la manera de probarlo sería de esta manera.
 
 \section{¿Cómo va a ser la plataforma?}
-Nuestra plataforma irá destinada a la interacción de distintos agentes que podrán subir y modificar archivos a través de la pizarra.
+Nuestra plataforma irá destinada a la interacción de distintos agentes que podrán subir y modificar archivos a través de la pizarra, con tres operaciones báscicas: Escribir(\textbf{in}), Leer(\textbf{out}) y escribir sin eliminar(\textbf{rd}).\\
 
 La plataforma constará de dos partes:
 \begin{itemize}
 	\item \textbf{Pizarra: }Será la estructura que contenga la información. Permite a los agentes interactuar sobre ella, escribiendo y leyendo su contenido.
-	\item \textbf{Librería: }Dará las opciones necesarias para que un programador pueda diseñar un agente que interactúe con la pizarra. 
+	\item \textbf{Librería: }Dará las funcionalidades añadidas necesarias para que un programador pueda diseñar un agente que interactúe con la pizarra. 
 \end{itemize}
 
 La implementación de la plataforma se realizará con el lenguaje de programación C++, ya que al ser un lenguaje orientado a objetos nos permite una mayor libertad y comodidad.
