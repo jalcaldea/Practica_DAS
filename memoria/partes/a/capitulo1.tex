@@ -37,7 +37,7 @@ Podemos encontrar dos tipos de éstas dependiendo de cómo se ejecuten en el sis
 
 \begin{itemize}
 \item \textbf{Máquinas virtuales de proceso} o \gloss{MAQVIR} de aplicación, se ejecuta como un proceso normal dentro de un sistema operativo y soporta un solo proceso. Su objetivo es el de proporcionar un entorno de ejecución independiente del sistema operativo y del hardware. Una \gloss{MAQVIR} de proceso muy popular es la de Java o \emph{\gloss[long]{JVM}}.
-\item \textbf{Máquinas virtuales de sistema} o máquinas virtuales de hardware, que permiten a la máquina física multiplicarse entre varias máquinas virtuales, cada una con su propio sistema operativo. A la capa de software que se permite la virtualización se la llama \emph{monitor de máquina virtual} o \gloss[short]{VMM}, anteriormente mencionado.
+\item \textbf{Máquinas virtuales de sistema} o máquinas virtuales de hardware, que permiten a la máquina física multiplicarse entre varias máquinas virtuales, cada una con su propio sistema operativo. A la capa de software que se permite la virtualización se le llama \emph{monitor de máquina virtual} o \gloss[short]{VMM}, anteriormente mencionado.
 \end{itemize}
 
 Como es obvio nosotros nos vamos a centrar en el último tipo, puesto que vamos a analizar la virtualización en las computadoras de la universidad, y éstas se ejecutan como un sistema operativo propio y no como una aplicación de éste.
@@ -57,7 +57,7 @@ Dividiendo las instrucciones en:
 \begin{itemize}
 \item \textbf{Instrucciones privilegiadas:} Las instrucciones que sólo funcionan en modo kernel del procesador y no lo hacen en modo usuario.
 \item \textbf{Instrucciones sensibles de control:} Las instrucciones que al ejecutarse cambian la configuración del sistema de alguna manera.
-\item \textbf{Instrucciones sensibles de comportamiento:} Aquellas que dependen del estado de los recursos del sistema en e momento que se ejecutan. 
+\item \textbf{Instrucciones sensibles de comportamiento:} Aquellas que dependen del estado de los recursos del sistema en el momento que se ejecutan. 
 \end{itemize}
 
 Y como resultado de este análisis formularon los siguientes teoremas.
