@@ -22,7 +22,7 @@ Se trata de un elemento software que dependiendo de cómo se sitúe en relación
 
 Este tipo de \emph{hipervisor} también es conocido como \emph{unhosted} o \emph{bare metal}, que en inglés hacen referencia a que no es huésped o que se ejecuta a bajo nivel, respectivamente.\\
 
-Dentro de este tipo se encuentran VMware ESXi, VMware ESX y Microsoft Hyper-V Server, pero nos gustaría presta una atención especial a \gloss{XEN} por ser un hipervisor de código abierto desarrollado por la Universidad de Cambridge\cite{proyectoxen}\cite{proyectoxen2}.
+Dentro de este tipo se encuentran VMware ESXi, VMware ESX y Microsoft Hyper-V Server, pero nos gustaría prestar una atención especial a \gloss{XEN} por ser un hipervisor de código abierto desarrollado por la Universidad de Cambridge\cite{proyectoxen}\cite{proyectoxen2}.
 \subsection{Hipervisor de Tipo 2 o \emph{Huésped}}\label{tiposvir2}
 Es una arquitectura alternativa para la máquina virtual insertando una capa de virtualización encima del sistema operativo \emph{host} o huésped, siendo éste responsable de administrar el hardware. Los sistemas operativos invitados se instalarán encima del nivel de virtualización, en máquinas virtuales. Tiene la siguiente estructura:
 
@@ -33,7 +33,7 @@ Es una arquitectura alternativa para la máquina virtual insertando una capa de 
 \caption[Hipervisor Tipo 2]{Esquema de un hipervisor de segundo nivel}
 \end{figure}
 
-Este tipo de hipervisor tiene una ventaja muy destacada, el usuario puede instalar esta arquitectura de máquina virtual sin modificar el sistema operativo host pudiendo descansar en el sistema operativo host para entregar los controladores de dispositivos y otros servicios de bajo nivel (se simplifica el diseño de la máquina virtual y facilita la implementación).\\
+Este tipo de hipervisor tiene una ventaja muy destacada, el usuario puede instalar esta arquitectura de máquina virtual sin modificar el sistema operativo host, pudiendo descansar en el sistema operativo host para entregar los controladores de dispositivos y otros servicios de bajo nivel (se simplifica el diseño de la máquina virtual y facilita la implementación).\\
 
 Otra característica suya es que al ejecutarse sobre un sistema operativo huésped, éste puede ejecutar sus propias aplicaciones, por lo que en realidad el esquema completo sería:
 
@@ -76,7 +76,7 @@ Cualquier sistema operativo se puede descomponer en los archivos del sistema o \
 \caption[Sistema Operativo huésped]{Esquema de componentes de un Sistema Operativo \emph{host} o huésped}
 \end{figure}
 
-Cabe destacar que el hardware se comunica con el sistema operativo a traves de su \emph{kernel}. Pero esta última representación profundiza en términos que en estos momentos no nos son de utilidad, por lo que nos vamos a quedar con esta representación:
+Cabe destacar que el hardware se comunica con el sistema operativo a través de su \emph{kernel}. Pero esta última representación profundiza en términos que en estos momentos no nos son de utilidad, por lo que nos vamos a quedar con esta representación:
 
 \begin{figure}[H]
 \begin{center}
