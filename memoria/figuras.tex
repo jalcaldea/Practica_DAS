@@ -19,7 +19,7 @@
 		{vmware}{\fbox{\parbox{70mm}{\textcolor{red}{ESTA FIGURA HAY QUE HACERLA\\ ES COMO LA ÚLTIMA PERO LAS VM ESTAN EL EL SERVIDOR}}}}
 	% PARTE II %
 		{pizarra}{\pizarra}
-		{defarquitectura}{HAY QUE HACERLO}
+		{defarquitectura}{\arqdef}
 	}[\PackageError{figura}{Figura no declarada: #1}{}]
 }
 
@@ -329,7 +329,7 @@
 }
 
 \newcommand{\arqdef}{
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=0.8]
 	\node at (0,0) {\includegraphics[scale=0.3]{./images/computer.png}};
 	\node at (0,-1) {Agente 1};
 	
@@ -342,10 +342,10 @@
 	\node at (0,-6) {Agente n};
 	
 	\node at (4,-3) {\includegraphics[scale=0.3]{./images/servidor.jpg}};
-	\node at (4,-4.5) {Servidor};
+	\node at (4,-5) {Pizarra};
 	
 	\node at (8,-3) {\includegraphics[scale=0.05]{./images/db.png}};
-	\node at (8,-4) {Base de datos};
+	\node at (8,-4.5) {Base de datos};
 	
 	\draw (1,0) -- (3,-3);
 	\draw (1,-2) -- (3,-3);
