@@ -16,11 +16,12 @@
 \usepackage{emptypage} % Para eliminar encabezado de las páginas en blanco
 \usepackage{chngcntr}
 \usepackage{etoolbox}
+\usepackage{listings}
 \usepackage{./tikz-uml} % De esta forma no hay que añadir paquete al directorio de LaTeX
 \usepackage{rotating} % Para una mejor visualización en el pdf se puede usar \usepackage{pdflscape}
 \usepackage[T1]{fontenc} % Necesario para que se vea el diagrama de casos de uso
 \usepackage{lmodern} % Mejor renderizado al generar el pdf
-
+\lstset{language=C++} 
 \input{comandos}
 \input{diagramas}
 
@@ -82,7 +83,7 @@ GIS:  	 & Carlos Vázquez Sánchez
 \input{./partes/b/parteB.tex}
 
 \backmatter % Bibliografia, lista de figuras, glosario, ...
-\newpage{\ } %Añadida página para que no acabe y comience el glosario
+
 
 \printgloss{./glosario}
 
