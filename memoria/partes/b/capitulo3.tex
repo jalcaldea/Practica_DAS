@@ -234,7 +234,7 @@ A continuación detallamos cada una de las clases que aparecen en el diagrama (\
 
 \textbf{Estadísticas: }Permite visualizar las estadísticas.\\
 
-\textbf{Usuario:} Permite la modificación y visualización de los datos del usuario, como el nombre, el id, la contraseña y los permisos.
+\textbf{Usuario:} Contiene el nombre, el id, la contraseña y los permisos del usuario.
 
 
 \begin{sidewaysfigure}
@@ -243,21 +243,24 @@ A continuación detallamos cada una de las clases que aparecen en el diagrama (\
 \caption{Diagrama de clases}
 \label{diagramadeclases}
 \end{sidewaysfigure}
+\newpage
+
 
 \section{Diseño final}
+En este apartado nos centramos en un diseño más profundo, destinado a ser la documentación que se proporcionaría a los encargados de la implementación de la plataforma.\\
+
+Para comenzar, vamos a completar el diagrama de clases añadiéndole los métodos necesarios para su correcto funcionamiento y después realizaremos una serie de diagramas de secuencia, sólo correspondientes a la parte de \emph{Agente} debido a que es lo que se nos pide en esta práctica.
 
 \subsection{Diagrama de clases}
-Un diagrama de clases es un diagrama estático destinado a la programación orientada a objetos que permite describir las clases de un sistema, así como sus propiedades, operaciones, relaciones entre ellas y herencia.\\
+Completamos el diagrama anterior (\emph{Figura \ref{diagramadeclases}}) añadiendole los métodos correspondientes, obteniendo como resultado la \emph{figura \ref{diagramadeclases2}}.\\
 
-A continuación detallamos cada una de las clases que aparecen en el diagrama centrándose en la funcionalidad y las relaciones entre ellas. Para una descripción más en profundidad de las operaciones que implementa ver Manual de uso.\\
+Ahora vamos a analizar la funcionalidad de cada clase:
 
-\textbf{Pizarra:} El diagrama de clases se centra en esta clase. Contiene las operaciones necesarias para que los agentes puedan interactuar con ella. Almacena los datos relacionados con el estado de la pizarra, así como la lista de usuarios, las estadísticas, los permisos y la configuración.\\
+\textbf{Pizarra:} Contiene las operaciones necesarias para que los agentes puedan interactuar con ella.\\
 
-\textbf{Agente:} Permite interactuar con la pizarra, dando opciones para leer o escribir en la misma, así como modificar su configuración o permisos. Hace las veces de interfaz al usuario para usar la pizarra. Contiene el nombre de usuario y la contraseña con la que se interactúa con la pizarra.\\
+\textbf{Agente:} Permite interactuar con la pizarra, dando opciones para leer o escribir en la misma, así como modificar su configuración o permisos.\\
 
-\textbf{Estado:} Contiene la lista de elementos.\\
-
-\textbf{Elemento:} Puede ser de dos tipos, representado como herencia. Un archivo o una carpeta. Una carpeta contendrá a su vez un listado de elementos.\\
+\textbf{Estado:} Permite actualizar su contenido agregando, modificando o eliminando archivos.\\
 
 \textbf{Nivel: }Proporciona las operaciones necesarias para comprobar y editar los permisos de la pizarra.\\
 
@@ -265,15 +268,15 @@ A continuación detallamos cada una de las clases que aparecen en el diagrama ce
 
 \textbf{Estadísticas: }Permite visualizar las estadísticas.\\
 
-\textbf{Usuario:} Permite la modificación y visualización de los datos del usuario, como el nombre, el id, la contraseña y los permisos.
-
+\textbf{Usuario:} Permite la modificación y visualización de los datos del usuario.
 
 \begin{sidewaysfigure}
 \centering
 \clases
 \caption{Diagrama de clases}
+\label{diagramadeclases2}
 \end{sidewaysfigure}
-
+\newpage
 
 \subsection{Diagramas de secuencia}
 

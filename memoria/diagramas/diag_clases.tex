@@ -97,10 +97,12 @@
 }
 
 % Clase Estado
-\umlclass[x=-9, y=10]{Estado}{
+\umlclass[x=-6, y=10]{Estado}{
   -- Vector$<$Elemento$>$
 }{
-
+ + agregarElemento(Elemento elem, String dir):bool\\
+ + eliminarElemneto(String dir):bool\\
+ + modificarElemento(Elemento elem, String dir):bool\\
 }
 
 % Clase Elemento
