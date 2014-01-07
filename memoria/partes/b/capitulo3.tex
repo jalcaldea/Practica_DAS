@@ -286,7 +286,8 @@ El diagrama de secuencia es un diagrama UML utilizado para modelar la interacci�
 	\item \textbf{Asíncrono: }Terminan inmediatamente y crean un nuevo hilo de ejecución dentro de la secuencia. Se representan con flechas sin rellenar.
 \end{enumerate}
 
-Los diagramas de secuencia correspondientes a los casos de uso de nuestra plataforma se ponen a continuación.
+Los diagramas de secuencia correspondientes a los casos de uso de nuestra plataforma se ponen a continuación.\\
+
 
 \textbf{Actualizar estado:} actualiza el estado actual de la pizarra. (\emph{Figura \ref{fig:seqActualizarEstado}}) 
 
@@ -297,23 +298,6 @@ Los diagramas de secuencia correspondientes a los casos de uso de nuestra plataf
 \label{fig:seqActualizarEstado}
 \end{figure}
 
-\textbf{Buscar:} Busca un archivo en el estado de la pizarra.(\emph{Figura \ref{fig:seqBuscar}}) 
-
-\begin{figure}[H]
-\centering
-\seqBuscar
-\caption{Diagrama de secuencia de buscar}
-\label{fig:seqBuscar}
-\end{figure}
-
-\textbf{Comparar:} Compara dos archivos que se encuentran en el estado de la pizarra.(\emph{Figura \ref{fig:seqComparar}}) 
-
-\begin{figure}[H]
-\centering
-\seqComparar
-\caption{Diagrama de secuencia de comparar}
-\label{fig:seqComparar}
-\end{figure}
 
 \textbf{Comprobar Nivel:} Comprueba los permisos del usuario. (\emph{Figura \ref{fig:seqComprobarNivel}}) 
 
@@ -324,23 +308,7 @@ Los diagramas de secuencia correspondientes a los casos de uso de nuestra plataf
 \label{fig:seqComprobarNivel}
 \end{figure}
 
-\textbf{Configurar pizarra:} Cambia la configuración de la pizarra. (\emph{Figura \ref{fig:seqConfigurarPizarra}}) 
 
-\begin{figure}[H]
-\centering
-\seqConfigurarPizarra
-\caption{Diagrama de secuencia de configurar pizarra}
-\label{fig:seqConfigurarPizarra}
-\end{figure}
-
-\textbf{Crear Carpeta:} Crea una nueva carpeta en el estado de la pizarra. (\emph{Figura \ref{fig:seqCrearCarpeta}}) 
-
-\begin{figure}[H]
-\centering
-\seqCrearCarpeta
-\caption{Diagrama de secuencia de crear carpeta}
-\label{fig:seqCrearCarpeta}
-\end{figure}
 
 \textbf{Crear Usuario:} Crea un nuevo usuario en la BD de usuarios. (\emph{Figura \ref{fig:seqcrearusuario}}) 
 
@@ -351,32 +319,6 @@ Los diagramas de secuencia correspondientes a los casos de uso de nuestra plataf
 \label{fig:seqcrearusuario}
 \end{figure}
 
-\textbf{Escribir:} Sobreescribe el estado de la pizarra. (\emph{Figura \ref{fig:seqEscribir}}) 
-
-\begin{figure}[H]
-\centering
-\seqEscribir
-\caption{Diagrama de secuencia de escribir}
-\label{fig:seqEscribir}
-\end{figure}
-
-\textbf{Lectura/Escritura:} Escribe en el estado de la pizarra sin sobreescribir. (\emph{Figura \ref{fig:seqEscrituraLectura}}) 
-
-\begin{figure}[H]
-\centering
-\seqEscrituraLectura
-\caption{Diagrama de secuencia de lectura/escritura}
-\label{fig:seqEscrituraLectura}
-\end{figure}
-
-\textbf{Gestionar permisos:} Modifica los permisos de un usuario.(\emph{Figura \ref{fig:seqGestionarPermisos}}) 
-
-\begin{figure}[H]
-\centering
-\
-\caption{Diagrama de secuencia de gestionar permisos}
-\label{fig:seqGestionarPermisos}
-\end{figure}
 
 \textbf{Iniciar sesión:} Comprueba el usuario en la BD comprobando los permisos de dicho usuario. (\emph{Figura \ref{fig:seqIniciarSesion}}) 
 
@@ -387,14 +329,6 @@ Los diagramas de secuencia correspondientes a los casos de uso de nuestra plataf
 \label{fig:seqIniciarSesion}
 \end{figure}
 
-\textbf{Leer:} Lee el estado de la pizarra(\emph{Figura \ref{fig:seqLeer}}) 
-
-\begin{figure}[H]
-\centering
-\seqLeer
-\caption{Diagrama de secuencia de leer}
-\label{fig:seqLeer}
-\end{figure}
 
 \textbf{Mostrar estadísticas:} Muestra las estadísticas de la actividad del usuario en la pizarra. (\emph{Figura \ref{fig:seqMostrarEstadisticas}}) 
 
@@ -424,9 +358,76 @@ Los diagramas de secuencia correspondientes a los casos de uso de nuestra plataf
 \end{figure}
 
 
+\textbf{Buscar:} Busca un archivo en el estado de la pizarra.(\emph{Figura \ref{fig:seqBuscar}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqBuscar
+\caption{Diagrama de secuencia de buscar}
+\label{fig:seqBuscar}
+\end{sidewaysfigure}
+
+\textbf{Comparar:} Compara dos archivos que se encuentran en el estado de la pizarra.(\emph{Figura \ref{fig:seqComparar}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqComparar
+\caption{Diagrama de secuencia de comparar}
+\label{fig:seqComparar}
+\end{sidewaysfigure}
 
 
+\textbf{Configurar pizarra:} Cambia la configuración de la pizarra. (\emph{Figura \ref{fig:seqConfigurarPizarra}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqConfigurarPizarra
+\caption{Diagrama de secuencia de configurar pizarra}
+\label{fig:seqConfigurarPizarra}
+\end{sidewaysfigure}
+
+\textbf{Crear Carpeta:} Crea una nueva carpeta en el estado de la pizarra. (\emph{Figura \ref{fig:seqCrearCarpeta}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqCrearCarpeta
+\caption{Diagrama de secuencia de crear carpeta}
+\label{fig:seqCrearCarpeta}
+\end{sidewaysfigure}
 
 
+\textbf{Escribir:} Sobreescribe el estado de la pizarra. (\emph{Figura \ref{fig:seqEscribir}}) 
 
+\begin{sidewaysfigure}
+\centering
+\seqEscribir
+\caption{Diagrama de secuencia de escribir}
+\label{fig:seqEscribir}
+\end{sidewaysfigure}
 
+\textbf{Lectura/Escritura:} Escribe en el estado de la pizarra sin sobreescribir. (\emph{Figura \ref{fig:seqEscrituraLectura}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqEscrituraLectura
+\caption{Diagrama de secuencia de lectura/escritura}
+\label{fig:seqEscrituraLectura}
+\end{sidewaysfigure}
+
+\textbf{Leer:} Lee el estado de la pizarra(\emph{Figura \ref{fig:seqLeer}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqLeer
+\caption{Diagrama de secuencia de leer}
+\label{fig:seqLeer}
+\end{sidewaysfigure}
+
+\textbf{Gestionar permisos:} Modifica los permisos de un usuario.(\emph{Figura \ref{fig:seqGestionarPermisos}}) 
+
+\begin{sidewaysfigure}
+\centering
+\seqGestionarPermisos
+\caption{Diagrama de secuencia de gestionar permisos}
+\label{fig:seqGestionarPermisos}
+\end{sidewaysfigure}
