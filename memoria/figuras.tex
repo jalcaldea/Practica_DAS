@@ -330,19 +330,29 @@
 
 \newcommand{\arqdef}{
 \begin{tikzpicture}
+	\node at (0,0) {\includegraphics[scale=0.3]{./images/computer.png}};
+	\node at (0,-1) {Agente 1};
+	
+	\node at (0,-2) {\includegraphics[scale=0.3]{./images/computer.png}};
+	\node at (0,-3) {Agente 2};
+	
+	\node at (0,-4) {$\mathbf{\vdots}$};
+	
+	\node at (0,-5) {\includegraphics[scale=0.3]{./images/computer.png}};
+	\node at (0,-6) {Agente n};
+	
+	\node at (4,-3) {\includegraphics[scale=0.3]{./images/servidor.jpg}};
+	\node at (4,-4.5) {Servidor};
+	
+	\node at (8,-3) {\includegraphics[scale=0.05]{./images/db.png}};
+	\node at (8,-4) {Base de datos};
+	
+	\draw (1,0) -- (3,-3);
+	\draw (1,-2) -- (3,-3);
+	\draw (1,-5) -- (3,-3);
+	
+	\draw (5,-3) -- (7,-3);
 
-	\node at (2,2.5) {\textsc{Hardware Real}};
-	
-	\node at (1.25,1.4) {\includegraphics{./images/memoria.png}};
-	\node at (1.25,0.5) {\textsc{Memoria}};
-	
-	\node at (3.75,1.4) {\includegraphics{./images/hdd.png}};
-	\node at (3.75,0.5) {\textsc{Disco}};
-	
-	\node at (6.25,1.4) {\includegraphics{./images/cpu.png}};
-	\node at (6.25,0.5) {\textsc{CPU}};
-	
-	\node at (8.75,1.4) {\includegraphics{./images/red.png}};
-	\node at (8.75,0.5) {\textsc{Red}};
+
 \end{tikzpicture}
 }
