@@ -1,33 +1,62 @@
+\chapter*{Prefacio}
+\addcontentsline{toc}{chapter}{Prefacio}
+
+\lettrine[lines=1,slope=4pt,findent=0pt]{D}{}urante la realización esta práctica, se han tenido o hemos tenido una serie de pautas o condiciones; por ellos nos gustaría relatar brevemente cuáles han sido dichas pautas y cómo han afectado al desarrollo de la práctica.
+
+
 \section*{Objetivos y motivaciones}
-Tanto en el ámbito informático académico como en el profesional, en ocasiones puede ser necesario un cambio de sistema operativo a la hora de trabajar. Esto puede estar ocasionado tanto por requisitos del lenguaje a utilizar, por una arquitectura más adecuada o simplemente por cuestión de preferencias. Pero estos cambios implicarían una CPU para cada sistema operativo, lo que lo haría terriblemente ineficiente desde el punto de vista económico, ergonómico y logístico. \\
-Por ello es necesario conocer la arquitectura del software que permita escoger entre más de un sistema operativo, y que el adicional (aún sin llegar al nivel de eficiencia del sistema nativo) trabaje a un nivel óptimo.\\
-Pero además de observar y comprender la arquitectura de un software conocido y utilizado comercialmente, también son necesarios los conocimientos necesarios para poder diseñar a un nivel de arquitectura y diseño el funcionamiento de una plataforma. Para ello crearemos una biblioteca en la que cualquier usuario podrá programar un agente capaz de leer y escribir en una pizarra potencialmente remota.\\
-Por tanto los dos principales objetivos de la práctica serán:
+En ocasiones, para los distintos y diversos ámbitos que recoge la informática, puede ser necesario un cambio de sistema operativo con el que trabajar. Esto puede estar ocasionado por diversos motivos: soportar cierto tipo de características, cuestiones de seguridad, mayor rendimiento o simplemente por cuestión de preferencias; este tipo de cambios implican, generalmente, grandes costes y si hablamos de entidades públicas como pudiera ser una universidad, realizar un cambio en de sistema operativo en todos sus ordenadores supondría un gran cantidad de costes.\\
+
+Por ello, sería interesante buscar y conocer una arquitectura de software que permita a un computador escoger entre más de un sistema operativo que trabaje a un nivel óptimo. Esta arquitectura se conoce como \emph{arquitectura de virtualización}.\\
+
+En otro ámbito, pero centrándonos más en las llamadas arquitecturas software; se suele hablar de éstas arquitecturas en cuanto al diseño de productos software se refiere, en asignaturas destinadas a tal efecto; pero, \emph{¿Cómo implmento una aplicación con una cierta arquitectura?}, \emph{¿Es posible implementar una arquitectura de una forma genérica?} y \emph{¿Se podría crear una interfaz con una arquitectura software y utilizarla en varios productos software?}.\\
+
+Por tanto, los objetivos de esta práctica pasan por satisfacer estas dudas e inquietudes, es decir:
 \begin{itemize}
-\item Definir la arquitectura de un sistema de virtualización.
-\item Describir la arquitectura y diseño de una plataforma que implemente la arquitectura de pizarra que pueda ser utilizada por otros programas.
+\item Definir la arquitectura de virtualización y describir un caso en concreto.
+\item Describir la arquitectura y diseño de una plataforma que implemente una arquitectura que pueda ser utilizada por otros programas.
 \end{itemize}
 
 \section*{Estructura de la memoria}
-Debido a las dos partes claramente diferenciadas de la práctica, la memoria se dividirá en dos secciones:
+En cuanto a la distribución de las hojas en este documento, debido a que en la práctica se encuentran dos partes claramente diferenciadas, la memoria ha sido dividida en dos secciones:
 \begin{itemize}
-\item Parte de OBSERVACIÓN: en la que tras una pequeña introducción se detallará la arquitectura del sistema escogido
-\item Parte de DISEÑO: se empezará describiendo qué es una arquitectura de pizarra, qué componentes la forman, etc para posteriormente analizar los requisitos y los diagramas UML de los que constará nuestra aplicación y, finalmente, dar un manual con las operaciones básicas de nuestra aplicación. 
+\item \textbf{Parte de observación:} En la que tras una pequeña introducción se detallará la arquitectura del sistema de virtualización de la universidad.
+\item \textbf{Parte de diseño:} Correspondiente con el diseño de la plataforma, se empezará describiendo qué es una arquitectura de pizarra, qué componentes la forman, etc para posteriormente diseñar una plataforma que implemente una arquitectura de este tipo, finalmente,se dará un manual con las operaciones básicas de nuestra aplicación. 
 \end{itemize}
 
-\section*{¿Por qué GitHub?}
-Para la realización de esta práctica hemos utilizado el software \textbf{GitHub}, propiedad de 	{GitHub Inc}, el cual nos ha permitido trabajar sobre un repositorio al que todos los miembros del grupo teníamos acceso. Hemos elegido usar GitHub por los siguientes motivos:
+Es necesario destacar, que estas partes han sido estrictamente obtenidas del enunciado de la práctica.
+
+\section*{Metodología de trabajo}
+
+Para la realización de esta práctica, uno de los pilares fundamentales ha sido la manera en la que nos hemos organizado.\\
+
+Básicamente y en gran parte debido a las fechas en las que había que realizar la práctica, decidimos probar algo nuevo para nosotros pero que ya conocíamos de oídas: realizar la práctica de una manera distribuida. Por ello uno de los primeros pasos fue buscar alguna herramienta que nos permitiera este tipo de trabajo, entre las opciones se enconraban: dropbox, google drive, google code o GitHub.\\
+
+La elección dependía de cómo fuéramos a afrontar la práctica, es decir, si decidiamos que cada uno se encargará de una cosa, seguramente \emph{Dropbox} hubiera sido la mejor opción, pero al ser gran cantidad de contenido decidimos que lo mejor sería ir mirando poco a poco que era necesario hacer.\\
+
+Por este motivo también, un simple archivo \emph{*.doc} no nos valía, ya que \emph{¿Qué sucede si escribimos los dos a la vez?}.\\
+
+Por todos ello el resultado de una tarde de organización fue realizar la memoria de la práctica en lenguaje \LaTeX~ en un repositorio en GitHub\cite{repositorio}.
+
+\subsection*{¿Por qué GitHub?}
+Esta plataforma junto con el control de versiones git\cite{git} nos ha permitido trabajar sobre un repositorio al que todos los miembros del grupo teníamos acceso y mediante el cuál podíamos compartir nuestras dudas y sugerencias y trabajar cada uno a su aire, sin estar limitado a una repartición de trabajo; si nos atascabamos en una cosa, podíamos continuar con otra sin problemas porque todos teníamos el control sobre el estado actual de la práctica.\\
+
+Hemos elegido usar GitHub por los siguientes motivos:
 \begin{itemize}
-	\item Es un conocido programa para desarrolladores de software, lo que nos ha permitido trabajar de una forma profesional.
+	\item Es un conocido programa para desarrolladores de software, por lo uqe tiene una extensa documentación que nos podía solucionar casi cualquier tipo de dudas.
 	\item Al ser un alto número los integrantes del grupo, nos ha sido más fácil y sencillo trabajar mediante repositorios. 
-	\item Pero principalmente debido a que dicho programa sigue una arquitectura de pizarra y soporta el conocido framework ``Ruby on Rails", lo que nos acercaba a un entorno práctico a los dos aspectos a tratar en la práctica: los framework y la arquitectura de pizarra.
+	\item Pero principalmente debido a que dicho programa sigue una arquitectura de pizarra lo que nos acercaba a un entorno práctico de aspectos a tratar en la práctica: la arquitectura de pizarra.
 \end{itemize}
 
 Todos los archivos de esta práctica se encontrarán disponibles en la dirección
-\url{https://github.com/KekoAlk/Practica_DAS}.
+\url{https://github.com/KekoAlk/Practica_DAS}, correspondiente con el repositorio de trabajo.
 
-\section*{¿Por qué \LaTeX?}
-\LaTeX~ es un sistema de composición de textos profesional que permite separar de forma fácil un único archivo en varios, de forma que trabajar de forma distribuida sea bastante cómoda. Además, los archivos son texto plano por lo que, junto a GitHub, hace que se pueda ver qué se ha añadido o borrado en un documento de forma sencilla. También es un sistema que separa el contenido de la presentación, por lo que facilita centrarse en el contenido y no tanto en su presentación.\\
+\subsection*{¿Por qué \LaTeX?}
+\LaTeX~ es un sistema de composición de textos profesional, es la herramienta más potente de creación de documentos que conocemos, que permite separar de forma fácil el contenido de un único archivo en varios, ya que en el fondo se trata de un lenguaje de programación, de forma que trabajar de forma distribuida sea bastante cómoda.\\
+
+Además, los archivos son texto plano por lo que, junto a GitHub, hace que se pueda ver qué se ha añadido o borrado en un documento de forma sencilla. También es un sistema que separa el contenido de la presentación, por lo que facilita centrarse en el contenido y no tanto en su presentación.\\
+
+Sin duda, haber aclarado este tipo de cosas antes del comienzo de la práctica nos ha permitido centrarnos mucho más en el trabajo y dejar a un lado detalles como pudiera ser los aspectos visuales de la memoria.
 
 
 
