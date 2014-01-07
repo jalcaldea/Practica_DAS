@@ -73,6 +73,25 @@ Ahora, en su lugar, encontramos un actor \emph{Usuario} que solo tiene acceso a 
 \subsection{Diagramas de actividad}
 Un diagrama de actividad es una representación de un proceso de forma gráfica. Consta de una serie de símbolos que representan los distintos pasos a seguir y flechas que indican el flujo de ejecución que se sigue un caso de uso. Hemos realizado uno para cada caso de uso:\\
 
+\textbf{Comprobar nivel:} (\emph{Figura \ref{fig:comprobarNivel}}) este caso de uso permite comprobar el nivel en el que se encuentra el usuario.
+\begin{figure}[H]
+\centering
+\comprobarNivel
+\caption{Diagrama de actividad de Comprobar nivel}
+\label{fig:comprobarNivel}
+\end{figure}
+\newpage
+
+\textbf{Iniciar sesión:} (\emph{Figura \ref{fig:iniciarSesion}}) se introduce el id de usuario y la contraseña para poder tener acceso a la plataforma.
+
+\begin{figure}[H]
+\centering
+\iniciarSesion
+\caption{Diagrama de actividad de Iniciar sesión}
+\label{fig:iniciarSesion}
+\end{figure}
+\newpage
+
 \textbf{Actualizar Pizarra:} (\emph{Figura \ref{fig:actualizarPizarra}}) éste es uno de los estados básicos de la pizarra, ya que cada vez se escribe, se borra o se modifica algún archivo hay que hacer uso de éste.
 
 \begin{figure}[H]
@@ -80,6 +99,56 @@ Un diagrama de actividad es una representación de un proceso de forma gráfica.
 \actualizarPizarra
 \caption{Diagrama de actividad de Actualizar pizarra}
 \label{fig:actualizarPizarra}
+\end{figure}
+\newpage
+
+\textbf{Estadísticas:} (\emph{Figura \ref{fig:estadisticas}}) permite ver las estadísticas de un determinado usuario.
+
+\begin{figure}[H]
+\centering
+\estadisticas
+\caption{Diagrama de actividad de Estadísticas}
+\label{fig:estadisticas}
+\end{figure}
+\newpage
+
+\textbf{Escribir (in):} (\emph{Figura \ref{fig:escribir}}) éste es uno de las operaciones básicas de la pizarra. Escribe un nuevo dato en la pizarra.
+
+\begin{figure}[H]
+\centering
+\escribir
+\caption{Diagrama de actividad de Escribir}
+\label{fig:escribir}
+\end{figure}
+\newpage
+
+\textbf{Leer (out):} (\emph{Figura \ref{fig:leer}}) leer datos de la pizarra.
+
+\begin{figure}[H]
+\centering
+\leer
+\caption{Diagrama de actividad de Leer}
+\label{fig:leer}
+\end{figure}
+\newpage
+
+\textbf{Lectura/Escritura (rd):} (\emph{Figura \ref{fig:lecturaEscritura}}) este caso de uso permite la escritura en la pizarra pero sin eliminar los datos anteriores, es decir que permite tanto leer como escribir en la pizarra.
+
+\begin{figure}[H]
+\centering
+\lecturaEscritura
+\caption{Diagrama de actividad de Lectura/Escritura}
+\label{fig:lecturaEscritura}
+\end{figure}
+\newpage
+
+\textbf{Mostrar estado:} (\emph{Figura \ref{fig:mostrarEstado}}) muestra el estado actual de la pizarra.
+
+\begin{figure}[H]
+\centering
+\mostrarEstado
+\caption{Diagrama de actividad de Mostrar estado}
+\label{fig:mostrarEstado}
 \end{figure}
 \newpage
 
@@ -103,16 +172,6 @@ Un diagrama de actividad es una representación de un proceso de forma gráfica.
 \end{figure}
 \newpage
 
-\textbf{Configurar pizarra:} (\emph{Figura \ref{fig:configurarPizarra}}) este caso de uso sirve para configurar la pizarra, cambiando los distintos parámetros.
-
-\begin{figure}[H]
-\centering
-\configurarPizarra
-\caption{Diagrama de actividad de Configurar pizarra}
-\label{fig:configurarPizarra}
-\end{figure}
-\newpage
-
 \textbf{Crear carpeta:} (\emph{Figura \ref{fig:crearCarpeta}}) este caso de uso permite crear nuevas carpetas a los usuarios.
 
 \begin{figure}[H]
@@ -120,55 +179,6 @@ Un diagrama de actividad es una representación de un proceso de forma gráfica.
 \crearCarpeta
 \caption{Diagrama de actividad de Crear carpeta}
 \label{fig:crearCarpeta}
-\end{figure}
-\newpage
-
-\textbf{Comprobar nivel:} (\emph{Figura \ref{fig:comprobarNivel}}) este caso de uso permite comprobar el nivel en el que se encuentra el usuario.
-\begin{figure}[H]
-\centering
-\comprobarNivel
-\caption{Diagrama de actividad de Comprobar nivel}
-\label{fig:comprobarNivel}
-\end{figure}
-\newpage
-
-\textbf{Crear usuario:} (\emph{Figura \ref{fig:crearUsuario}}) este caso de uso está restringido sólo al administrador. Crea un nuevo usuario en la pizarra.
-
-\begin{figure}[H]
-\centering
-\crearUsuario
-\caption{Diagrama de actividad de Crear usuario}
-\label{fig:crearUsuario}
-\end{figure}
-\newpage
-
-\textbf{Escribir (in):} (\emph{Figura \ref{fig:escribir}}) éste es uno de las operaciones básicas de la pizarra. Escribe un nuevo dato en la pizarra.
-
-\begin{figure}[H]
-\centering
-\escribir
-\caption{Diagrama de actividad de Escribir}
-\label{fig:escribir}
-\end{figure}
-\newpage
-
-\textbf{Lectura/Escritura (rd):} (\emph{Figura \ref{fig:lecturaEscritura}}) este caso de uso permite la escritura en la pizarra pero sin eliminar los datos anteriores, es decir que permite tanto leer como escribir en la pizarra.
-
-\begin{figure}[H]
-\centering
-\lecturaEscritura
-\caption{Diagrama de actividad de Lectura/Escritura}
-\label{fig:lecturaEscritura}
-\end{figure}
-\newpage
-
-\textbf{Estadísticas:} (\emph{Figura \ref{fig:estadisticas}}) permite ver las estadísticas de un determinado usuario.
-
-\begin{figure}[H]
-\centering
-\estadisticas
-\caption{Diagrama de actividad de Estadísticas}
-\label{fig:estadisticas}
 \end{figure}
 \newpage
 
@@ -182,35 +192,59 @@ Un diagrama de actividad es una representación de un proceso de forma gráfica.
 \end{figure}
 \newpage
 
-\textbf{Iniciar sesión:} (\emph{Figura \ref{fig:iniciarSesion}}) se introduce el id de usuario y la contraseña para poder tener acceso a la plataforma.
+\textbf{Configurar pizarra:} (\emph{Figura \ref{fig:configurarPizarra}}) este caso de uso sirve para configurar la pizarra, cambiando los distintos parámetros.
 
 \begin{figure}[H]
 \centering
-\iniciarSesion
-\caption{Diagrama de actividad de Iniciar sesión}
-\label{fig:iniciarSesion}
+\configurarPizarra
+\caption{Diagrama de actividad de Configurar pizarra}
+\label{fig:configurarPizarra}
 \end{figure}
 \newpage
 
-\textbf{Leer (out):} (\emph{Figura \ref{fig:leer}}) leer datos de la pizarra.
+\textbf{Crear usuario:} (\emph{Figura \ref{fig:crearUsuario}}) este caso de uso está restringido sólo al administrador. Crea un nuevo usuario en la pizarra.
 
 \begin{figure}[H]
 \centering
-\leer
-\caption{Diagrama de actividad de Leer}
-\label{fig:leer}
+\crearUsuario
+\caption{Diagrama de actividad de Crear usuario}
+\label{fig:crearUsuario}
 \end{figure}
 \newpage
 
-\textbf{Mostrar estado:} (\emph{Figura \ref{fig:mostrarEstado}}) muestra el estado actual de la pizarra.
+\subsection{Diagrama de clases}
+Un diagrama de clases es un diagrama estático destinado a la programación orientada a objetos que permite describir las clases de un sistema, así como sus propiedades, operaciones, relaciones entre ellas y herencia.\\
 
-\begin{figure}[H]
+Se suelen hacer varias versiones de estos diagramas, generalmente dos, una para la parte de análisis que abordaremos ahora y otra para la parte de diseño que describiremos más adelante.\\
+
+\subsubsection{Clases de la plataforma}
+A continuación detallamos cada una de las clases que aparecen en el diagrama (\emph{figura \ref{diagramadeclases}}) centrándose en sus propiedades y las relaciones entre ellas.\\
+
+\textbf{Pizarra:} El diagrama de clases se centra en esta clase. Almacena los datos relacionados con el estado de la pizarra, así como la lista de usuarios, las estadísticas, los permisos y la configuración.\\
+
+\textbf{Agente:} Permite interactuar con la pizarra y hace las veces de interfaz al usuario para usar la pizarra. Contiene el nombre de usuario y la contraseña con la que se interactúa con la pizarra.\\
+
+\textbf{Estado:} Contiene la lista de elementos.\\
+
+\textbf{Elemento:} Puede ser de dos tipos, representado como herencia. Un archivo o una carpeta. Una carpeta contendrá a su vez un listado de elementos.\\
+
+\textbf{Nivel: }Proporciona las operaciones necesarias para comprobar y editar los permisos de la pizarra.\\
+
+\textbf{Configuración: }Permite la visualización y modificación de las configuraciones de la pizarra.\\
+
+\textbf{Estadísticas: }Permite visualizar las estadísticas.\\
+
+\textbf{Usuario:} Permite la modificación y visualización de los datos del usuario, como el nombre, el id, la contraseña y los permisos.
+
+
+\begin{sidewaysfigure}
 \centering
-\mostrarEstado
-\caption{Diagrama de actividad de Mostrar estado}
-\label{fig:mostrarEstado}
-\end{figure}
-\newpage
+\clasesanalisis
+\caption{Diagrama de clases}
+\label{diagramadeclases}
+\end{sidewaysfigure}
+
+\section{Diseño final}
 
 \subsection{Diagrama de clases}
 Un diagrama de clases es un diagrama estático destinado a la programación orientada a objetos que permite describir las clases de un sistema, así como sus propiedades, operaciones, relaciones entre ellas y herencia.\\
@@ -241,9 +275,6 @@ A continuación detallamos cada una de las clases que aparecen en el diagrama ce
 \end{sidewaysfigure}
 
 
-
-
-
 \subsection{Diagramas de secuencia}
 
 El diagrama de secuencia es un diagrama UML utilizado para modelar la interacción entre objetos. Este diagrama se modela para cada caso de uso. Consta de dos tipos de mensajes:
@@ -259,5 +290,3 @@ Los diagramas de secuencia correspondientes a los casos de uso de nuestra plataf
 \seqIniciarSesion
 \caption{Diagrama de secuencia de iniciar sesión}
 \end{figure}
-
-\section{Diseño final}
